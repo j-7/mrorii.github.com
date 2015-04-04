@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cookpadのレシピを機械翻訳する - Naoki Orii&#8217;s blog</title>
+  <meta name="author" content="Naoki Orii">
+
+  
+  <meta name="description" content="前回のつくれぽ数の予測に引き続き、今回もCookpadネタです。 皆さんご存知の通り、英語版Cookpad（https://en.cookpad.com）が8月5日にリリースされました。 今のところ、英語圏のユーザがレシピを投稿するのではなく、どうやら日本語版サイトのレシピを翻訳しているみたいです &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mrorii.github.io/blog/2013/08/26/machine-translation-for-cookpad">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Naoki Orii's blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-42259877-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Naoki Orii&#8217;s blog</a></h1>
+  
+    <h2>Food, Programming, and Language</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="http://google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="mrorii.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Cookpadのレシピを機械翻訳する</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-08-26T10:11:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:11 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>前回の<a href="/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/">つくれぽ数の予測</a>に引き続き、今回もCookpadネタです。</p>
+
+<p>皆さんご存知の通り、英語版Cookpad（<a href="https://en.cookpad.com">https://en.cookpad.com</a>）が8月5日にリリースされました。</p>
+
+<p><img class="center" src="/images/gastroglot/cookpad-en.png"></p>
+
+<p>今のところ、英語圏のユーザがレシピを投稿するのではなく、どうやら日本語版サイトのレシピを翻訳しているみたいです：</p>
+
+<blockquote><p>日本食の家庭料理のレシピ数では世界一を誇るクックパッドのレシピのなかから、海外の家庭でも手軽に作りやすい人気レシピを英語に翻訳していきます。（中略）オープン当初は約1,500品の掲載レシピ数からスタートし、早期に数万品まで増やしていく予定です</p><footer><strong>クックパッド株式会社</strong> <cite><a href='http://info.cookpad.com/press/2013/0805/'>クックパッド英語版『COOKPAD』をリリース</a></cite></footer></blockquote>
+
+
+<p>そのため、Cookpadの日本語のレシピと英語のレシピは1対1の関係にあります。例えば<a href="http://cookpad.com/recipe/1495625">「たまにはね♪塩鯖のトマト煮(^m^*)」</a>を英語に翻訳したものは<a href="https://en.cookpad.com/recipe/1495625">「Salted Mackerel, Simmered With Tomatoes For a Change (^m^*)」</a>で見ることができます。</p>
+
+<p><a href="http://ja.wikipedia.org/wiki/%E6%A9%9F%E6%A2%B0%E7%BF%BB%E8%A8%B3">機械翻訳</a>の研究をしており、なおかつ料理をするのも大好きな友人のVictorがこの日英レシピデータに興味を持ったらしく、こんなやりとりをTwitterでしました（なお、Victorが言及しているリンクはCookpadが求人をかけていたRecipe Translatorの募集要項ページです。現在は募集終了したらしく、リンク切れになっています）：</p>
+
+<div class='embed tweet'><blockquote class="twitter-tweet" align="center" width="350"><p><a href="https://twitter.com/vchahun">@vchahun</a> hmm, this might be actually possible ☺ There&#39;s already parallel corpora (e.g. <a href="https://t.co/Pm9E86T8KK">https://t.co/Pm9E86T8KK</a> <a href="http://t.co/hwHtv6TSO0">http://t.co/hwHtv6TSO0</a>)</p>&mdash; Naoki ORII (@mrorii) <a href="https://twitter.com/mrorii/statuses/367116176117075973">August 13, 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+
+
+<p>それではCookpadのデータを使って機械翻訳システムを作り、日本語のレシピを英語に翻訳してみましょう<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。</p>
+
+<!-- more -->
+
+
+<h2>データ</h2>
+
+<p>2013年8月14日に英語版Cookpadから1,952件のレシピをクロールしました。同日に日本語版Cookpadから、それらに対応する1,952件の日本語レシピをクロールしています。レシピの80%を訓練データ、10%を開発データ、10%を評価データに分けました。</p>
+
+<p>なお、今回翻訳するのはCookpadのレシピに含まれる以下の要素です：</p>
+
+<ul>
+<li>タイトル</li>
+<li>紹介文</li>
+<li>材料（材料名と量）</li>
+<li>手順</li>
+<li>コツ・ポイント</li>
+<li>レシピの生い立ち</li>
+</ul>
+
+
+<h2>手法</h2>
+
+<p>機械翻訳と一口に言っても、いくつかのアプローチがあります。1990年台から主流なのは統計的機械翻訳で、これは<a href="http://translate.google.com/">Google翻訳</a>やMicrosoftの<a href="http://www.bing.com/translator">Bing Translator</a>でも使われています。統計的機械翻訳では対訳コーパスとよばれる、例えば日本語と英語など異なる言語の文と文が対訳の形でまとめられたデータからモデルを学習します。</p>
+
+<p>下の図に、統計的機械翻訳の仕組みをおおまかに示します：</p>
+
+<p><img class="center" src="/images/gastroglot/translate.jpg"></p>
+
+<p>一般的に、統計的機械翻訳システムは翻訳モデル、言語モデル、デコーダの３つから成り立ちます。
+今回の場合、翻訳モデルを学習するには日本語のレシピとそれに対応する英語のレシピの集まり（対訳コーパス）を使います。言語モデルを学習するには英語レシピの集まりのみを使います（i.e. 日本語レシピは必要ありません）。</p>
+
+<p>翻訳モデルは、大雑把に言えば日本語と英語の対応関係を規定します。例えば、日本語レシピデータのうち500行に「ゴボウ」という言葉が含まれており、対応する英語レシピの500行のうち498行に&#8221;burdock&#8221;と書かれていたら、英語を全く知らなくても『「ゴボウ」は&#8221;burdock&#8221;に対応するんだな』と予想がつきます。このように、翻訳モデルの学習では対応する文から対応する単語／句の組を計算します。</p>
+
+<p>言語モデルは「英文がどれだけ流暢か」を計算するために使われます。例えば、&#8221;heat the oil in a frying pan&#8221;は自然な英文ですが、&#8221;heat an oil in a frying pan&#8221;はあまり流暢ではなく、&#8221;heat an oils in a frying pan&#8221;はかなりひどい英文と言えます。「ある文がどれくらい流暢か」というのを具体的な数値として求めるには、その文（に含まれる単語の組み合わせ）が訓練データにどれくらいの頻度で含まれているかを数えることによって計算することが出来ます。具体例を挙げるとすれば、Googleが有するweb文書の集まりを訓練データに見立てれば、<a href="https://www.google.com/search?q=%22heat+the+oil+in+a+frying+pan%22">&ldquo;heat the oil in a frying pan&rdquo;</a>と検索すると約1,090,000件、<a href="https://www.google.com/search?q=%22heat+an+oil+in+a+frying+pan%22">&ldquo;heat an oil in a frying pan&rdquo;</a>で3件、<a href="https://www.google.com/search?q=%22heat+an+oils+in+a+frying+pan%22">&ldquo;heat an oils in a frying pan&rdquo;</a>で0件ヒットするのでそれらの数値を「流暢さ」として使えそうなことが分かります。</p>
+
+<p>翻訳したい日本語文を入力すると、機械翻訳システムは翻訳モデルと言語モデルを使って膨大な数の訳文を生成し、デコーダがその中からもっとも良さそうな英文を選び、それを出力します。</p>
+
+<h3>実装</h3>
+
+<p>今回はオープンソースの統計的機械翻訳システムを使いました。有名どころは以下の３つです：</p>
+
+<ul>
+<li>Moses (<a href="http://www.statmt.org/moses/">http://www.statmt.org/moses/</a>)　University of EdinburghのPhilipp Koehn主体のプロジェクト。３つの中では最も歴史が古く、成熟している。機能が豊富。<a href="http://www.statmt.org/moses/manual/manual.pdf">ユーザマニュアル（pdf）</a>も300ページを超える大作。C++で書かれている。</li>
+<li>Joshua (<a href="http://joshua-decoder.org/">http://joshua-decoder.org/</a>)　JHU/UPennのChris Callison-Burch主体のプロジェクト。Javaで書かれている。</li>
+<li>cdec (<a href="http://cdec-decoder.org/">http://cdec-decoder.org/</a>, <a href="http://www.cdec-decoder.org/">http://www.cdec-decoder.org/</a>)　CMUのChris Dyer主体のプロジェクト。この３つのプロジェクトのうち最も後発で、最新の手法が含まれているが必要最小限の機能のみ実装されている印象。他の２つに比べると高速・メモリ使用量が低いらしい。C++で書かれている。</li>
+</ul>
+
+
+<p>前述したVictorはcdecの主要contributorの１人なので、よしみで今回はcdecを使いました。</p>
+
+<p>上の図では対訳コーパスがレシピ単位で対応付けられているように見えますが、実際には文レベルで対応付けをするのが一般的です。日英版Cookpadにおいて、レシピのタイトルや材料はすでに文レベルで対応付けされているのですが、レシピの紹介文、手順、コツ・ポイント、生い立ちは自由形式で入力するので段落単位で対応付けされています。これらを文レベルで対応付けするために、<a href="http://mokk.bme.hu/resources/hunalign/">hunalign</a>というsentence alignerを用いてます。</p>
+
+<h3>デコーダについて</h3>
+
+<p>ちょっと脱線します。機械翻訳システムではデコーダが最も良い英文を選ぶと書きましたが、もともとdecodeという単語には「解読、復号をする」という意味があります。翻訳と暗号解読がなぜ関係あるのかという疑問が当然湧きますが、機械翻訳の先駆者であるWarren Weaverは次のような文を書いています：</p>
+
+<blockquote><p>One naturally wonders if the problem of translation could conceivably be treated as a problem in cryptography. When I look at an article in Russian, I say: &#8216;This is really written in English, but it has been coded in some strange symbols. I will now proceed to decode.&#8217;</p><footer><strong>Warren Weaver</strong></footer></blockquote>
+
+
+<p>また、自然言語処理の大御所であるKevin Knightが機械翻訳の手法を用いて秘密結社の暗号文を解読した、というダ・ヴィンチ・コードもびっくりの逸話もあります(cf. <a href="http://ameblo.jp/malikun01/entry-11060614160.html">http://ameblo.jp/malikun01/entry-11060614160.html</a> <a href="http://www.wired.com/dangerroom/2012/11/ff-the-manuscript/">http://www.wired.com/dangerroom/2012/11/ff-the-manuscript/</a>)</p>
+
+<h2>結果</h2>
+
+<p>一般的に、対訳コーパスの量が多ければ多いほど翻訳システムの性能が上がります。実用的な統計的機械翻訳システムを作るには100万文程度の対訳コーパスが必要らしいのですが、今回は（訓練データの約1,600件のレシピに含まれる）5.4万文と非常に少量です。そのため、全く使えない代物になることを危惧していたのですが、意外とまとも（？）な翻訳結果が得られました。翻訳システムを評価するために一般的によく使われる指標であるBLEU値は0.196と、日本語→英語翻訳としては可もなく不可もなくといったところです。</p>
+
+<p>具体的な翻訳結果を見ていきましょう。調理手順が比較的簡単な<a href="http://cookpad.com/recipe/1244898">✿さつま揚げの磯辺焼き✿</a>（英語版は<a href="https://en.cookpad.com/recipe/1244898">Isobe-yaki Fried Satuma-age Fish Cakes with Nori Seaweed</a>）の原文と翻訳した結果を次に示します：</p>
+
+<pre><code>#--------------------------
+# 原文
+#--------------------------
+
+# タイトル
+✿さつま揚げの磯辺焼き✿
+
+# 紹介文
+甘辛く味付けしたさつま揚げを海苔で巻きました。
+お弁当のおかずやおつまみにもピッタリな簡単な一品です♪
+
+# 材料
+さつま揚げ　2枚
+☆醤油　小さじ1
+☆みりん　小さじ1
+海苔　1/3枚
+
+# 手順
+さつま揚げは食べやすい大きさに切り、フライパンで（油なしで）両面を焼く。
+火を弱めて☆を加え、さつま揚げの両面に調味料を絡ませながら焼く。
+粗熱が取れたら適当な大きさに切った海苔で巻く。
+お弁当に入れるとこんな感じです。
+
+# コツ・ポイント
+特にありません。
+
+# このレシピの生い立ち
+お弁当のおかずにぴったりな簡単な一品を考えました。
+さつま揚げはお弁当箱に詰めやすく、冷めても美味しいのでよく使っています。
+
+#--------------------------
+# 翻訳結果
+#--------------------------
+
+# タイトル
+✿ Fish cake - coated with ✿
+
+# 紹介文
+Sweet-salty cakes to the rolls with nori seaweed.
+Perfect side dish for lunch box or appetizer an easy dish.
+
+# 材料
+fish cake      2
+☆ soy sauce    1 teaspoon
+☆ mirin        1 teaspoon
+nori seaweed   1 / 3
+
+# 手順
+Cut the fish cake into easy to eat pieces, in a frying pan (without oil). Fry both sides.
+Turn down the heat.
+Add the cakes on both sides of the flavoring ingredients to the pan.
+It has cooled down a bit up into bite size pieces. Wrap with nori seaweed.
+In a bento it looks like this.
+
+# コツ・ポイント
+None in particular.
+
+# このレシピの生い立ち
+It's great for bentos, easy and came up with this dish.
+Stuff the cakes in a bento box easy and delicious even when cold, so use well.
+</code></pre>
+
+<p>稚拙な部分も少々ありますが、英文のみから要点をなんとなく把握することができます。材料の翻訳はほぼ完璧で、手順は少し手を加えれば意味が通じるでしょう。</p>
+
+<p>比較のために、Google翻訳とBing Translatorの出力も見てみます：</p>
+
+<pre><code>#--------------------------
+# Google翻訳 (2013/08/26時点)
+#--------------------------
+
+# タイトル
+✿ ✿ Isobe grilled fish cake of
+
+# 紹介文
+It was wound with glue a fish cake that was seasoned Amakaraku.
+Simple ♪ is one article which is good to snack or side dish of the lunch
+
+# 材料
+Fish cake      Two
+☆ soy sauce    1 tsp
+☆ Mirin        1 tsp
+Laver          1/3 sheet
+
+# 手順
+Cut into bite-size, fish cake and bake both sides (without oil) in a frying pan.
+In addition to the ☆ weaken the fire, and bake while entangle the seasoning on both sides of the fish cake. Add the cakes on both sides of the flavoring ingredients to the pan.
+Is wound with glue that was cut to a suitable size When you take the rough heat
+It is such a feeling when I put a lunch
+
+# コツ・ポイント
+It is not especially.
+
+# このレシピの生い立ち
+I thought a good simple dish side dish of the lunch.
+I often use fish cake is delicious and easy packed in lunch boxes, even if cold.
+
+#--------------------------
+# Bing Translator (2013/08/26時点)
+#--------------------------
+
+# タイトル
+✿ grilling of the deep-fried ✿
+
+# 紹介文
+Earthdom deep-fried fish cake rolled with Nori seaweed.
+Is a simple dish perfect for the lunch box side dishes or appetizers.
+
+# 材料
+Fried fish cake    2 Piece
+☆ soy sauce        1 Teaspoon
+☆ Mirin            1 Teaspoon
+Nori seaweed       1 / 3
+
+# 手順
+In a frying pan (oil at no), cut into bite-sized fried fish cake Cook on both sides.
+Slowly ☆ addition, entwined seasoning on both sides of fried fish cake bake.
+Roll seaweed paper cut to size refrigerate.
+This is put in the Bento.
+
+# コツ・ポイント
+Not particularly.
+
+# このレシピの生い立ち
+I thought simple dish a perfect side dish for lunch.
+So delicious deep-fried easy packed lunch, cold, it also often use.
+</code></pre>
+
+<p>贔屓目に見ているかもしれませんが、Google翻訳やBing Translatorよりも今回作った翻訳システムのほうがほんのちょっとだけ、より自然な翻訳のような気がします。
+レシピのタイトルの「さつま揚げの磯辺焼き」が&#8221;coated with&#8221;、&#8221;fish cake of&#8221;、&#8221;of the deep-fried&#8221;のように全ての翻訳システムでincomplete sentenceに翻訳される理由がよく分かりませんが興味深い現象です。</p>
+
+<p>次に、翻訳が特にうまくいった例も紹介します：</p>
+
+<pre><code>#--------------------------
+# 日本語原文
+#--------------------------
+
+2010/10/20話題入り感謝♫
+ナスを斜め7mm幅に切る 。    
+ボールに入れ塩を振りかけて軽く揉みこみ暫く置く 。
+その間にタレを作ります 。
+〇を全て混ぜ合わせておく 。
+フライパンを熱しごま油を入れる 。
+ナスの水気を軽くふき取り並べて両面を中火で焼く。
+両面に焼き色がついたら、タレを加え煮詰める。
+タレが少し残るくらいで火を止める。
+丼ぶりに、白ご飯を入れ、ナスを並べて盛り付け、小ネギとのりを散らして出来上がり~♪
+
+#--------------------------
+# 翻訳結果
+#--------------------------
+
+Thank you for making this a top recipe on 2010/10/20.
+Slice the eggplant 7mm thick pieces.
+Massage lightly in a bowl and sprinkle with salt and leave.
+In the meantime, make the sauce.
+Mix the 〇 ingredients together.
+Heat the sesame oil in a frying pan.
+Lightly drain the eggplant, and cook on both sides over medium heat.
+When browned on both sides, add the sauce.
+Turn off the heat a little with the sauce.
+In a bowl, add the white rice and arrange the eggplant and plate, scatter with chopped green onion and nori seaweed and it's done.
+</code></pre>
+
+<p>&ldquo;Slice the eggplant 7mm thick pieces&#8221;は&#8221;Slice the eggplant diagonally into 7mm thick pieces&#8221;のほうがより自然です。また、「ナスの水気を軽く拭き取り…」は&#8221;lightly drain the eggplant&#8221;と翻訳されましたが、&#8221;lightly dry off the eggplant (with a napkin/towel)&#8221;のほうが個人的にはしっくりします<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>。最後に、「タレが少し残るくらいで火を止める」は&#8221;turn off the heat a little with the sauce&#8221;と翻訳されてますが、これは&#8221;turn off the heat so that a little amount of sauce remains&#8221;が妥当でしょう。しかし、これら以外の文はほぼ完璧といっていいほどの翻訳です。</p>
+
+<p>また参考までに、Google翻訳とBing Translatorの出力も見てみましょう：</p>
+
+<pre><code>#--------------------------
+# Google翻訳 (2013/08/26時点)
+#--------------------------
+
+October 20, 2010 topic enters thank ♫
+I cut to 7 mm width diagonally eggplant.    
+Put for a while crowded rub lightly sprinkled with salt and put in a bowl.
+I make a sauce in the meantime.
+I keep mixing all Yes.
+Add the sesame oil Heat the frying pan.
+Bake over medium heat on both sides side by side lightly wipe off the moisture of the eggplant.
+When browned on both sides with, boil down was added to the sauce.
+I stop the fire in about a little sauce remains.
+To bowl the first time, it ~ ♪ Put the white rice, Ready to Eat side-by-side eggplant, and voila Sprinkle the glue and small green onion
+
+#--------------------------
+# Bing Translator (2013/08/26時点)
+#--------------------------
+
+2010 / 10 / 20 Buzz with gratitude ♫
+Eggplant cut width 7 mm diagonal.
+Bowl sprinkle salt lightly 揉みこみ and put for a while.
+In the meantime make sauce.
+○ all mix.
+Heat the skillet add sesame oil.
+Sprinkle Eggplant drain side Cook on both sides over medium heat.
+Pour in on both sides and sauce in addition boil down.
+Sauce will long remain a little to stop the fire.
+Put the rice in a bowl, serve Eggplant side by side, sprinkle the onions with paste and voila ~!
+</code></pre>
+
+<p>日本語は<a href="http://en.wikipedia.org/wiki/Pro-drop_language">pro-drop language</a>なので、日本語→英語のように日本語をsource languageとした機械翻訳ではその取り扱いが難しそうなイメージがあります。現に、今回のケースでは&#8221;I cut to 7 mm&#8221;, &ldquo;I make a sauce&rdquo;, &ldquo;I keep mixing&rdquo;, &ldquo;I stop the fire&#8221;などGoogle翻訳では&#8221;I&#8221;を挿入していますが、レシピの手順としてこれは不自然です。一方、Bing Translatorは&#8221;I&#8221;を挿入していません。</p>
+
+<p>原文の「のりを散らして」がGoogle翻訳では&#8221;sprinkle the glue&#8221;、Bing Translatorでは&#8221;sprinkle … with paste&#8221;と翻訳されていますが、これは恐らく&#8221;sprinkle the glue powder&#8221;や&#8221;sprinkle … with paste&#8221;というフレーズがGoogleとBingが使っているコーパスに数多く含まれていたためだと考えられます。</p>
+
+<p>Google翻訳とBing Translatorは汎用な翻訳システムであるのに対し、今回作成したシステムでは訓練データと評価データを同一のドメインから取得しているため、翻訳の質がより高いように感じます。</p>
+
+<h2>まとめ</h2>
+
+<p>対訳コーパスが少量であったにも関わらず、レシピの材料と調理手順に関しては言い回しが限られているため、それなりの質の翻訳が得られました。それに対し、レシピのタイトル、紹介文、コツ・ポイント、生い立ちに関してはより自由な書き方ができるため、あまり芳しくない結果となりました。</p>
+
+<p>今回得られた翻訳システムは実用レベルとまではいきませんが、翻訳家を支援するツールだと割り切って使う分には問題ないと思います。「『ゴボウ』は英語で何て言うんだっけ」「この言い回しは英語で何て言うんだっけ」など、翻訳家でも訳が思い浮かばないケースが多々あると思います。辞書を引く代わりに、あらかじめ機械翻訳で得られた訳文を表示しておけば翻訳にかかる時間やコストを削減できるのではないでしょうか。</p>
+
+<p>また、今回は<a href="http://www.cdec-decoder.org/guide/tutorial.html">cdecの初心者向けチュートリアル</a>を忠実に実行しただけにも関わらずこのように悪くはない結果になったので、もう少しカスタマイズを頑張ればもっとまともな翻訳が得られると思います。</p>
+
+<p>なお、今回のソースコードは<a href="https://github.com/mrorii/gastroglot">https://github.com/mrorii/gastroglot</a>に置いておきました。</p>
+
+<p>統計的機械翻訳に興味を持たれた方は、日本語で読める資料として</p>
+
+<ul>
+<li><a href="http://www.ntt.co.jp/journal/0706/files/jn200706023.pdf">http://www.ntt.co.jp/journal/0706/files/jn200706023.pdf</a></li>
+<li><a href="http://www.phontron.com/slides/neubig-alagin-20130117.pdf">http://www.phontron.com/slides/neubig-alagin-20130117.pdf</a></li>
+<li><a href="http://www.slideshare.net/pfi/smt-survey">http://www.slideshare.net/pfi/smt-survey</a></li>
+</ul>
+
+
+<p>を推薦します。また、（英語ですが）教科書はPhilipp Koehnの本が定番です：</p>
+
+<p><a href="http://www.amazon.co.jp/gp/product/0521874157/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=247&creative=1211&creativeASIN=0521874157&linkCode=as2&tag=mrorii-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=0521874157&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mrorii-22" ></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=mrorii-22&l=as2&o=9&a=0521874157" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+
+<p>（機械翻訳というよりは暗号学の内容ですが）一般大衆向けの読み物としてはサイモン・シン(著)、青木薫 (翻訳)の「暗号解読」が大変面白いです：</p>
+
+<p><a href="http://www.amazon.co.jp/gp/product/410215972X/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=247&creative=1211&creativeASIN=410215972X&linkCode=as2&tag=mrorii-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=410215972X&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mrorii-22" ></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=mrorii-22&l=as2&o=9&a=410215972X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="http://www.amazon.co.jp/gp/product/4102159738/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=247&creative=1211&creativeASIN=4102159738&linkCode=as2&tag=mrorii-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4102159738&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mrorii-22" ></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=mrorii-22&l=as2&o=9&a=4102159738" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+
+<p>暗号が解読されたために処刑されたスコットランド女王、第二次世界大戦中のナチス・ドイツが用いた暗号機のエニグマを解読した連合軍の研究者達、またアメリカ原住民のナヴァホ族のコードトーカーによってたちまち苦戦を強いられた日本軍など、暗号解読にまつわる様々な歴史上の人間ドラマが詰まっていて、科学技術系のノンフィクションの珠玉の作品の１つです。</p>
+
+<p>この記事をきっかけに、日本でも機械翻訳を採用するWeb企業が増えたらなと思います<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。Cookpadとか。</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>なお、上のtweetでは「２人でタッグを組んでやろうぜ！」と書かれていますが、結局（機械翻訳が初心者の）自分１人でほとんどやったので誤りなどありましたら教えて下さい。<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p>&ldquo;drain&#8221;は布巾ではなくザルを使うイメージがあります。<a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+<li id="fn:3">
+<p>（外資系企業ですが）Microsoftではオンラインマニュアルをi18n対応するための前処理段階として機械翻訳を使っているみたいです（<a href="http://d.hatena.ne.jp/mamoruk/20100112/p2">http://d.hatena.ne.jp/mamoruk/20100112/p2</a>のコメント欄を参照）<a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Naoki Orii
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-08-26T10:11:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:11 am</span></time>
+      
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mrorii.github.io/blog/2013/08/26/machine-translation-for-cookpad/" data-via="" data-counturl="http://mrorii.github.io/blog/2013/08/26/machine-translation-for-cookpad/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-layout="button_count" data-send="false" data-width="300" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/" title="Previous Post: Cookpadのつくれぽ数を予測する">&laquo; Cookpadのつくれぽ数を予測する</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/09/08/cookpad-community-analysis/" title="Next Post: Cookpadのコアユーザーを探す">Cookpadのコアユーザーを探す &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Naoki Orii -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'naokioriisblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mrorii.github.io/blog/2013/08/26/machine-translation-for-cookpad/';
+        var disqus_url = 'http://mrorii.github.io/blog/2013/08/26/machine-translation-for-cookpad/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

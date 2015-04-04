@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: http://mrorii.github.io/sitemap.xml
