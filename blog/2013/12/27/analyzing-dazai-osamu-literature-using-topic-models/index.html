@@ -1,121 +1,62 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>太宰治の文学の変化をTopic Modelで分析する - Naoki Orii&#8217;s blog</title>
-  <meta name="author" content="Naoki Orii">
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#"><!--<![endif]-->
 
-  
-  <meta name="description" content="海外に長い間住んでいると、日本語の活字を無性に読みたくなることが頻繁にある。青空文庫はその飢えを満たしてくれるサイトのうちのひとつだ。夏目漱石、芥川竜之介、宮沢賢治など名だたる作家の作品が収められているが、中でも太宰治の作品は私にとって特別な存在だ。 太宰治というと、「人間失格」 &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Naoki Orii's blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
-<!--- MathJax Configuration -->
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-42259877-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Naoki Orii&#8217;s blog</a></h1>
-  
-    <h2>Food, Programming, and Language</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
-  
-</ul>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+    <head>
+                <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="author" content="Naoki Orii">
+        <meta name="keywords" content="awesome, definitely">
+	
+        <meta property="og:site_name" content="Naoki Orii&#39;s blog">
+        <meta property="og:title" content="Naoki Orii&#39;s blog">
+        <meta property="og:url" content="http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/">
+        <meta property="og:description" content="Food, Programming, and Language">
     
-      <form action="http://google.com/search" method="get">
-        <fieldset role="search">
-          <input type="hidden" name="sitesearch" value="mrorii.github.io" />
+        <meta property="og:type" content="article" />
+        <meta property="og:article:author" content="Naoki Orii" />
+        <meta property="og:article:published_time" content="2013-12-27T00:00:00-08:00" />
     
-          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-        </fieldset>
-      </form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/about">About</a></li>
-</ul>
+        <meta name="generator" content="Hugo 0.14" />
+        <title>太宰治の文学の変化をTopic Modelで分析する &middot; Naoki Orii&#39;s blog </title>
+        <link rel="canonical" href="http://mrorii.github.io" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="">
+        <link rel="stylesheet" type='text/css' href="http://mrorii.github.iocss/main.css"/>
+        <link rel="stylesheet" type='text/css' href="http://mrorii.github.iocss/custom.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300|Montserrat:700' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    </head>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      
-        <h1 class="entry-title">太宰治の文学の変化をTopic Modelで分析する</h1>
-      
-    
-    
-      <p class="meta">
+<body>
+<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install Google Chrome</a> to experience this site.</p><![endif]-->
+
+    <header id="site-header">
+        <div class="container">
+            <a href="http://mrorii.github.io" alt="Naoki Orii&#39;s blog"><h1 class="blog-title heading">Naoki Orii&#39;s blog</h1></a>
+            <p class="blog-description">Food, Programming, and Language</p>
+        </div>
+    </header>
+<main class="content" role="main">
+	<div class="container">
+		<article class="post">
+	<header class="post-header">
+        <h3 class="p-post-title">太宰治の文学の変化をTopic Modelで分析する</h3>
+    </header>
+
+    <section class="post-content">
         
 
+<p>海外に長い間住んでいると、日本語の活字を無性に読みたくなることが頻繁にある。<a href="http://www.aozora.gr.jp/">青空文庫</a>はその飢えを満たしてくれるサイトのうちのひとつだ。夏目漱石、芥川竜之介、宮沢賢治など名だたる作家の作品が収められているが、中でも太宰治の作品は私にとって特別な存在だ。</p>
 
-
-
-<time class='entry-date' datetime='2013-12-27T12:11:00-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:11 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>海外に長い間住んでいると、日本語の活字を無性に読みたくなることが頻繁にある。<a href="http://www.aozora.gr.jp/">青空文庫</a>はその飢えを満たしてくれるサイトのうちのひとつだ。夏目漱石、芥川竜之介、宮沢賢治など名だたる作家の作品が収められているが、中でも太宰治の作品は私にとって特別な存在だ。</p>
-
-<p><img class="center" src="/images/dazai/Osamu_Dazai_at_home.jpg" width="250" title="太宰治" alt="太宰治"></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/Osamu_Dazai_at_home.jpg" width="250" title="太宰治" alt="太宰治"></p>
 
 <p>太宰治というと、「人間失格」のテーマ及び彼自身の入水自殺のインパクトがあまりにも強いためか、「暗い」「陰鬱」というイメージがあるようだ。例えば、私がまだ日本に住んでいた頃に軽い病気を患って1週間ほど入院していた時のことだ。元来読書が好きだったので、「久しぶりに集中して本を読む時間が出来た」くらいの軽い気持ちで「太宰治全集」を読んでいたら検温をしに来た看護師の方に「大丈夫ですか」と深刻な表情で訊かれたのを今でも記憶している。実際のところ、太宰は一貫して「暗い」作品を書いていたわけではなく、「お伽草紙」「富嶽百景」「走れメロス」などの明るい作品も世に送り出している。</p>
 
@@ -123,16 +64,13 @@
 
 <p>今回は<a href="http://en.wikipedia.org/wiki/Topic_model">Topic Model</a>という機械学習の手法を使って太宰の作風の変化を分析する。果たしてアルゴリズムは太宰の文学の変遷を捉えられるのだろうか。</p>
 
-<!-- more -->
-
-
-<h2>データ</h2>
+<h3 id="データ:8b951b5c13837d1910fa8ac531083260">データ</h3>
 
 <p>2013年12月時点の青空文庫に掲載されていた13124件の作品を取得した。今回は文学の時系列変化を調べたいため、これらのうち初出情報が明確なものに絞った。また、翻訳作品は日本の時代的潮流と一致したタイミングで出版されるとは必ずしも限らないため取り除いた。最終的に408人の作者による6738件の作品が残った。</p>
 
 <p>またテキストの前処理として、旧仮名遣いの作品を現代仮名遣いに変換した。</p>
 
-<h2>手法</h2>
+<h3 id="手法:8b951b5c13837d1910fa8ac531083260">手法</h3>
 
 <p>言葉の使われ方の変化を見るためのツールといえば<a href="https://books.google.com/ngrams">Google Ngram Viewer</a>というものがある。これを使えば過去数百年分の書籍に含まれる言葉の経年変化を視覚化することが可能だ。例えば<a href="https://books.google.com/ngrams/graph?content=Twitter&amp;year_start=1960&amp;year_end=2010&amp;corpus=15&amp;smoothing=3&amp;share=&amp;direct_url=t1%3B%2CTwitter%3B%2Cc0">Twitterと検索すると2000年代後半からすごい勢いで成長している</a>ことが確認できる。一方、映画のマトリックスを念頭に置きながら<a href="https://books.google.com/ngrams/graph?content=Matrix&amp;year_start=1900&amp;year_end=2008&amp;corpus=15&amp;smoothing=3&amp;share=&amp;direct_url=t1%3B%2CMatrix%3B%2Cc0">Matrixと検索すると予想に反して1950年あたりから既にゆるやかに伸びている</a>ことが分かる。これは、「Matrix」という単語に複数の意味があり、（その理由は定かではないが）1950年以降、映画以外の意味合いのものが頻繁に使われるようになったからとしか説明がつかない。</p>
 
@@ -143,23 +81,23 @@
 <li>同義性（複数の単語が同じ意味を持つ。例えば「鈴木一郎」「イチ」「安打製造機」はすべてイチローを指す）</li>
 </ul>
 
-
 <p>という側面があるため、ただの単語の頻度で文学のテーマの盛衰を把握するのには限界がある。言葉の「意味」にもう少し近いものの経年変化を調べることが理想的だ。</p>
 
-<h3>Topic Model</h3>
+<h4 id="topic-model:8b951b5c13837d1910fa8ac531083260">Topic Model</h4>
 
 <p>ここでTopic Modelが颯爽と登場する。Topic Modelingを簡単に説明すれば、ある文書集合が与えられたとして、その集合に潜在する「構造」を学習することだ（この構造のことを「トピック」ともいう）。</p>
 
 <p>例えば、</p>
 
-<blockquote><p>「マリナーズのイチローは１５日（日本時間）、敵地でロッキーズとのインターリーグ３連戦最終戦に「１番・ライト」で先発出場し、４打数２安打で連続試合出塁をメジャー自己新の「４３」に伸ばし、今季両リーグ最長記録に並んだ」</p></blockquote>
-
+<blockquote>
+<p>「マリナーズのイチローは１５日（日本時間）、敵地でロッキーズとのインターリーグ３連戦最終戦に「１番・ライト」で先発出場し、４打数２安打で連続試合出塁をメジャー自己新の「４３」に伸ばし、今季両リーグ最長記録に並んだ」</p>
+</blockquote>
 
 <p>という文が与えられたとする。「野球」という単語が文中に含まれていないにも関わらず、人はこれは読んで野球に関する文章であるということをいとも簡単に理解できる。大雑把に言えば、これを機械でも推論出来るようにするのがTopic Modelingだ。</p>
 
 <p>Topic Modelの概略を次の図に示した。図の上にあるのは、Wikipediaの全ページの要約をTopic Modelに入力して得られたトピックのうちの3つだ。一番左のトピックは「表現型」「遺伝子」「DNA」などの単語群から成っていることから、「遺伝学」に関するトピックであると予想がつく。同様に、真ん中のトピックは「研究」、一番右のトピックは「社会」に関するものだと推測できる。図の下半分は最近<a href="http://www.huffingtonpost.jp/2013/12/24/genetics-politics-beliefs-encoded-genes-video_n_4500231.html">Huffington Postで目にした記事</a>の抜粋だ。これを先ほどのモデルに入力すると、どの単語がどのトピックに属しているかが出力される（図では単語が割り振られたトピックによって色分けをしている）。これによって、この文書が「遺伝学」「研究」「社会」に関するものだと機械でも推論できるようになったわけだ。</p>
 
-<p><a href="/images/dazai/lda.png"><img class="center" src="/images/dazai/lda.png" width="550"></a></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/lda.png" width="550" title="LDA" alt="LDA"></p>
 
 <p>Topic Modelと一口に言っても幾つかの種類がある。今回使ったのは以下の3つである。</p>
 
@@ -169,34 +107,33 @@
 <li>Dynamic Topic Model （時系列変化を考慮）</li>
 </ol>
 
+<p>文学をTopic Modelで分析するなんて言語道断だと非難する人がいてもおかしくはない。(太宰の場合はまさしく)血反吐を吐くほどの苦労で書き上げた文章を単なるアルゴリズムで分析するというのも冒涜的であるような気がする<sup class="footnote-ref" id="fnref:8b951b5c13837d1910fa8ac531083260:blasphemy"><a rel="footnote" href="#fn:8b951b5c13837d1910fa8ac531083260:blasphemy">1</a></sup>。</p>
 
-<p>文学をTopic Modelで分析するなんて言語道断だと非難する人がいてもおかしくはない。(太宰の場合はまさしく)血反吐を吐くほどの苦労で書き上げた文章を単なるアルゴリズムで分析するというのも冒涜的であるような気がする<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。</p>
+<h3 id="結果:8b951b5c13837d1910fa8ac531083260">結果</h3>
 
-<h2>結果</h2>
-
-<h3>青空文庫</h3>
+<h4 id="青空文庫:8b951b5c13837d1910fa8ac531083260">青空文庫</h4>
 
 <p>青空文庫に収められている作品数の推移を下に示した。</p>
 
-<p><a href="/images/dazai/all-authors.png"><img class="center" src="/images/dazai/all-authors.png" width="500"></a></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/all-authors.png" width="500"></p>
 
 <p>1940年代半ばに作品数が急激に落ち込むのは太平洋戦争が原因だと推測できる。また、1950年代半ば以降の作品数の減少は、作者が亡くなってから死後50年までは著作権が保護されるため、青空文庫に収録されないためであろう。</p>
 
 <p>これらの作品に対しLatent Dirichlet Allocationを適用して得られた全128個のトピックのうち、8つの実例を下の図に示す。</p>
 
-<p><a href="/images/dazai/table.jpg"><img class="center" src="/images/dazai/table.jpg" width="700"></a></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/table.jpg" width="700"></p>
 
 <p>各欄が1つのトピックに対応し、上からトピック名、そのトピックに出現しやすい単語、そのトピックに強く関連している作品を表している。小林多喜二や宮本百合子の作品が「共産主義／プロレタリア文学」、夢野久作の作品が「事件」、北大路魯山人の作品が「食」に関するトピックに強く関連付いたことから、モデルの学習がそれなりに上手くいったことが伺える。</p>
 
 <p>次に、この「共産主義／プロレタリア文学」のトピックの年ごとの強さを見る。</p>
 
-<p><a href="/images/dazai/all-proletariat-w2.png"><img class="center" src="/images/dazai/all-proletariat-w2.png" width="500"></a></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/all-proletariat-w2.png" width="500"></p>
 
 <p><a href="http://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AD%E3%83%AC%E3%82%BF%E3%83%AA%E3%82%A2%E6%96%87%E5%AD%A6">プロレタリア文学が流行した1920年代から1930年代前半</a>にかけてトピックが爆発的に強くなっていることが確認できる。</p>
 
 <p>誤解を招かないように注釈を入れておくと、得られた全てのトピックがこのように「意味を持っていそう」なわけではない。Junkトピックとでもいうべきトピックも幾つか散見された。しかしながら、無関係な単語の羅列に見えて、実際には有意なトピックもあった。例えば、</p>
 
-<p><a href="/images/dazai/naturalism.png"><img class="center" src="/images/dazai/naturalism.png" width="250"></a></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/naturalism.png" width="250"></p>
 
 <p>など単語群を見ただけでは意味が分からないトピックがあった。このトピックに強く結びついている作家は以下のとおりである。</p>
 
@@ -209,28 +146,27 @@
 <li><a href="http://www.aozora.gr.jp/index_pages/person153.html">石川啄木</a></li>
 </ol>
 
-
 <p>石川三四郎を除き、驚くべきことに全員が<a href="http://ja.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E4%B8%BB%E7%BE%A9%E6%96%87%E5%AD%A6">自然主義文学</a>に関係していたことが分かる。</p>
 
 <p>一方、<a href="http://ja.wikipedia.org/wiki/%E7%99%BD%E6%A8%BA%E6%B4%BE">白樺派</a>らしきトピックは見つからなかった。白樺派を代表する志賀直哉と武者小路実篤は亡くなってからまだ50年経っておらず、彼らの作品が青空文庫に掲載されていないためだと思われる。</p>
 
 <p>戦後を代表する作家である三島由紀夫、安部公房、遠藤周作らの作品も同様の理由で青空文庫に収録されていないため、彼らの作品の特徴を分析することは残念ながら出来なかった。</p>
 
-<h3>太宰治の文学</h3>
+<h4 id="太宰治の文学:8b951b5c13837d1910fa8ac531083260">太宰治の文学</h4>
 
 <p>本題の太宰の文学の分析に入る前に、まず予備知識として太宰の年譜を下に示す。重要な点は、冒頭でも触れたように、前期と後期において太宰の私生活と作品がともに乱れるということだ。</p>
 
-<p><a href="/images/dazai/timeline-final.jpg"><img class="center" src="/images/dazai/timeline-final.jpg" width="700"></a></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/timeline-final.jpg" width="700"></p>
 
 <p>次に、青空文庫に収められている太宰治の作品数の推移を示す。没後である1954年に1作品があることが確認できるが、これは<a href="http://www.aozora.gr.jp/cards/000035/card52463.html">「大恩は語らず」</a>というエッセイだ。1937年あたりのグラフの下落は妻である初代との離別で太宰が1年間ほど作家活動を休止していたためだろう。他の作家達と同様、太宰も太平洋戦争中は作品数が減少していることが確認できる。</p>
 
-<p><a href="/images/dazai/dazai_frequency_variation.png"><img class="center" src="/images/dazai/dazai_frequency_variation.png" width="500"></a></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/dazai_frequency_variation.png" width="500"></p>
 
-<h4>太宰治のトピック分布</h4>
+<h5 id="太宰治のトピック分布:8b951b5c13837d1910fa8ac531083260">太宰治のトピック分布</h5>
 
 <p>太宰に最も強く関連づいた5つのトピックを下に示す。</p>
 
-<p><a href="/images/dazai/dazai-topics.jpg"><img class="center" src="/images/dazai/dazai-topics.jpg" width="500"></a></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/dazai-topics.jpg" width="500"></p>
 
 <p>5つのうち2つは以前登場した「文学」「人生」のトピックだ。残りの3つを眺めると、他の2つのトピックほど明確ではないが、太宰らしさがにじみ出てくるような気がする。例えば、一番左のトピックに最も強く関連している作品を調べてみると以下のようになった。</p>
 
@@ -242,8 +178,7 @@
 <li>夏目漱石　<a href="http://www.aozora.gr.jp/cards/000148/card794.html">三四郎</a></li>
 </ol>
 
-
-<h4>太宰に似ている作家</h4>
+<h5 id="太宰に似ている作家:8b951b5c13837d1910fa8ac531083260">太宰に似ている作家</h5>
 
 <p>Author Topic Model によって得られた各作家のトピック分布をもとに、太宰に最も似ている5人の作家を求めると次の通りになった。</p>
 
@@ -255,10 +190,9 @@
 <li><a href="http://www.aozora.gr.jp/index_pages/person107.html">鈴木三重吉</a></li>
 </ol>
 
-
 <p>三好十郎、織田作之助、田中英光は太宰と同じく<a href="http://ja.wikipedia.org/wiki/%E7%84%A1%E9%A0%BC%E6%B4%BE">無頼派</a>の作家である。しかも田中英光は太宰の弟子とあって、モデルの信頼性がさらに増したような気がする。</p>
 
-<h4>太宰の作風の変化</h4>
+<h5 id="太宰の作風の変化:8b951b5c13837d1910fa8ac531083260">太宰の作風の変化</h5>
 
 <p>さて、「太宰の文学の変化を機械学習のモデルで捉えられるか」という問いから出発したわけだが、
 今までの太宰の私生活の話を踏まえると、前期・中期・後期にかけて「暗い」トピックが凹形、もしくは「明るい」トピックが凸形の形状をしていたら万々歳である。</p>
@@ -267,16 +201,25 @@
 
 <p>しかしたったひとつだけ、太宰の私生活と同期して変化したように見えるトピックがあった。それがこちらだ。</p>
 
-<p><a href="/images/dazai/dazai-love-w2.png"><img class="center" src="/images/dazai/dazai-love-w2.png" width="500"></a></p>
+<p><img class="center" src="http://mrorii.github.io/images/dazai/dazai-love-w2.png" width="500"></p>
 
 <p>これは、上に出てきた「恋愛」のトピックである。美知子夫人と結婚した1939年あたりから急激に減少し、愛人の太田静子に会うようになってから再度元の強さに戻ったように見えなくはない。「さて、太宰のやつ、美知子夫人の尻にしかれて恋愛めいた話を書けなくなったのか」と邪推していたところ、このような意見を見つけた：</p>
 
-<blockquote><p>十一月に井伏鱒二の世話により石原美知子と結婚します。この石原美知子という女性は当時としては珍しい大学教育を受けた相当な才女です。東京女子高等師範学校（現お茶の水女子大）卒。左翼活動や自殺を繰り返した太宰とは不釣り合いともいえる女性です。<br/> <br/>彼女と支え合って生きた結婚生活というものが太宰の作風をダウナーな絶望からすがすがしい希望へと変えたのでしょう。戦中戦後、太宰は太田静子、山崎富栄らと愛人関係を持ちますが、少なくともこのころは美知子と仲がよかったでしょう。<br/> <br/>太宰は学識のある美知子夫人に口述記述をさせます。初めて太宰は同人誌仲間、一部の文学好きから一般の読者を見据えた作品を作るのです。これは勝手な想像ですが、無意識のうちに太宰は奥さんの手前、前述した明るい作品というのを書いたでしょう。幸福な生活ともあいまって。<br/> <br/>結婚が太宰を変えた、というつまらない結論ですが実に人間らしいと思います。微笑しながら「どうだい面白いだろう」などと言って口述記述をする夫人に声をかける太宰の姿が目に浮かびます。それは太宰が味わった最初で最後の平穏なのだと思います。</p><footer><strong>nekomajinaf</strong> <cite><a href='http://note.chiebukuro.yahoo.co.jp/detail/n154170'>太宰治中期作品群の作風の変化について - Yahoo!知恵袋</a></cite></footer></blockquote>
+<blockquote>
+<p>十一月に井伏鱒二の世話により石原美知子と結婚します。この石原美知子という女性は当時としては珍しい大学教育を受けた相当な才女です。東京女子高等師範学校（現お茶の水女子大）卒。左翼活動や自殺を繰り返した太宰とは不釣り合いともいえる女性です。</p>
 
+<p>彼女と支え合って生きた結婚生活というものが太宰の作風をダウナーな絶望からすがすがしい希望へと変えたのでしょう。戦中戦後、太宰は太田静子、山崎富栄らと愛人関係を持ちますが、少なくともこのころは美知子と仲がよかったでしょう。</p>
+
+<p>太宰は学識のある美知子夫人に口述記述をさせます。初めて太宰は同人誌仲間、一部の文学好きから一般の読者を見据えた作品を作るのです。これは勝手な想像ですが、無意識のうちに太宰は奥さんの手前、前述した明るい作品というのを書いたでしょう。幸福な生活ともあいまって。</p>
+
+<p>結婚が太宰を変えた、というつまらない結論ですが実に人間らしいと思います。微笑しながら「どうだい面白いだろう」などと言って口述記述をする夫人に声をかける太宰の姿が目に浮かびます。それは太宰が味わった最初で最後の平穏なのだと思います。</p>
+
+<p><a href="http://note.chiebukuro.yahoo.co.jp/detail/n154170">太宰治中期作品群の作風の変化について - Yahoo!知恵袋</a></p>
+</blockquote>
 
 <p>いい話である。</p>
 
-<h2>終わりに</h2>
+<h3 id="終わりに:8b951b5c13837d1910fa8ac531083260">終わりに</h3>
 
 <p>人文科学系のコーパスにTopic Modelを適用する事例は近年盛んになってきている。いくつかの参考文献を下に挙げる。</p>
 
@@ -287,7 +230,6 @@
 <li><a href="http://dsl.richmond.edu/dispatch/pages/intro">Mining the Dispatch</a></li>
 </ul>
 
-
 <p>英語圏の研究はたくさん見つけられたものの、日本文学に適用する例は残念ながらひとつも見つからなかった。</p>
 
 <p>太宰の人生について少しでも興味を持たれた方には、今をときめく猪瀬直樹氏のこちらの書を推薦します：</p>
@@ -295,138 +237,130 @@
 <p><a href="http://www.amazon.co.jp/gp/product/4167431130/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=247&creative=1211&creativeASIN=4167431130&linkCode=as2&tag=mrorii-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4167431130&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mrorii-22" ></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=mrorii-22&l=as2&o=9&a=4167431130" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 ピカレスク 太宰治伝 (文春文庫)  猪瀬 直樹 (著)</p>
 <div class="footnotes">
-<hr/>
+
+<hr />
+
 <ol>
-<li id="fn:1">
-<p>太宰は<a href="http://www.aozora.gr.jp/cards/000035/card1587.html">｢もの思う葦｣</a>で彼の処女創作集｢晩年｣への思いをこう語っている：「私はこの短篇集一冊のために、十箇年を棒に振った。まる十箇年、市民と同じさわやかな朝めしを食わなかった。私は、この本一冊のために、身の置きどころを失い、たえず自尊心を傷けられて世の中の寒風に吹きまくられ、そうして、うろうろ歩きまわっていた。（中略）舌を焼き、胸を焦がし、わが身を、とうてい恢復できぬまでにわざと損じた。百篇にあまる小説を、破り捨てた。そうして、残ったのは、辛うじて、これだけである。これだけ。けれども、私は、信じて居る。この短篇集、『晩年』は、年々歳々、いよいよ色濃く、きみの眼に、きみの胸に滲透して行くにちがいないということを。私はこの本一冊を創るためにのみ生れた。（中略）さもあらばあれ、『晩年』一冊、君のその両手の垢で黒く光って来るまで、繰り返し繰り返し愛読されることを思うと、ああ、私は幸福だ。」<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:8b951b5c13837d1910fa8ac531083260:blasphemy">太宰は<a href="http://www.aozora.gr.jp/cards/000035/card1587.html">｢もの思う葦｣</a>で彼の処女創作集｢晩年｣への思いをこう語っている：「私はこの短篇集一冊のために、十箇年を棒に振った。まる十箇年、市民と同じさわやかな朝めしを食わなかった。私は、この本一冊のために、身の置きどころを失い、たえず自尊心を傷けられて世の中の寒風に吹きまくられ、そうして、うろうろ歩きまわっていた。（中略）舌を焼き、胸を焦がし、わが身を、とうてい恢復できぬまでにわざと損じた。百篇にあまる小説を、破り捨てた。そうして、残ったのは、辛うじて、これだけである。これだけ。けれども、私は、信じて居る。この短篇集、『晩年』は、年々歳々、いよいよ色濃く、きみの眼に、きみの胸に滲透して行くにちがいないということを。私はこの本一冊を創るためにのみ生れた。（中略）さもあらばあれ、『晩年』一冊、君のその両手の垢で黒く光って来るまで、繰り返し繰り返し愛読されることを思うと、ああ、私は幸福だ。」
+ <a class="footnote-return" href="#fnref:8b951b5c13837d1910fa8ac531083260:blasphemy"><sup>[return]</sup></a></li>
 </ol>
 </div>
 
-</div>
+    </section>
 
+    <hr>
 
-  <footer>
-    <p class="meta">
-      
-  
+    <footer class="post-footer">
+        <section class="f-1">
+            
+            <section class="author">
+                <p>Written by Naoki Orii</p>
+            </section>
+            
+            
+            <p class="f-post-time"><time datetime="2013-12-27T00:00:00-08:00">December 27, 2013</time></p>
+        </section>
+                        
+        <section class="f-2">
+            <section class="share">
+                <ul class="social">
 
+                    
+                    <li>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
 
+                        <div class="fb-like" data-href="http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/"
+                             data-width="200"
+                             data-layout="button_count"
+                             data-action="like"
+                             data-show-faces="true"
+                             data-share="false">
+                        </div>
+                    </li>
 
-  <span class="byline author vcard">Authored by <span class="fn">
-  
-    Naoki Orii
-  
-  </span></span>
+                    
+                    <li>
+                        <a class="twitter-share-button"
+                           href="https://twitter.com/intent/tweet?url=http%3a%2f%2fmrorii.github.io%2fblog%2f2013%2f12%2f27%2fanalyzing-dazai-osamu-literature-using-topic-models%2f"
+                           data-counturl="http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/"
+                           data-count="horizontal">
+                            Tweet
+                        </a>
+                        <script>window.twttr = (function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0],
+                            t = window.twttr || {};
+                          if (d.getElementById(id)) return t;
+                          js = d.createElement(s);
+                          js.id = id;
+                          js.src = "https://platform.twitter.com/widgets.js";
+                          fjs.parentNode.insertBefore(js, fjs);
+                         
+                          t._e = [];
+                          t.ready = function(f) {
+                            t._e.push(f);
+                          };
+                         
+                          return t;
+                        }(document, "script", "twitter-wjs"));
+                        </script>
+                    </li>
 
+                    
+                    <li>
+                        <a href="http://b.hatena.ne.jp/entry/http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/" class="hatena-bookmark-button"
+                           data-hatena-bookmark-title="太宰治の文学の変化をTopic Modelで分析する" data-hatena-bookmark-layout="simple-balloon"
+                           title="このエントリーをはてなブックマークに追加">
+                            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" 
+                                 width="20" height="20" style="border: none;" />
+                        </a>
+                        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+                    </li>
 
-      
+                    
+                    <li>
+                        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+                        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+                    </li>
 
+                    
+                </ul>
 
+            </section>
 
+            
+        </section>
+        <section class="f-2">
+            <span>
+                <a class="twitter-follow-button"
+                  href="https://twitter.com/mrorii">
+                Follow @mrorii</a>
+            </span>
+        </section>
 
-<time class='entry-date' datetime='2013-12-27T12:11:00-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:11 pm</span></time>
-      
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/" data-via="" data-counturl="http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/" >Tweet</a>
-  
-  
-  <a href="http://b.hatena.ne.jp/entry/http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/"
-    class="hatena-bookmark-button"
-    data-hatena-bookmark-layout="standard"
-    title="このエントリーをはてなブックマークに追加">
-    <img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-      alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-  <script
-    type="text/javascript"
-    src="http://b.st-hatena.com/js/bookmark_button.js"
-    charset="utf-8" async="async"></script>
-  
-    <div class="fb-like" data-layout="button_count" data-send="false" data-width="300" data-show-faces="false"></div>
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/09/08/cookpad-community-analysis/" title="Previous Post: Cookpadのコアユーザーを探す">&laquo; Cookpadのコアユーザーを探す</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2015/04/04/language-of-food/" title="Next Post: 食べログの口コミに見る人間心理 ―麻薬と性とトラウマと―">食べログの口コミに見る人間心理 ―麻薬と性とトラウマと― &raquo;</a>
-      
-    </p>
-  </footer>
+                        
+    </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
+	</div>
+</main>
+    <footer id="site-footer">
+        <div class="container">
+            <a href="http://mrorii.github.ioindex.xml" title="Get the RSS feed"><span class="tooltip"><i class="fa fa-rss"></i></span></a>
+            <section>&copy; <a href="http://mrorii.github.io">Naoki Orii</a> 2015</section>
+            <section>Generated with <a href="http://gohugo.io/">Hugo</a>.</section>
+        </div>
+    </footer>
 
-
-</div>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Naoki Orii -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'naokioriisblog';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/';
-        var disqus_url = 'http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
+    <script type="text/javascript" src="http://mrorii.github.iojs/fittext.js"></script>
+    <script type="text/javascript">
+      $(".heading").fitText();
+    </script>
 
 
 

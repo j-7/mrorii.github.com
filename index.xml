@@ -1,0 +1,1968 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Naoki Orii&#39;s blog</title>
+    <link>http://mrorii.github.io/</link>
+    <description>Recent content on Naoki Orii&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 04 Apr 2015 00:00:00 -0800</lastBuildDate>
+    <atom:link href="http://mrorii.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>食べログの口コミに見る人間心理 ―麻薬と性とトラウマと―</title>
+      <link>http://mrorii.github.io/blog/2015/04/04/language-of-food/</link>
+      <pubDate>Sat, 04 Apr 2015 00:00:00 -0800</pubDate>
+      
+      <guid>http://mrorii.github.io/blog/2015/04/04/language-of-food/</guid>
+      <description>
+
+&lt;p&gt;フランスの希代の美食家であるブリア・サヴァランは「ふだん何を食べているのか言ってごらんなさい、そしてあなたがどんな人だか言ってみせましょう」といったそうだ。これは、「ドン・キホーテ」の有名な一文「君の友人を教えなさい、そうすれば君がどういう人間か言ってみせよう」をもじったものであるが、示唆に富んだ文である。その人が何を食べるか（もっと正確に言えば、何を食べないか）によって、その人の育ちや信仰、文化的・民族的背景など様々なことを知ることが出来る。&lt;/p&gt;
+
+&lt;p&gt;同様に、口コミもそれを書いた人について多くを物語る。ここで試しに、以下に挙げた&lt;a href=&#34;http://tabelog.com/&#34;&gt;食べログ&lt;/a&gt;の口コミを読んで頂きたい。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;バラのクリームにたっぷりのフランボワーズをマカロンとともに。ルバーブのアクセント。コレめっちゃカワイイ（*^_^*）　一目ぼれです☆　バラにフランボワーズにマカロンにピンクときたら、女子にはたまらない～！&lt;/li&gt;
+&lt;li&gt;ちょっと高めの価格設定やけど、このケーキは素晴らしいの一言やわ。さすがにナンバーワンやなあ。どれもメチャメチャうまいねん。&lt;/li&gt;
+&lt;li&gt;上品なぉ味！おぃしぃ！*ﾟ・:。ﾜｧ(・∀・)ｵ。・:ﾟ*ムースの中にラズベリー｡・:＋°その下のジャムなに？( ˘•ω•˘ )ωҺaｔ？甘酸っぱくてちょっと苦味もあります(´∀｀*)ｳﾌ&lt;/li&gt;
+&lt;li&gt;中にジャムというかジュレというかがしのばせてあるのだが、これは薔薇のジャムなのだろうか？何とも言えぬ、甘さと芳香！未知との遭遇というか、驚きのある逸品！&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;これらの口コミは全て同一のレストランに対して投稿されたものだが、文体がそれぞれ全く異なっており、口コミを投稿した人の性別や年齢、考え方や性格さえも浮き彫りになっている。さらに、多くの人は口コミに「生の声」を書くため、文章に含まれている比喩や感情は人間の心理を理解する重要な手掛かりとなる。&lt;/p&gt;
+
+&lt;p&gt;スタンフォード大学の&lt;a href=&#34;http://web.stanford.edu/~jurafsky/&#34;&gt;Dan Jurafsky教授&lt;/a&gt;は&lt;a href=&#34;http://firstmonday.org/ojs/index.php/fm/article/view/4944/3863&#34;&gt;Narrative framing of consumer sentiment in online restaurant reviews&lt;/a&gt;という論文で、アメリカの口コミサイト&lt;a href=&#34;http://www.yelp.com/&#34;&gt;Yelp&lt;/a&gt;を対象に感情分析を行い、口コミの書き手はどのように自己表現をするかという興味深い研究を報告している。今回は同様の分析を食べログの口コミを対象に行う。&lt;/p&gt;
+
+&lt;h3 id=&#34;データ:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;データ&lt;/h3&gt;
+
+&lt;p&gt;2015年2月の中頃から終わりにかけて、北海道、宮城、埼玉、千葉、東京、神奈川、静岡、愛知、京都、大阪、兵庫、広島、福岡の13の都道府県にあるレストラン、またそれらの店舗に対する口コミ、及びそれらの口コミを投稿したレビュアーに関するデータをクロールした。最終的に338,560人のレビュアーによる529,367店舗に対する 3,145,942件の口コミを取得できた。2015年2月27日時点の食べログには543,186人のレビュアーによる798,615店舗に対する6,203,301件の口コミが掲載されていたので、このデータセットは2015年2月末時点の食べログ全体のおよそ60%のレビュアー、65%の店舗、50%の口コミにあたる。&lt;/p&gt;
+
+&lt;p&gt;次の図に、取得したデータの詳細を示した。レビュアーに関する情報はニックネーム、口コミ件数、プロフィールなどを含む。レストランに関しては名前、ジャンル、平均予算などである。口コミからはタイトル、訪問日、点数&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:score&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:score&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;、使った金額、おすすめ用途&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:usage&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:usage&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;と口コミの本文を抽出した。ここで留意すべきは、レビュアーのプロフィールには性別、年齢、そして住んでいる都道府県が記載されているこである。ただし、これらの3つの属性はユーザーの設定によって個別に非公開にすることが可能だ。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/tabelog/contents.jpg&#34; width=&#34;680&#34; title=&#34;取得した内容&#34; alt=&#34;取得した内容&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;まず、プロフィールを元にレビュアーの性別別の年齢の分布を見る。性別と年齢の両方を公開しているレビュアーのみを対象にした性別・年齢構成グラフを次の図に示した。女性の方が男性よりも年齢を非公開にする傾向があると思われるのでバイアスが多少かかっているかもしれないが、女性よりも男性のレビュアーの方が若干多く、女性の方が男性よりもやや若いようである。なお、年齢の非公開率は52.4%、性別の非公開率は36.9%であった。また、このグラフは食べログを閲覧するユーザーに関するものではなく、口コミを投稿したレビュアーに関するものであることに注意されたい。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/tabelog/age_gender_distribution.png&#34; width=&#34;450&#34; title=&#34;レビュアーの性別・年齢分布&#34; alt=&#34;レビュアーの性別・年齢分布&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;次に、口コミの総合点数の分布を以下の図に示した&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:bin&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:bin&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。食べログでは昼夜の訪問につきそれぞれ1点から5点まで0.1点刻みで点数を入力できる。各点数が等確率で起これば平均・中央値が3点になるはずだが、実際の点数の分布は左右対称ではなく正に歪んでいることが確認できる。このように「否定的評価は肯定的な評価に比べて集まりにくい」現象を心理学では&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%AA%E3%82%A2%E3%83%B3%E3%83%8A%E5%8A%B9%E6%9E%9C&#34;&gt;ポリアンナ効果&lt;/a&gt;と呼ぶ。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/tabelog/rating_distribution.png&#34; width=&#34;450&#34; title=&#34;口コミの点数分布&#34; alt=&#34;口コミの点数分布&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;レストランで使用した金額の分布を見る。昼の口コミの多くは2,000円未満だが、夜の場合には幅広い分布を示している。数は少ないが、ランチで3万円以上を使ったケースもいくつかあった。ミシュラン三ツ星の高級レストランでさえランチは大抵1～2万円台で済むので、それらの口コミを半信半疑で調べたところ、やはり多くの場合は高級旅館、もしくは昼と夜の利用の明らかな入力間違いであった。しかし、中には食べログの&lt;a href=&#34;http://tabelog.com/bestrst/2014/&#34;&gt;ベストレストラン2014&lt;/a&gt;のNo.1に選ばれた&lt;a href=&#34;http://tabelog.com/tokyo/A1307/A130701/13124391/&#34;&gt;松川&lt;/a&gt;や、&lt;a href=&#34;http://tabelog.com/kyoto/A2601/A260403/26001312/&#34;&gt;京都 吉兆 嵐山本店&lt;/a&gt;や&lt;a href=&#34;http://tabelog.com/tokyo/A1301/A130103/13002887/&#34;&gt;京味&lt;/a&gt;など有名和食料理店を中心に3万円台のランチを出す店舗も実際に確認できた。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/tabelog/price_distribution.png&#34; width=&#34;450&#34; title=&#34;使用した金額の分布&#34; alt=&#34;使用した金額の分布&#34;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;高評価-低評価の口コミに関連する単語:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;高評価・低評価の口コミに関連する単語&lt;/h3&gt;
+
+&lt;p&gt;次に、高評価と低評価の口コミを特徴付けている単語を調べる。
+全口コミに含まれている各単語に対し、１つ星の口コミ、５つ星の口コミ、
+また全ての口コミに含まれている回数を計算し、ディリクレ事前分布を用いたログオッズ比を使用する。
+これによって得られた１つ星と５つ星の口コミに強く関連している単語を次の表にまとめた。
+各分類毎の単語群はログオッズ比によって順番付けされている。&lt;/p&gt;
+
+&lt;h5 id=&#34;5つ星の口コミに関連する単語:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;5つ星の口コミに関連する単語&lt;/h5&gt;
+
+&lt;table style=&#34;width: 100%;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34; style=&#34;width: 10%;&#34;&gt; 分類  &lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;  例          &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 感想 &lt;/td&gt;
+&lt;td&gt; 最高　素晴らしい　 感動　幸せ　素敵　満足　大好き　オススメ　完璧&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 接客 &lt;/td&gt;
+&lt;td&gt; シェフ　大将　マスター　気さく　丁寧　オーナー　人柄　店主&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 味 &lt;/td&gt;
+&lt;td&gt;  絶品　美味しい　絶妙　おいしい　うまい　美味い　旨い&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 料理 &lt;/td&gt;
+&lt;td&gt; 料理　酒　コース　ワイン　フォアグラ　トリュフ　産　素材　鱧　食材　鮑　デザート　鮎　ムース　白子　前菜　雲丹　フレンチ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 記号 &lt;/td&gt;
+&lt;td&gt; !　-　*　!!　☆　!!!　♪&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; その他 &lt;/td&gt;
+&lt;td&gt; 本当に　とても　くれる　お　予約　また　必ず　ぜひ　絶対　大　通う　是非　くださる　いつも　とっても　誕生　季節　記念　初めて&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h5 id=&#34;1つ星の口コミに関連する単語:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;1つ星の口コミに関連する単語&lt;/h5&gt;
+
+&lt;table style=&#34;width: 100%;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34; style=&#34;width: 10%;&#34;&gt; 分類  &lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;  例          &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 感想      &lt;/td&gt;
+&lt;td&gt; 悪い　普通　残念　最悪　がっかり　ひどい　酷い　イマイチ　ガッカリ　不愉快&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 接客 &lt;/td&gt;
+&lt;td&gt; 注文　客　分　店員　態度　待つ　遅い　待たす　先客　&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 味 &lt;/td&gt;
+&lt;td&gt;  まずい　不味い　ぬるい　薄い　しょっぱい　辛い　パサパサ　塩辛い　固い&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 料理 &lt;/td&gt;
+&lt;td&gt; 丼　セット　ラーメン　定食　麺　餃子　カレー　ランチ　うどん　そば　サラダ　カツ　ハンバーグ　ライス　ドリンク&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 店舗 &lt;/td&gt;
+&lt;td&gt; 席　テーブル　店内　&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 価格 &lt;/td&gt;
+&lt;td&gt; 円　&amp;lt;数字&amp;gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 記号 &lt;/td&gt;
+&lt;td&gt; ?　…　??&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; その他 &lt;/td&gt;
+&lt;td&gt; 二度と　ない　まあ　な　感じ　ちょっと　まぁ　期待　気　もう少し　結構　少ない　そこそこ　チェーン　全体　空く　あまり&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;低評価の口コミでは「ぬるい」「薄い」「しょっぱい」「パサパサ」「塩辛い」「固い」など「なぜ料理が美味しくないか」という具体的な表現が数多くあるのに対し、高評価の口コミでは「絶品」「美味しい」「旨い」など肯定的だが漠然とした表現が並ぶ。このように、人は肯定的な意見よりも否定的な意見を述べるときの方がより豊富な語彙を用いるとことが知られている。この現象は日本語に限らず数多くの言語において観察されており、&lt;a href=&#34;http://en.wikipedia.org/wiki/Negativity_bias&#34;&gt;Negative differentiation&lt;/a&gt;という&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:negative&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:negative&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;。グルメ番組でレポーターが何を食べても決まりきって「うーん、美味しい！」と言うのを聞くたびに「もうちょっとましな言い方はないのか」とうんざりしていたが、
+これで少しは納得がいく。&lt;/p&gt;
+
+&lt;p&gt;低評価の口コミでは「円」「&amp;lt;数字&amp;gt;」といった単語が関連付いていることから、肯定的な口コミよりも否定的な口コミの方が価格を明記する傾向があるようだ。確かに、「いいお酒をがんがん飲んだのでひとり7000円ほどになりましたが、本当に驚きのコスパです。」といった口コミよりも「1200円もするラーメンなのに味は600円くらいのものでした。ちょっとがっかり。」といった口コミの方がより頻繁に見られる。&lt;/p&gt;
+
+&lt;p&gt;また、高評価の口コミでは店舗関係者のことを「大将」「マスター」「オーナー」「店主」などの親しみのこもった呼び方をするが、低評価の口コミでは「店員」と呼ぶのも興味深い。敬称無しの「店員」という言葉は相手をどことなく見下した感じがして以前からあまり好きではなかったが、低評価の口コミに強く関連付いたことから、同じように感じている人が案外多くいるのかもしれない。&lt;/p&gt;
+
+&lt;h3 id=&#34;女性-男性の口コミに関連する単語:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;女性・男性の口コミに関連する単語&lt;/h3&gt;
+
+&lt;p&gt;同様に、女性と男性の口コミを特徴付けている単語を調べる。&lt;/p&gt;
+
+&lt;h5 id=&#34;女性の口コミに関連する単語:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;女性の口コミに関連する単語&lt;/h5&gt;
+
+&lt;table style=&#34;width: 100%;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34; style=&#34;width: 10%;&#34;&gt; 分類  &lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;  例          &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 味 &lt;/td&gt;
+&lt;td&gt; おいしい　美味しい&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 料理 &lt;/td&gt;
+&lt;td&gt; パン　ケーキ　デザート　パスタ　パンケーキ　クリーム　サラダ　ドリンク　紅茶　チーズ　前菜　生地　チョコ　ピザ　アイス　コーヒー　フルーツ　タルト&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 名詞 &lt;/td&gt;
+&lt;td&gt; 私　友達　夫　旦那　女子　わたし　友人　母　あたし　&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 記号 &lt;/td&gt;
+&lt;td&gt; ♪　☆　♡　!!　!　★&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 価格 &lt;/td&gt;
+&lt;td&gt; （該当なし）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; その他 &lt;/td&gt;
+&lt;td&gt; とっても　ので　ランチ　素敵　けど　も　すごい　とても　ます　いっぱい　〜　大好き　種類　カフェ　です　予約　たくさん　たち　のに　可愛い　好き　けれど　かわいい　甘い　たっぷり　お腹&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h5 id=&#34;男性の口コミに関連する単語:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;男性の口コミに関連する単語&lt;/h5&gt;
+
+&lt;table style=&#34;width: 100%;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34; style=&#34;width: 10%;&#34;&gt; 分類  &lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;  例          &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 味 &lt;/td&gt;
+&lt;td&gt; 旨い　美味い　うまい&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 料理 &lt;/td&gt;
+&lt;td&gt; 麺　ラーメン　チャーシュー　そば　スープ　丼　醤油　うどん　汁　豚　かつ　定食　めん　カツ　骨　蕎麦　メンマ　煮干し　玉子　ストレート&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 名詞 &lt;/td&gt;
+&lt;td&gt; 僕　妻　客　自分　俺　店主　先客　家内　嫁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 記号 &lt;/td&gt;
+&lt;td&gt; 「　」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; 価格 &lt;/td&gt;
+&lt;td&gt; &amp;lt;数字&amp;gt;　円&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt; その他 &lt;/td&gt;
+&lt;td&gt; を　つけ　無い　この　店　訪問　食う　非常　有る　やや　屋　盛　大盛り　中華　として　しかし　旨味　感じる　的　まあ　ある　昼　太　味わい　評価　機　玉　レベル　分　茹でる　さて　提供　営業　食券　当然　喰う　二郎　実に　脂&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;予想通りではあるが、女性の口コミでは「おいしい」、男性の口コミでは「うまい」という表現が使われるようだ。&lt;/p&gt;
+
+&lt;p&gt;料理に関して言えば、女性の口コミでは「パスタ」「ピザ」などいわゆるカフェご飯のメニューが並ぶのに対し、男性の口コミでは「麺」「チャーシュー」「スープ」などラーメンに関するものが目立つ。&lt;a href=&#34;http://komachi.yomiuri.co.jp/t/2010/1101/360418.htm&#34;&gt;「ラーメン屋は『男性が入る店』」&lt;/a&gt;、また&lt;a href=&#34;http://komachi.yomiuri.co.jp/t/2013/0315/579954.htm&#34;&gt;「女性はおしゃれなカフェでお茶をしたがる」&lt;/a&gt;といったステレオタイプを良くも悪くも後押しする結果となった。&lt;/p&gt;
+
+&lt;p&gt;また、女性の口コミでは「友達」「女子」「友人」「たち」といった単語が顕著に現れていることから、「カフェ」にて複数人でランチを食べている姿が想像できる。一方、男性の口コミは主に「僕」「自分」「俺」といった単数形の一人称に関連付いていることから、「営業」の合間などに一人で「ラーメン」店や「定食」店で食事をしている姿が目に浮かぶ。これは、&lt;a href=&#34;http://user-help.tabelog.com/advertisement/&#34;&gt;「職業別においては、主婦や会社員が最も多い」という食べログの広告資料&lt;/a&gt;とつじつまが合う。&lt;/p&gt;
+
+&lt;p&gt;「円」「&amp;lt;数字&amp;gt;」といった価格に関する単語が男性の口コミに強く関連付いた点も面白い。一般的に、男性の方が女性よりもお金についてシビアなのだろうか。それとも、「価格を口コミに明記するのは野暮っぽい」といった理由で女性は金額について触れないのだろうか。&lt;/p&gt;
+
+&lt;h3 id=&#34;食と麻薬:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;食と麻薬&lt;/h3&gt;
+
+&lt;p&gt;さて、そろそろ本題に入る。人は食について文章を書くとき、食べ物を中毒性のある物質として、また食事をしている人を依存症の患者として描く傾向があるとJurafsky教授は説明している。例えば、近年流行りの英語表現の一つに&amp;rdquo;〇〇 is like crack&amp;rdquo;というものがある。これは、&amp;rdquo;Their fries are like crack&amp;rdquo;（あそこのフライドポテトはコカイン並に中毒性がある）のように、食べ物を&amp;rdquo;crack&amp;rdquo;（コカイン）に例える際に用いられる。&lt;a href=&#34;http://www.yelp.com/search?find_desc=like+crack&amp;amp;find_loc=San+Francisco%2C+CA&#34;&gt;Yelpで&amp;rdquo;like crack&amp;rdquo;と検索&lt;/a&gt;すると以下のような口コミが大量に見つかる。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/tabelog/crack.png&#34; width=&#34;450&#34; title=&#34;Crack&#34; alt=&#34;Crack&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;かの有名な森鴎外の長女である&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E6%A3%AE%E8%8C%89%E8%8E%89&#34;&gt;森茉莉&lt;/a&gt;は先見の明があったようだ。1998年に出版された彼女のエッセイ集「&lt;a href=&#34;http://www.amazon.co.jp/%E8%B2%A7%E4%B9%8F%E3%82%B5%E3%83%B4%E3%82%A1%E3%83%A9%E3%83%B3-%E3%81%A1%E3%81%8F%E3%81%BE%E6%96%87%E5%BA%AB-%E6%A3%AE-%E8%8C%89%E8%8E%89/dp/4480033653&#34;&gt;貧乏サヴァラン&lt;/a&gt;」では次のように述べられている。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;私はだいたいチョコレエトは珈琲、煙草と優に並ぶ、コカイン的な嗜好品、つまり大人の食べものだと、思っている。もちろん私の言うのは、子供の口にしか合わないような甘いのや、クリイム、ウィスキイの匂いをつけた砂糖水なぞの入ったものではなくて、純粋の板チョコの、苦みの強いものである。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;アメリカほど麻薬の使用が普及していない日本では麻薬に関する単語を口コミに使うかどうか懐疑的であったが、以下のような例を食べログで見つけることができた。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;麻薬&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;たった30分くらいの時間ですが、私には至福の時間です。満足して店を出る。そして100m位歩くと、また食べたくなる。ホンマにこの店、&lt;strong&gt;麻薬&lt;/strong&gt;でも入れてるんと違うか？&lt;/li&gt;
+&lt;li&gt;そもそも、二郎は数字で評価することなどできない類の魅力なわけで、&lt;strong&gt;麻薬的&lt;/strong&gt;とか魔力とかいうものだと思うので、評価なんてできないというのが正しいと思う。&lt;/li&gt;
+&lt;li&gt;最初食べると、ねっとり感と同時にピリリとした辛さが私を支配する。でもいやらしいからさではなく、美味しい担々麺特有のすっと涼しく消えて行く辛さがたまらない！くせになりずずずーっといくと、また食べたくなる。もう、&lt;strong&gt;麻薬&lt;/strong&gt;に近いくらいの&lt;strong&gt;依存性&lt;/strong&gt;がある。&lt;/li&gt;
+&lt;li&gt;一度食べたら&lt;strong&gt;病みつき&lt;/strong&gt;になり常連客の中には週３回は来ないと言う方や私のように１０日に一遍は行かないと落ち着かない&lt;strong&gt;麻薬&lt;/strong&gt;のようなスープカレーです&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中毒&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;もちもちの麺たっぷりの一杯は特徴的な味。良く言えば他には無いのでハマる味。悪く言えば変に味付けし過ぎ。化調たっぷりのスナック菓子みたい。こういうのが&lt;strong&gt;中毒&lt;/strong&gt;になる人たちにはたまらないのでしょう。&lt;strong&gt;無性に&lt;/strong&gt;食べたくなるっていうんでしょうか？たまにはありの一杯と思います。&lt;/li&gt;
+&lt;li&gt;こちらのチャーハンにはまた別の、夢中で食べてしまうような魅力と、また食べたくなってしまうような&lt;strong&gt;中毒性&lt;/strong&gt;を感じます。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中毒性&lt;/strong&gt;の高そうな台湾まぜそば、近くにあったら定期的に食べたくなっていたと思います。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;興味深いことに、麻薬に例えられる食べ物は「ラーメン」「担々麺」「チャーハン」などの安価なB級グルメの品で埋め尽くされている。確かに、「私最近、家系ラーメンに病みつきなんですよ」という表現には違和感を覚えないが、「私最近、フォアグラ中毒なんですよ」という表現は不自然である。&lt;/p&gt;
+
+&lt;p&gt;「麻薬に例えられる食べ物は低価格帯の品である」という仮説を確かめるために、口コミ1件あたりに「&lt;a href=&#34;http://tabelog.com/rstLst/?sw=%E4%B8%AD%E6%AF%92&amp;amp;sk=%E4%B8%AD%E6%AF%92&amp;amp;srchTg=2&#34;&gt;中毒&lt;/a&gt;」「&lt;a href=&#34;http://tabelog.com/rstLst/?sw=%E9%BA%BB%E8%96%AC&amp;amp;sk=%E9%BA%BB%E8%96%AC&amp;amp;srchTg=2&#34;&gt;麻薬&lt;/a&gt;」「&lt;a href=&#34;http://tabelog.com/rstLst/?sw=%E7%97%85%E3%81%BF%E3%81%A4%E3%81%8D&amp;amp;sk=%E7%97%85%E3%81%BF%E3%81%A4%E3%81%8D&amp;amp;srchTg=2&#34;&gt;病みつき&lt;/a&gt;」「&lt;a href=&#34;http://tabelog.com/rstLst/?sw=%E4%BE%9D%E5%AD%98%E7%97%87&amp;amp;sk=%E4%BE%9D%E5%AD%98%E7%97%87&amp;amp;srchTg=2&#34;&gt;依存症&lt;/a&gt;」がどれくらいの頻度で現れるかを、使用した金額&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:price&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:price&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;と総合点数を変数とした度数分布を用いて調べる。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/tabelog/drug_counts.png&#34; width=&#34;450&#34; title=&#34;麻薬に関連する単語の出現頻度&#34; alt=&#34;麻薬に関連する単語の出現頻度&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;やはり麻薬に関する単語は主に低価格帯の店舗の口コミに使われる傾向があるようだ。また、上記の口コミ例を見ても分かるように、麻薬に言及する口コミは概して高評価のものでもある。&lt;/p&gt;
+
+&lt;p&gt;Yelpの口コミを対象にJurafsky教授が同様の分析を行ったところ、アメリカにおいて麻薬に例えられる食べ物は主にジャンクフードとデザートであったそうだ。このように、麻薬の例えはあらゆる食べ物に対して用いられるわけではなく、甘いもの、脂っこい食べ物、炭水化物などのごく一部の食べ物にのみ適用される。きちんとした食事ではなく、健康に悪く、また比較的安価で、食べると罪悪感を抱くようなものを麻薬に例えることは非常に道理にかなっている。&lt;/p&gt;
+
+&lt;p&gt;また興味深いことに、Yelpの口コミでは男性よりも女性の方が食べ物を麻薬に例える傾向が強いとJurafsky教授は報告している。男性よりも女性の方が食に対して強い欲求を感じるのか、それともその欲求を口にする傾向が強いのか、はっきりとした理由は定かではない。女性の場合、「痩せ＝美しい」といった誤った観念がいまだに普及しており、肥満に繋がる食品を食べた罪悪感から、「麻薬のように強烈な中毒性があるのだから私が食べても仕方がない。私には非がない。」という正当化をするために麻薬に言及するのかもしれない。&lt;/p&gt;
+
+&lt;h3 id=&#34;食と性:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;食と性&lt;/h3&gt;
+
+&lt;p&gt;食と性の関係は古くから指摘されており、宗教、文学、美術、映画、音楽など様々な分野で取り上げられている。例えば、&lt;a href=&#34;https://www.quora.com/In-the-Bible-was-the-forbidden-fruit-a-metaphor-for-sex/answer/Philip-Emil?share=1&#34;&gt;聖書ではリンゴを性や原罪の象徴として描いている&lt;/a&gt;という説がある。また、ロシア文学の巨匠、レフ・トルストイは「肉食は色欲のもと」と力説し&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:tolstoy&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:tolstoy&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;、59歳のときに菜食主義者となった。さらに、伊丹十三監督の珠玉の作品&lt;a href=&#34;http://www.amazon.co.jp/%E3%82%BF%E3%83%B3%E3%83%9D%E3%83%9D%EF%BC%9CBlu-ray%EF%BC%9E-%E5%B1%B1%E5%B4%8E%E5%8A%AA/dp/B005HNOIMQ/&#34;&gt;タンポポ&lt;/a&gt;では食と性に関連するシーンが随所に現れる。中でも役所広司と黒田福美が卵の黄身を口に含み、それを割らずに何回も口移しをしながらキスをする一場面は一度目にしたら忘れられないほど衝撃的である。黒田福美自身、「そうね、あの卵の黄身のシーンは、映画史上に残る名シーンなんかじゃないかと、フフフ、思います。 」と言ったそうだ。また、海女を演じる洞口依子の手のひらから役所広司が生牡蠣を食べる海辺のシーンも、卵のシーンに負けず劣らず官能に満ちていて印象的である。&lt;/p&gt;
+
+&lt;div class=&#34;embed-container&#34; style=&#34;text-align: center;&#34;&gt;
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/k5KMplmtFmM?iv_load_policy=3&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;広告を例にとれば、柴咲コウが出演しているハーゲンダッツの「キスより、濃厚」CMや、放送当時に物議を醸したグリコ乳業のドロリッチのCMが記憶に新しい。&lt;/p&gt;
+
+&lt;div class=&#34;embed-container&#34; style=&#34;text-align: center;&#34;&gt;
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/-jGRmXDo4wY&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;embed-container&#34; style=&#34;text-align: center;&#34;&gt;
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/86Gldqxbtls&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;最近のJ-POPでは一青窈の「他人の関係」のカバーのPVがフードフェティシズム満載で見ているだけでお腹が空いてくる。&lt;/p&gt;
+
+&lt;div class=&#34;embed-container&#34; style=&#34;text-align: center;&#34;&gt;
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/GxZMscM3dwo?iv_load_policy=3&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;また、食事の写真をFacebookやTwitterにアップロードする人がいるが、このように食欲をそそる料理や食べ物の画像を&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%95%E3%83%BC%E3%83%89%E3%83%9D%E3%83%AB%E3%83%8E&#34;&gt;フードポルノ&lt;/a&gt;と呼ぶ&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:foodporn&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:foodporn&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。例えば、
+Twitterには&lt;a href=&#34;https://twitter.com/search?f=realtime&amp;amp;q=%23foodporn&#34;&gt;#foodporn&lt;/a&gt;というハッシュタグがある。似たように、Instagramには&lt;a href=&#34;http://instagram.com/sushiporn&#34;&gt;sushiporn&lt;/a&gt;という寿司の写真のみを収集したアカウントがある。&lt;/p&gt;
+
+&lt;p&gt;さらに、晩婚化・少子化のニュースではほぼ必ずといっていいほど「草食系男子」という言葉が使われる。味覚や食感を表す言葉に関しても、「なめらか」「しっとり」「トロッと」などの擬態語や、「口どけ」「超濃厚」など性を暗示させるものにはきりがない。&lt;/p&gt;
+
+&lt;p&gt;食べログに掲載されていた性と関わり合いを持つ口コミの具体例を以下に挙げる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;官能的&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;繊維質のほどけ具合と口の中で柔らかく反発する&lt;strong&gt;官能的&lt;/strong&gt;な食感は唯一無二です。&lt;/li&gt;
+&lt;li&gt;脂乗りが良くむっちりとした食感で&lt;strong&gt;官能的&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;舌から脳幹に押し寄せる&lt;strong&gt;官能&lt;/strong&gt;の波に、思わず眼を閉じる。&lt;/li&gt;
+&lt;li&gt;料理って五感に訴える科学だなぁ。人によってはこの感覚、&lt;strong&gt;官能的&lt;/strong&gt;というんだろう。&lt;/li&gt;
+&lt;li&gt;一瞬、フォアグラかと思うほど濃厚な香りが口に広がり目を閉じて顔を上に向け「あ～美味い」とつぶやいてしまった。美味しい食べ物って、&lt;strong&gt;官能的&lt;/strong&gt;なんだな～と改めて実感。&lt;/li&gt;
+&lt;li&gt;やや男性的なはっきりした甘みの「ばふんうに」。どちらかというと女性的なしっとり上品な甘みの「むらさきうに」。その&lt;strong&gt;官能的&lt;/strong&gt;ともいえる味わいについうっとりしてしまいます。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;肉感的&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;確かにステーキには魅力的な大きさと厚みと肉汁に品がある。そこに女性的で&lt;strong&gt;肉感的&lt;/strong&gt;な存在感がある。&lt;/li&gt;
+&lt;li&gt;メインの山鳩のローストは、ささみ、胸肉、腿肉です。引き締まった胸肉から滲み出る味わいも素敵ですが、ここはささみの&lt;strong&gt;肉感的&lt;/strong&gt;な柔らかさに惹かれました。ちょっと&lt;strong&gt;艶っぽい&lt;/strong&gt;味わいが何とも言えず素敵です。また、骨付きの腿肉も美味。手で持って骨の回りの肉をこそげとると、野性味のあるしっかりした旨味が口の中に広がります。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;セクシー&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;軽くローストしてあって、ほぼレアに近い食感です。びっくりするほど柔らかい。血を食べているような感覚なんだけど、全然臭みはなく、とても&lt;strong&gt;セクシー&lt;/strong&gt;な味。友達以上恋人未満の関係の男女が、これを食べたら一気に恋人になりそうな味。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;セクシー&lt;/strong&gt;なピンク色の身はしっかりと歯ごたえがあるのに、とろけます。&lt;/li&gt;
+&lt;li&gt;おにく、とってもジューシー。端に控えめについた脂身がこれまた&lt;strong&gt;セクシー&lt;/strong&gt;。私は普段はヒレ派なんですが、このロースはいけます。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;艶やか&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ご主人が打つ、しっかりとした本格蕎麦の&lt;strong&gt;艶めいた&lt;/strong&gt;褐色のイメージ、そして女将が醸し出す、柔らかくて優しい桃色のイメージが混ざり合い、独特の綺麗な淡色を放つような・・・&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;「やや男性的なはっきりした甘みの『ばふんうに』…」や「友達以上恋人未満の関係の男女が…」など、斬新な表現が目立つ。先ほどグルメレポーターの貧弱な感想を嘆いたが、このように風変わりな表現を出来る食べログレビュアーがグルメレポーターになったとしたら、グルメ番組もさぞかし面白くなることだろう。&lt;/p&gt;
+
+&lt;p&gt;性に関する単語を用いるときには麻薬のときとは打って変わって、「フォアグラ」、「うに」、「山鳩」など高価な食材が対象になるようだ。
+そこで先ほどと同様に、口コミ1件あたりに「&lt;a href=&#34;http://tabelog.com/rstLst/?sw=%E5%AE%98%E8%83%BD&amp;amp;sk=%E5%AE%98%E8%83%BD&amp;amp;srchTg=2&#34;&gt;官能&lt;/a&gt;」「&lt;a href=&#34;http://tabelog.com/rstLst/?sw=%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%BC&amp;amp;sk=%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%BC&amp;amp;srchTg=2&#34;&gt;セクシー&lt;/a&gt;」「&lt;a href=&#34;http://tabelog.com/rstLst/?sw=%E8%82%89%E6%84%9F%E7%9A%84&amp;amp;sk=%E8%82%89%E6%84%9F%E7%9A%84&amp;amp;srchTg=2&#34;&gt;肉感的&lt;/a&gt;」という単語が使用金額と総合点数別にどれくらいの頻度で現れるかを調べる。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/tabelog/sex_counts.png&#34; width=&#34;450&#34; title=&#34;性に関連する単語の出現頻度&#34; alt=&#34;性に関連する単語の出現頻度&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;麻薬のときと同様に、性に関連する単語に言及する口コミは高評価のものが多いが、先ほどとは違い、性に関連する単語は主に高価格帯の店舗の口コミに使われる傾向があるようだ。&lt;/p&gt;
+
+&lt;p&gt;なぜこのように書き手は性に関する単語を使うのだろうか。レビュアーは性的表現を用いることにより「私は食の快楽主義的な側面にも通じている美食家である」という主張をしているのではないかとJurafsky教授は推測している。彼らは澁澤龍彦の「&lt;a href=&#34;http://www.amazon.co.jp/%E5%BF%AB%E6%A5%BD%E4%B8%BB%E7%BE%A9%E3%81%AE%E5%93%B2%E5%AD%A6-%E6%96%87%E6%98%A5%E6%96%87%E5%BA%AB-%E6%BE%81%E6%BE%A4-%E9%BE%8D%E5%BD%A6/dp/4167140039/&#34;&gt;快楽主義の哲学&lt;/a&gt;」をこぞって愛読しているのかもしれない。&lt;/p&gt;
+
+&lt;p&gt;日本人としては嘆かわしいことに、Yelpの口コミでは性に関連する単語は主にデザートと寿司に対して用いられるとJurafsky教授は報告している。アメリカのお寿司屋では&amp;rdquo;foreplay roll&amp;rdquo;, &amp;ldquo;sweet temptation roll&amp;rdquo;, &amp;ldquo;orgasmic spicy tuna roll&amp;rdquo;, &amp;ldquo;sexy lady roll&amp;rdquo;など、名前を聞いただけでは何の寿司やら想像もつかないような料理名がメニューに並ぶことがある。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/tabelog/sexy_roll.png&#34; width=&#34;250&#34; title=&#34;Sexy Roll&#34; alt=&#34;Sexy Roll&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;セクシーな寿司というのは日本人の感覚からすると不思議な感じがするが、なぜアメリカでは寿司と性が結び付けられる傾向があるのだろうか。アメリカ人の友人に尋ねたところ、以下のような答えが返ってきた。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;お寿司屋は主にデートで行くことがほとんどだから。&lt;/li&gt;
+&lt;li&gt;お寿司屋以外で（生命力を喚起させる）生ものを食べることはないから。&lt;/li&gt;
+&lt;li&gt;「Sexy Sushi」というフレーズの語感の良さから。&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E9%A0%AD%E9%9F%BB%E6%B3%95&#34;&gt;頭韻&lt;/a&gt;を踏んでいて、なおかつ音節の数も一致している。だからであろうか、&lt;a href=&#34;http://en.wikipedia.org/wiki/Sexy_Sushi&#34;&gt;Sexy Sushi&lt;/a&gt;という名前のフランスのエレクトロクラッシュバンドさえいるようだ。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;カリフォルニアロールとは違い、&amp;rdquo;orgasmic spicy tuna roll&amp;rdquo;が日本に逆輸入される日は、おそらく来ないだろう。&lt;/p&gt;
+
+&lt;h3 id=&#34;口コミとトラウマ:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;口コミとトラウマ&lt;/h3&gt;
+
+&lt;p&gt;1つ星の口コミを眺めていて気づくことの1つは、肝心の料理よりもサービスに関する苦情を書く人の多さである。例えば、以下のような口コミがすぐに見つかる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;４０分近く待たされた挙句（中略） やっとカウンターの席に座れるも、メニューが無いので周りの人が食べているものを見て「こちらの美味しそうなのはなんですか？」と店員に尋ねてから、「じゃ、これ下さい」と注文するも何品か「今日はもう終わりです」と言われたものがあった。 ところが、後から来た常連が注文すると、&lt;strong&gt;私達&lt;/strong&gt;には「ない」と言った料理がすぐに出てきていた。（中略） 料理はそこそこ美味しいものの、こんな感じの悪いお店どうしたら常連になるだろうか？ なんとなく、わざと差別化して常連客に優越感を与えているようにしか見えないんですけど・・・。（中略） その後こちらの店が雑誌やテレビで取上げられるたびに「何でこんな店が・・・」と腹が立ってくる。 絶対に二度と行かないお店の1つだ。&lt;/li&gt;
+&lt;li&gt;どれもこれも、来るのが遅い 飲み物、ビールでさえ注文してから来るのに30分 食べている時間よりも、待っている時間のほうが断然長かったです。（中略）コースを頂いている間に『まだですか？』と何回聞いた事か（中略）隣の席のカップルは、&lt;strong&gt;私達&lt;/strong&gt;よりも後に来て、先に帰ったから もしかすると、&lt;strong&gt;私達&lt;/strong&gt;の座敷のみ相手にされてなかったのかも （そう考えるともっとムカツク） 料理は1個１個すごくおいしいのに、ホールスタッフの対応で とてもがっかりなお店でした。 あの金額を払っては行く気持ちになならないお店でした。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;私たち&lt;/strong&gt;が通された2階は、&lt;strong&gt;私たち&lt;/strong&gt;も含め4組 17名程だったと思います。（中略）荷物を置く余裕のない席の狭さ。（中略）取れる客はとことんとるというかんじでしょうか。 &lt;strong&gt;私たち&lt;/strong&gt;は、夕方7時から食事を希望していたのですが お店の戦略？により、6時にさせられ、8時に退席を求められました。（中略） 料理や会話を楽しむ余裕すらなく、出てきた料理を 機械的に流し込む作業をしました！という感じです。 お見送りの時の配膳係りの方の達成感に満ちた 満面の笑が、&lt;strong&gt;私たち&lt;/strong&gt;にはしらけた雰囲気が流れていました。 （中略）自動ドアと思いきや、手動で戸を閉めなければ いけなかったらしい。お店の人が、&lt;strong&gt;私たち&lt;/strong&gt;をにらみ、「チッ」と舌打ちをして 閉め忘れた戸を閉める。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;低評価の口コミなので当然ながら否定的な意見が目立つが、「私達」といった一人称複数代名詞が数多く使用される現象も興味深い。まるで自分達を被害者に見立てて、「私達」と「店員」という対立の構図を描いているかのようである。Jurafsky教授によると、このような他者に対する否定的な意見と一人称複数代名詞の頻繁な使用は、心的外傷を受けた人が書く手記の特徴と一致するそうだ。レビュアーはいわば軽度のトラウマを負った状態にあり、筆記療法として口コミに感情や思いを書きなぐることにより心を整理していると推測できる。&lt;/p&gt;
+
+&lt;p&gt;確認のため、口コミ1件あたりに「&lt;a href=&#34;http://tabelog.com/rstLst/?sw=%E7%A7%81%E9%81%94&amp;amp;sk=%E7%A7%81%E9%81%94&amp;amp;srchTg=2&#34;&gt;私達&lt;/a&gt;」「&lt;a href=&#34;http://tabelog.com/rstLst/?sw=%E7%A7%81%E3%81%9F%E3%81%A1&amp;amp;sk=%E7%A7%81%E3%81%9F%E3%81%A1&amp;amp;srchTg=2&#34;&gt;私たち&lt;/a&gt;」という単語が使用金額と総合点数別にどれくらいの頻度で現れるかを調べる。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/tabelog/self_counts.png&#34; width=&#34;450&#34; title=&#34;一人称複数代名詞の出現頻度&#34; alt=&#34;一人称複数代名詞の出現頻度&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;やはり一人称複数代名詞は低評価の口コミと関連しているようだ。&lt;/p&gt;
+
+&lt;h3 id=&#34;終わりに:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;終わりに&lt;/h3&gt;
+
+&lt;p&gt;食べログの口コミを題材に、食にまつわる人間心理について検討してきた。高評価の口コミは食べ物の中毒性や官能性を描写する傾向があり、低評価の口コミはトラウマに対する筆記療法の一種である可能性を示した。Jurafsky教授の先行論文ではアメリカのYelpのみを対象としていたが、日本の食べログでも同様の結果が示されたことから、これらの特徴はアメリカ人と英語に特有のものではなく、より普遍的な特質であると考えられる。&lt;/p&gt;
+
+&lt;p&gt;なお、今回使用した食べログのクローラーのソースコードは&lt;a href=&#34;https://github.com/mrorii/tabebot&#34;&gt;GitHub&lt;/a&gt;に公開してある。bon appétit!&lt;/p&gt;
+
+&lt;h3 id=&#34;参考文献:b10e6178a9d40a43e6f3e0bdf66fdf1b&#34;&gt;参考文献&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://logmi.jp/2636&#34;&gt;食べログの★は信用できるか？　レビュアー取材から読み解く「食べログ」の正体と食文化への影響&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://languageoffood.blogspot.com/&#34;&gt;The Language of Food&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wit.ai/blog/2014/12/19/dan-jurafsky-food&#34;&gt;The Language of Food (and Dating), by Dan Jurafsky&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jp-sji.org/jp/column/beauty-index/beauty08.html#col358&#34;&gt;うまいとおいしい&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://komachi.yomiuri.co.jp/t/2011/0518/410104.htm&#34;&gt;言葉遣いについて - 発言小町 : YOMIURI ONLINE（読売新聞）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ci.nii.ac.jp/naid/120001828469&#34;&gt;現代日本語における基礎味覚語彙の認識的体系序説&amp;ndash;言語人類学的視点を求める&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ci.nii.ac.jp/naid/110009576107&#34;&gt;食べ物を評価する際に用いられる「客観的表現」と「主観的表現」について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ci.nii.ac.jp/naid/110008920720&#34;&gt;日本語の味覚形容詞語彙の類型的構造および方言分布成立&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slate.com/articles/life/food/2013/08/food_like_crack_why_the_cocaine_metaphor_is_classist_and_insulting.html&#34;&gt;No, Your Favorite Food Is Not Like Crack - Slate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.nytimes.com/2013/02/24/magazine/the-extraordinary-science-of-junk-food.html&#34;&gt;The Extraordinary Science of Addictive Junk Food - NYTimes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2235907/&#34;&gt;Evidence for sugar addiction: Behavioral and neurochemical effects of intermittent, excessive sugar intake&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.huffingtonpost.jp/mric/post_4930_b_3399861.html&#34;&gt;美味しすぎる理由 - ハフィントンポストジャパン&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.bloomberg.co.jp/news/123-LU1FTR0UQVI901.html&#34;&gt;スイーツ中毒は本当、脂肪と砂糖たっぷりの食品にコカイン類似の作用  - Bloomberg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.hoover.org/research/food-new-sex&#34;&gt;Is Food the New Sex? - Hoover Institution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ivu.org/history/tolstoy/the_%20first_step.html&#34;&gt;History of Vegetarianism - Leo Tolstoy (1828-1910) - Extract from &amp;lsquo;The First Step&amp;rsquo;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E9%A3%9F%E3%81%A8%E6%80%A7&#34;&gt;食と性 - Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ci.nii.ac.jp/naid/110007027936&#34;&gt;現代日本人の食感表現&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.iwanami.co.jp/web_serials/akasaka/index.html&#34;&gt;食と性と暴力 - 岩波書店&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.res.otemon.ac.jp/~yamamoto/works_2/essay_08.htm&#34;&gt;現代人の食意識&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.res.otemon.ac.jp/~yamamoto/works/Abhl2001.htm&#34;&gt;食と哲学&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.res.otemon.ac.jp/~yamamoto/works_2/essay_12.htm&#34;&gt;主体・客体の脱構築から、食の哲学を試みる&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:score&#34;&gt;「総合」「料理・味」「サービス」「雰囲気」「CP」「酒・ドリンク」の6種類
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:score&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:usage&#34;&gt;「友人・同僚と」「デート」「接待」「宴会・飲み会」「家族・子供と」「一人で」の5種類の複数選択可
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:usage&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:bin&#34;&gt;ヒストグラムのビンの幅には左閉右開区間を用いた。すなわち、ビンの区間は [1, 1.5)、 [1.5, 2)、[2, 2.5)、[2.5, 3)、[3, 3.5)、[3.5, 4)、[4, 4.5)、[4.5, 5]である。最後の区間のみ閉区間であることに注意されたい。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:bin&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:negative&#34;&gt;「ポリアンナ効果と矛盾しているのではないか」と思われるかもしれないので注釈を加える。ポリアンナ効果はマクロ的視点に立って口コミを見た時に肯定的な評価の総数が否定的な評価の総数よりも多いことを指す。一方、Negativitiy Biasは否定的な感情を表す単語が肯定的な感情を表すものよりも多種多様に存在することを指す。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:negative&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:price&#34;&gt;¥: ～999円、¥¥: 1,000円～2,999円、¥¥¥: 3,000円～4,999円、¥¥¥¥: 5,000円～
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:price&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:tolstoy&#34;&gt;トルストイは&amp;rdquo;(Eating animals) serves only to develop animal feelings, to excite lust, to promote fornication and drunkenness&amp;rdquo;と書いている。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:tolstoy&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b10e6178a9d40a43e6f3e0bdf66fdf1b:foodporn&#34;&gt;特に欧米において。日本では「飯テロ」とも呼ばれる。性風俗産業が盛んで、テロに比較的疎遠な日本で「飯テロ」といい、性風俗産業が盛んでなく、テロに縁がある米国で「フードポルノ」というのも皮肉だ。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b10e6178a9d40a43e6f3e0bdf66fdf1b:foodporn&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>太宰治の文学の変化をTopic Modelで分析する</title>
+      <link>http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/</link>
+      <pubDate>Fri, 27 Dec 2013 00:00:00 -0800</pubDate>
+      
+      <guid>http://mrorii.github.io/blog/2013/12/27/analyzing-dazai-osamu-literature-using-topic-models/</guid>
+      <description>
+
+&lt;p&gt;海外に長い間住んでいると、日本語の活字を無性に読みたくなることが頻繁にある。&lt;a href=&#34;http://www.aozora.gr.jp/&#34;&gt;青空文庫&lt;/a&gt;はその飢えを満たしてくれるサイトのうちのひとつだ。夏目漱石、芥川竜之介、宮沢賢治など名だたる作家の作品が収められているが、中でも太宰治の作品は私にとって特別な存在だ。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/Osamu_Dazai_at_home.jpg&#34; width=&#34;250&#34; title=&#34;太宰治&#34; alt=&#34;太宰治&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;太宰治というと、「人間失格」のテーマ及び彼自身の入水自殺のインパクトがあまりにも強いためか、「暗い」「陰鬱」というイメージがあるようだ。例えば、私がまだ日本に住んでいた頃に軽い病気を患って1週間ほど入院していた時のことだ。元来読書が好きだったので、「久しぶりに集中して本を読む時間が出来た」くらいの軽い気持ちで「太宰治全集」を読んでいたら検温をしに来た看護師の方に「大丈夫ですか」と深刻な表情で訊かれたのを今でも記憶している。実際のところ、太宰は一貫して「暗い」作品を書いていたわけではなく、「お伽草紙」「富嶽百景」「走れメロス」などの明るい作品も世に送り出している。&lt;/p&gt;
+
+&lt;p&gt;太宰の作品は前期・中期・後期の3つに分けられるというのが通説だ。前期には、実家からの勘当や芥川賞落選など幾多の挫折を味わいながら破滅的な小説を綴る。中期には自らの家庭を築き、健康的な生活を送りながら美しく肯定的な作品を多数書く。後期になると終戦後の混乱と退廃からか、前期と微妙な差異はあるものの、遺言的文学に戻る。&lt;/p&gt;
+
+&lt;p&gt;今回は&lt;a href=&#34;http://en.wikipedia.org/wiki/Topic_model&#34;&gt;Topic Model&lt;/a&gt;という機械学習の手法を使って太宰の作風の変化を分析する。果たしてアルゴリズムは太宰の文学の変遷を捉えられるのだろうか。&lt;/p&gt;
+
+&lt;h3 id=&#34;データ:8b951b5c13837d1910fa8ac531083260&#34;&gt;データ&lt;/h3&gt;
+
+&lt;p&gt;2013年12月時点の青空文庫に掲載されていた13124件の作品を取得した。今回は文学の時系列変化を調べたいため、これらのうち初出情報が明確なものに絞った。また、翻訳作品は日本の時代的潮流と一致したタイミングで出版されるとは必ずしも限らないため取り除いた。最終的に408人の作者による6738件の作品が残った。&lt;/p&gt;
+
+&lt;p&gt;またテキストの前処理として、旧仮名遣いの作品を現代仮名遣いに変換した。&lt;/p&gt;
+
+&lt;h3 id=&#34;手法:8b951b5c13837d1910fa8ac531083260&#34;&gt;手法&lt;/h3&gt;
+
+&lt;p&gt;言葉の使われ方の変化を見るためのツールといえば&lt;a href=&#34;https://books.google.com/ngrams&#34;&gt;Google Ngram Viewer&lt;/a&gt;というものがある。これを使えば過去数百年分の書籍に含まれる言葉の経年変化を視覚化することが可能だ。例えば&lt;a href=&#34;https://books.google.com/ngrams/graph?content=Twitter&amp;amp;year_start=1960&amp;amp;year_end=2010&amp;amp;corpus=15&amp;amp;smoothing=3&amp;amp;share=&amp;amp;direct_url=t1%3B%2CTwitter%3B%2Cc0&#34;&gt;Twitterと検索すると2000年代後半からすごい勢いで成長している&lt;/a&gt;ことが確認できる。一方、映画のマトリックスを念頭に置きながら&lt;a href=&#34;https://books.google.com/ngrams/graph?content=Matrix&amp;amp;year_start=1900&amp;amp;year_end=2008&amp;amp;corpus=15&amp;amp;smoothing=3&amp;amp;share=&amp;amp;direct_url=t1%3B%2CMatrix%3B%2Cc0&#34;&gt;Matrixと検索すると予想に反して1950年あたりから既にゆるやかに伸びている&lt;/a&gt;ことが分かる。これは、「Matrix」という単語に複数の意味があり、（その理由は定かではないが）1950年以降、映画以外の意味合いのものが頻繁に使われるようになったからとしか説明がつかない。&lt;/p&gt;
+
+&lt;p&gt;このように、言語とは根本的に曖昧なものだ。具体的にいうと、言語には：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;多義性（1つの単語が複数の意味を持つ。例えば、「Apple」はアダムとイブが食べたとされるあの赤い果物、もしくはiPhoneの会社を意味する）&lt;/li&gt;
+&lt;li&gt;同義性（複数の単語が同じ意味を持つ。例えば「鈴木一郎」「イチ」「安打製造機」はすべてイチローを指す）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という側面があるため、ただの単語の頻度で文学のテーマの盛衰を把握するのには限界がある。言葉の「意味」にもう少し近いものの経年変化を調べることが理想的だ。&lt;/p&gt;
+
+&lt;h4 id=&#34;topic-model:8b951b5c13837d1910fa8ac531083260&#34;&gt;Topic Model&lt;/h4&gt;
+
+&lt;p&gt;ここでTopic Modelが颯爽と登場する。Topic Modelingを簡単に説明すれば、ある文書集合が与えられたとして、その集合に潜在する「構造」を学習することだ（この構造のことを「トピック」ともいう）。&lt;/p&gt;
+
+&lt;p&gt;例えば、&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;「マリナーズのイチローは１５日（日本時間）、敵地でロッキーズとのインターリーグ３連戦最終戦に「１番・ライト」で先発出場し、４打数２安打で連続試合出塁をメジャー自己新の「４３」に伸ばし、今季両リーグ最長記録に並んだ」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;という文が与えられたとする。「野球」という単語が文中に含まれていないにも関わらず、人はこれは読んで野球に関する文章であるということをいとも簡単に理解できる。大雑把に言えば、これを機械でも推論出来るようにするのがTopic Modelingだ。&lt;/p&gt;
+
+&lt;p&gt;Topic Modelの概略を次の図に示した。図の上にあるのは、Wikipediaの全ページの要約をTopic Modelに入力して得られたトピックのうちの3つだ。一番左のトピックは「表現型」「遺伝子」「DNA」などの単語群から成っていることから、「遺伝学」に関するトピックであると予想がつく。同様に、真ん中のトピックは「研究」、一番右のトピックは「社会」に関するものだと推測できる。図の下半分は最近&lt;a href=&#34;http://www.huffingtonpost.jp/2013/12/24/genetics-politics-beliefs-encoded-genes-video_n_4500231.html&#34;&gt;Huffington Postで目にした記事&lt;/a&gt;の抜粋だ。これを先ほどのモデルに入力すると、どの単語がどのトピックに属しているかが出力される（図では単語が割り振られたトピックによって色分けをしている）。これによって、この文書が「遺伝学」「研究」「社会」に関するものだと機械でも推論できるようになったわけだ。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/lda.png&#34; width=&#34;550&#34; title=&#34;LDA&#34; alt=&#34;LDA&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Topic Modelと一口に言っても幾つかの種類がある。今回使ったのは以下の3つである。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Latent Dirichlet Allocation （最もシンプル。文書の作家や時系列変化を無視）&lt;/li&gt;
+&lt;li&gt;Author Topic Model （文書と作家の関係性を考慮）&lt;/li&gt;
+&lt;li&gt;Dynamic Topic Model （時系列変化を考慮）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;文学をTopic Modelで分析するなんて言語道断だと非難する人がいてもおかしくはない。(太宰の場合はまさしく)血反吐を吐くほどの苦労で書き上げた文章を単なるアルゴリズムで分析するというのも冒涜的であるような気がする&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:8b951b5c13837d1910fa8ac531083260:blasphemy&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:8b951b5c13837d1910fa8ac531083260:blasphemy&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;結果:8b951b5c13837d1910fa8ac531083260&#34;&gt;結果&lt;/h3&gt;
+
+&lt;h4 id=&#34;青空文庫:8b951b5c13837d1910fa8ac531083260&#34;&gt;青空文庫&lt;/h4&gt;
+
+&lt;p&gt;青空文庫に収められている作品数の推移を下に示した。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/all-authors.png&#34; width=&#34;500&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;1940年代半ばに作品数が急激に落ち込むのは太平洋戦争が原因だと推測できる。また、1950年代半ば以降の作品数の減少は、作者が亡くなってから死後50年までは著作権が保護されるため、青空文庫に収録されないためであろう。&lt;/p&gt;
+
+&lt;p&gt;これらの作品に対しLatent Dirichlet Allocationを適用して得られた全128個のトピックのうち、8つの実例を下の図に示す。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/table.jpg&#34; width=&#34;700&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;各欄が1つのトピックに対応し、上からトピック名、そのトピックに出現しやすい単語、そのトピックに強く関連している作品を表している。小林多喜二や宮本百合子の作品が「共産主義／プロレタリア文学」、夢野久作の作品が「事件」、北大路魯山人の作品が「食」に関するトピックに強く関連付いたことから、モデルの学習がそれなりに上手くいったことが伺える。&lt;/p&gt;
+
+&lt;p&gt;次に、この「共産主義／プロレタリア文学」のトピックの年ごとの強さを見る。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/all-proletariat-w2.png&#34; width=&#34;500&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AD%E3%83%AC%E3%82%BF%E3%83%AA%E3%82%A2%E6%96%87%E5%AD%A6&#34;&gt;プロレタリア文学が流行した1920年代から1930年代前半&lt;/a&gt;にかけてトピックが爆発的に強くなっていることが確認できる。&lt;/p&gt;
+
+&lt;p&gt;誤解を招かないように注釈を入れておくと、得られた全てのトピックがこのように「意味を持っていそう」なわけではない。Junkトピックとでもいうべきトピックも幾つか散見された。しかしながら、無関係な単語の羅列に見えて、実際には有意なトピックもあった。例えば、&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/naturalism.png&#34; width=&#34;250&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;など単語群を見ただけでは意味が分からないトピックがあった。このトピックに強く結びついている作家は以下のとおりである。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person214.html&#34;&gt;田山花袋&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person158.html&#34;&gt;島崎藤村&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person162.html&#34;&gt;若山牧水&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person1170.html&#34;&gt;石川三四郎&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person23.html&#34;&gt;徳田秋声&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person153.html&#34;&gt;石川啄木&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;石川三四郎を除き、驚くべきことに全員が&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E4%B8%BB%E7%BE%A9%E6%96%87%E5%AD%A6&#34;&gt;自然主義文学&lt;/a&gt;に関係していたことが分かる。&lt;/p&gt;
+
+&lt;p&gt;一方、&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E7%99%BD%E6%A8%BA%E6%B4%BE&#34;&gt;白樺派&lt;/a&gt;らしきトピックは見つからなかった。白樺派を代表する志賀直哉と武者小路実篤は亡くなってからまだ50年経っておらず、彼らの作品が青空文庫に掲載されていないためだと思われる。&lt;/p&gt;
+
+&lt;p&gt;戦後を代表する作家である三島由紀夫、安部公房、遠藤周作らの作品も同様の理由で青空文庫に収録されていないため、彼らの作品の特徴を分析することは残念ながら出来なかった。&lt;/p&gt;
+
+&lt;h4 id=&#34;太宰治の文学:8b951b5c13837d1910fa8ac531083260&#34;&gt;太宰治の文学&lt;/h4&gt;
+
+&lt;p&gt;本題の太宰の文学の分析に入る前に、まず予備知識として太宰の年譜を下に示す。重要な点は、冒頭でも触れたように、前期と後期において太宰の私生活と作品がともに乱れるということだ。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/timeline-final.jpg&#34; width=&#34;700&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;次に、青空文庫に収められている太宰治の作品数の推移を示す。没後である1954年に1作品があることが確認できるが、これは&lt;a href=&#34;http://www.aozora.gr.jp/cards/000035/card52463.html&#34;&gt;「大恩は語らず」&lt;/a&gt;というエッセイだ。1937年あたりのグラフの下落は妻である初代との離別で太宰が1年間ほど作家活動を休止していたためだろう。他の作家達と同様、太宰も太平洋戦争中は作品数が減少していることが確認できる。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/dazai_frequency_variation.png&#34; width=&#34;500&#34;&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;太宰治のトピック分布:8b951b5c13837d1910fa8ac531083260&#34;&gt;太宰治のトピック分布&lt;/h5&gt;
+
+&lt;p&gt;太宰に最も強く関連づいた5つのトピックを下に示す。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/dazai-topics.jpg&#34; width=&#34;500&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;5つのうち2つは以前登場した「文学」「人生」のトピックだ。残りの3つを眺めると、他の2つのトピックほど明確ではないが、太宰らしさがにじみ出てくるような気がする。例えば、一番左のトピックに最も強く関連している作品を調べてみると以下のようになった。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;三好十郎　&lt;a href=&#34;http://www.aozora.gr.jp/cards/001311/card49776.html&#34;&gt;浮標&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;太宰治　&lt;a href=&#34;http://www.aozora.gr.jp/cards/000035/card301.html&#34;&gt;人間失格&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;三好十郎　&lt;a href=&#34;http://www.aozora.gr.jp/cards/001311/card49855.html&#34;&gt;樹氷&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;太宰治　&lt;a href=&#34;http://www.aozora.gr.jp/cards/000035/card315.html&#34;&gt;ろまん灯籠&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;夏目漱石　&lt;a href=&#34;http://www.aozora.gr.jp/cards/000148/card794.html&#34;&gt;三四郎&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5 id=&#34;太宰に似ている作家:8b951b5c13837d1910fa8ac531083260&#34;&gt;太宰に似ている作家&lt;/h5&gt;
+
+&lt;p&gt;Author Topic Model によって得られた各作家のトピック分布をもとに、太宰に最も似ている5人の作家を求めると次の通りになった。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person1311.html&#34;&gt;三好十郎&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person275.html&#34;&gt;近松秋江&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person40.html&#34;&gt;織田作之助&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person126.html&#34;&gt;田中英光&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aozora.gr.jp/index_pages/person107.html&#34;&gt;鈴木三重吉&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;三好十郎、織田作之助、田中英光は太宰と同じく&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E7%84%A1%E9%A0%BC%E6%B4%BE&#34;&gt;無頼派&lt;/a&gt;の作家である。しかも田中英光は太宰の弟子とあって、モデルの信頼性がさらに増したような気がする。&lt;/p&gt;
+
+&lt;h5 id=&#34;太宰の作風の変化:8b951b5c13837d1910fa8ac531083260&#34;&gt;太宰の作風の変化&lt;/h5&gt;
+
+&lt;p&gt;さて、「太宰の文学の変化を機械学習のモデルで捉えられるか」という問いから出発したわけだが、
+今までの太宰の私生活の話を踏まえると、前期・中期・後期にかけて「暗い」トピックが凹形、もしくは「明るい」トピックが凸形の形状をしていたら万々歳である。&lt;/p&gt;
+
+&lt;p&gt;結論からいうと、このような形で変化する「暗い」もしくは「明るい」トピックは見つからなかった。非常に残念である。&lt;/p&gt;
+
+&lt;p&gt;しかしたったひとつだけ、太宰の私生活と同期して変化したように見えるトピックがあった。それがこちらだ。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/dazai/dazai-love-w2.png&#34; width=&#34;500&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;これは、上に出てきた「恋愛」のトピックである。美知子夫人と結婚した1939年あたりから急激に減少し、愛人の太田静子に会うようになってから再度元の強さに戻ったように見えなくはない。「さて、太宰のやつ、美知子夫人の尻にしかれて恋愛めいた話を書けなくなったのか」と邪推していたところ、このような意見を見つけた：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;十一月に井伏鱒二の世話により石原美知子と結婚します。この石原美知子という女性は当時としては珍しい大学教育を受けた相当な才女です。東京女子高等師範学校（現お茶の水女子大）卒。左翼活動や自殺を繰り返した太宰とは不釣り合いともいえる女性です。&lt;/p&gt;
+
+&lt;p&gt;彼女と支え合って生きた結婚生活というものが太宰の作風をダウナーな絶望からすがすがしい希望へと変えたのでしょう。戦中戦後、太宰は太田静子、山崎富栄らと愛人関係を持ちますが、少なくともこのころは美知子と仲がよかったでしょう。&lt;/p&gt;
+
+&lt;p&gt;太宰は学識のある美知子夫人に口述記述をさせます。初めて太宰は同人誌仲間、一部の文学好きから一般の読者を見据えた作品を作るのです。これは勝手な想像ですが、無意識のうちに太宰は奥さんの手前、前述した明るい作品というのを書いたでしょう。幸福な生活ともあいまって。&lt;/p&gt;
+
+&lt;p&gt;結婚が太宰を変えた、というつまらない結論ですが実に人間らしいと思います。微笑しながら「どうだい面白いだろう」などと言って口述記述をする夫人に声をかける太宰の姿が目に浮かびます。それは太宰が味わった最初で最後の平穏なのだと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://note.chiebukuro.yahoo.co.jp/detail/n154170&#34;&gt;太宰治中期作品群の作風の変化について - Yahoo!知恵袋&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;いい話である。&lt;/p&gt;
+
+&lt;h3 id=&#34;終わりに:8b951b5c13837d1910fa8ac531083260&#34;&gt;終わりに&lt;/h3&gt;
+
+&lt;p&gt;人文科学系のコーパスにTopic Modelを適用する事例は近年盛んになってきている。いくつかの参考文献を下に挙げる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://journalofdigitalhumanities.org/2-1/words-alone-by-benjamin-m-schmidt/&#34;&gt;Words Alone: Dismantling Topic Models in the Humanities&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://journalofdigitalhumanities.org/2-1/topic-modeling-and-digital-humanities-by-david-m-blei/&#34;&gt;Topic Modeling and Digital Humanities&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tedunderwood.com/2012/12/14/what-can-topic-models-of-pmla-teach-us-about-the-history-of-literary-scholarship/&#34;&gt;What can topic models of PMLA teach us about the history of literary scholarship? | The Stone and the Shell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dsl.richmond.edu/dispatch/pages/intro&#34;&gt;Mining the Dispatch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;英語圏の研究はたくさん見つけられたものの、日本文学に適用する例は残念ながらひとつも見つからなかった。&lt;/p&gt;
+
+&lt;p&gt;太宰の人生について少しでも興味を持たれた方には、今をときめく猪瀬直樹氏のこちらの書を推薦します：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/4167431130/ref=as_li_qf_sp_asin_il?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4167431130&amp;linkCode=as2&amp;tag=mrorii-22&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=4167431130&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=JP&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=mrorii-22&#34; &gt;&lt;/a&gt;&lt;img src=&#34;http://ir-jp.amazon-adsystem.com/e/ir?t=mrorii-22&amp;l=as2&amp;o=9&amp;a=4167431130&#34; width=&#34;1&#34; height=&#34;1&#34; border=&#34;0&#34; alt=&#34;&#34; style=&#34;border:none !important; margin:0px !important;&#34; /&gt;
+ピカレスク 太宰治伝 (文春文庫)  猪瀬 直樹 (著)&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:8b951b5c13837d1910fa8ac531083260:blasphemy&#34;&gt;太宰は&lt;a href=&#34;http://www.aozora.gr.jp/cards/000035/card1587.html&#34;&gt;｢もの思う葦｣&lt;/a&gt;で彼の処女創作集｢晩年｣への思いをこう語っている：「私はこの短篇集一冊のために、十箇年を棒に振った。まる十箇年、市民と同じさわやかな朝めしを食わなかった。私は、この本一冊のために、身の置きどころを失い、たえず自尊心を傷けられて世の中の寒風に吹きまくられ、そうして、うろうろ歩きまわっていた。（中略）舌を焼き、胸を焦がし、わが身を、とうてい恢復できぬまでにわざと損じた。百篇にあまる小説を、破り捨てた。そうして、残ったのは、辛うじて、これだけである。これだけ。けれども、私は、信じて居る。この短篇集、『晩年』は、年々歳々、いよいよ色濃く、きみの眼に、きみの胸に滲透して行くにちがいないということを。私はこの本一冊を創るためにのみ生れた。（中略）さもあらばあれ、『晩年』一冊、君のその両手の垢で黒く光って来るまで、繰り返し繰り返し愛読されることを思うと、ああ、私は幸福だ。」
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:8b951b5c13837d1910fa8ac531083260:blasphemy&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cookpadのコアユーザーを探す</title>
+      <link>http://mrorii.github.io/blog/2013/09/08/cookpad-community-analysis/</link>
+      <pubDate>Sun, 08 Sep 2013 00:00:00 -0800</pubDate>
+      
+      <guid>http://mrorii.github.io/blog/2013/09/08/cookpad-community-analysis/</guid>
+      <description>
+
+&lt;p&gt;Cookpadには様々な使い方が考えられます。真っ先に思い浮かぶものといったら、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;夕飯の献立を考える主婦&lt;/li&gt;
+&lt;li&gt;子どものお弁当の献立を考えるお母さん&lt;/li&gt;
+&lt;li&gt;お客を家に招いて、おもてなし料理を作る必要がある主婦&lt;/li&gt;
+&lt;li&gt;冷蔵庫の残り野菜を使いきりたい一人暮らしの学生&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;などが挙げられます。&lt;/p&gt;
+
+&lt;p&gt;どのケースにせよ、Cookpadの検索機能でレシピを探し出し、それを作り、食べて満足するというのが一般的な流れでしょうか。つくれぽを投稿せずに、自分のオリジナルレシピを投稿するのでもなく、自分だけの閉じた世界で満足するという実利的な使い方もむろん十分良いですが（むしろ大多数のユーザーがそういう使い方をしているでしょう）、ユーザーを&lt;a href=&#34;http://cookpad.typepad.jp/help/mymy/&#34;&gt;お気に入り登録&lt;/a&gt;したりつくれぽを投稿したり、他のCookpadユーザーと交流するのにも独特の楽しさがあると思います。&lt;/p&gt;
+
+&lt;p&gt;これを端的に表しているのが、8月下旬にネットで話題になった&lt;a href=&#34;http://dot.asahi.com/life/hobby/2013082100016.html&#34;&gt;増加する“クックパッド至上主義”な女性達　あなたはどう思う？&lt;/a&gt;という記事に対するはてなブックマークのあるコメントです：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;コイツはクックパッドの存在意義判ってない。単なるレシピサイトじゃない。家事と言う「孤独で評価されない労働」をＳＮＳ化で「皆で楽しむイベント」に昇華させるサイト
+&lt;a href=&#34;http://b.hatena.ne.jp/itarumurayama/20130825#bookmark-158996118&#34;&gt;(はてなブックマーク - itarumurayamaのブックマーク)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;CookpadをSNSとして楽しむには、まず最初にいくつかのユーザーをお気に入り登録するのがベストでしょう。実際に作ってみて美味しいと感じたレシピがあった場合、それを投稿したユーザーさんをお気に入り登録するのが最も一般的だと思います。大体の場合これでうまくいくと思いますが、いくつかの欠点が考えられます。その美味しかったレシピが作者さんにとってまぐれだった可能性がありますし、その美味しかったレシピではたまたま嗜好が一致していたが、そのレシピ作者さんが普段は自分にとってあまり興味のないレシピばかり投稿しているということも考えられます。そこで、「肉料理だったら◯◯さん」「パン作りだったら◯◯さん」のように、Cookpadの分野別コアユーザーの一覧が手っ取り早く閲覧できたら、自分の嗜好とマッチするユーザーをお気に入り登録できるので便利そうです。&lt;/p&gt;
+
+&lt;p&gt;例えばTwitterではアカウントを新規作成すると、フォローすべき有名人を分野別で推薦してくれます：&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookgraph/twitter.png&#34; width=&#34;250&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Cookpadに関していえば、まとめサイトなどで材料別の人気レシピはたくさん出てくるのですが、分野別人気ユーザーの情報は皆無です。&lt;a href=&#34;https://www.google.co.jp/search?ie=UTF-8&amp;amp;q=%E3%82%AF%E3%83%83%E3%82%AF%E3%83%91%E3%83%83%E3%83%89+%E4%BA%BA%E6%B0%97%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC&#34;&gt;「クックパッド　人気ユーザー」&lt;/a&gt;、&lt;a href=&#34;http://www.google.co.jp/search?ie=UTF-8&amp;amp;q=%E3%82%AF%E3%83%83%E3%82%AF%E3%83%91%E3%83%83%E3%83%89+%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC&#34;&gt;「クックパッド　おすすめユーザー」&lt;/a&gt;とググっても何も出てきません。&lt;/p&gt;
+
+&lt;p&gt;欲しい機能が無いなら自分で作ってしまえということで、Cookpadの分野別コアユーザーを見つけましょう。&lt;/p&gt;
+
+&lt;h3 id=&#34;データ:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;データ&lt;/h3&gt;
+
+&lt;p&gt;まず、Cookpadの&lt;a href=&#34;http://cookpad.com/category/177&#34;&gt;「きょうの料理」&lt;/a&gt;、&lt;a href=&#34;http://cookpad.com/category/19&#34;&gt;「お菓子」&lt;/a&gt;、&lt;a href=&#34;http://cookpad.com/category/17&#34;&gt;「パン」&lt;/a&gt;以下にあたる全55個のサブカテゴリに含まれる99,638件のレシピをクロールしました。これらのレシピは18,964ユーザーによって投稿されています。次に、これらのユーザーが投稿したつくれぽの情報を取得しました。得られた2,649,975件のつくれぽのうち、前述の55個のサブカテゴリに含まれるレシピに投稿された1,059,167件のつくれぽを今回は考慮します。&lt;/p&gt;
+
+&lt;p&gt;これらのユーザーによって投稿されたつくれぽ数の中央値は7件、平均は139.74件です。最も多くつくれぽを投稿したユーザーは以下の通りです：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/487719&#34;&gt;miyuki12&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/388123&#34;&gt;papikun&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/276503&#34;&gt;CoffeeCoco&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/1428061&#34;&gt;3姉妹ちゃんママ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/1389109&#34;&gt;紅葉ｙ&lt;/a&gt;さん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;この中でも特にすごいのがmiyuki12さんです。2013年9月8日時点において、25,944件ものつくれぽを投稿しています。2008年にCookpadを使い始めたようなので、1日あたりのつくれぽ数はおよそ 25,944 / (365 × 6) = 11.85件になります。一体どうやったら6年間毎日12件近くもつくれぽを投稿できるんだという謎を解明すべく、&lt;a href=&#34;http://cookpad.com/tsukurepo/list/487719&#34;&gt;miyuki12さんのつくれぽ一覧&lt;/a&gt;を見ると、1つのレシピに対して複数回つくれぽを投稿することがあるようです。下の図に示した通り、ジェノベーゼソースの場合、まずそれを作り、小分けして冷凍し、パンに混ぜ込んだり、おにぎりの具にしたり、サラダにも入れたりと、3つのレシピに対して計17件以上もつくれぽを投稿しています。こういう使い方もあるんだなと感心しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookgraph/miyuki12.001.png&#34;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;手法:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;手法&lt;/h3&gt;
+
+&lt;p&gt;ユーザーをノード、つくれぽをエッジとしてデータをグラフで表現します。
+例えば「荒岩一味」というユーザーがレシピを投稿し、「田中一」というユーザーがそれに対しつくれぽを投稿した場合、下の図のように表せます：&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookgraph/curve.png&#34; width=&#34;250&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;作者さんのいくつかのレシピにつくれぽを投稿するケースや、miyuki12さんのケースのように同一のレシピに対して複数回つくれぽを投稿する方もいるので、つくれぽの投稿回数をエッジの重みとして扱っています。また、つくれぽは方向性があるので、有向グラフになります。今回はグラフを描画するために&lt;a href=&#34;https://gephi.org/&#34;&gt;Gephi&lt;/a&gt;を使いました。エッジの方向は、始点から終点に向かって時計回りに沿っています。&lt;/p&gt;
+
+&lt;p&gt;データをグラフとして表現したのちPageRankを計算するという、ごく当たり前の手法を使いました。&lt;/p&gt;
+
+&lt;h3 id=&#34;結果:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;結果&lt;/h3&gt;
+
+&lt;p&gt;今回の計算では、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;カテゴリ入りしたレシピ&lt;/li&gt;
+&lt;li&gt;カテゴリ入りしたレシピを投稿したことがあるユーザー&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;のみを考慮しているので、候補となるユーザーはCookpad全体のごく一部に限られることにご注意ください。&lt;/p&gt;
+
+&lt;h4 id=&#34;全ての分野:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;全ての分野&lt;/h4&gt;
+
+&lt;p&gt;15,169 nodes / 569,853 edges&lt;/p&gt;
+
+&lt;p&gt;全ての分野のレシピを考慮してグラフ可したものが下図です。エッジ数が大きすぎるので、大半は省略してあります。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/9694913770/in/set-72157635416865749/&#34;&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookgraph/figures_final.001.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;エッジの色は、該当するレシピのカテゴリによって分けています。エッジはつくれぽと一対多の関係、つくれぽはレシピと一対一の関係、レシピはカテゴリと一対多の関係にあるため、各エッジに対しカテゴリのエントロピーを計算し、エントロピーがある閾値を超えたらエッジに&amp;rdquo;BALANCED&amp;rdquo;という特殊なカテゴリ、そうでない場合は最多のカテゴリを割り当てています。例えば、田中さんが荒岩さんのレシピ30件に対しつくれぽを投稿したとします。30件のうち10件がお肉のおかず、10件が野菜のおかず、10件が魚介のおかずであった場合、田中さんはバランスよく料理をしたことが分かるので、田中さんから荒岩さんに張られたエッジは&amp;rdquo;BALANCED&amp;rdquo;を表す黄緑色にします。一方、30件のうち20件がお肉のおかず、7件が野菜のおかず、残りの3件が魚介のおかずだったとしたら、田中さんはお肉ばかり食べていたことになるので、&amp;rdquo;MEAT&amp;rdquo;を表す赤色にします。なお、Cookpadのサブカテゴリは粒度が結構細かいので、&lt;a href=&#34;http://cookpad.com/category/10&#34;&gt;「野菜のおかず」&lt;/a&gt;と&lt;a href=&#34;http://cookpad.com/category/14&#34;&gt;「サラダ」&lt;/a&gt;はVEGETABLE、&lt;a href=&#34;http://cookpad.com/category/2&#34;&gt;「ごはんもの」&lt;/a&gt;と&lt;a href=&#34;http://cookpad.com/category/6&#34;&gt;「パスタ・グラタン」&lt;/a&gt;と&lt;a href=&#34;http://cookpad.com/category/9&#34;&gt;「麺」&lt;/a&gt;はCARBなど、複数のサブカテゴリを統合しています。&lt;/p&gt;
+
+&lt;p&gt;グラフを見ると、全体的にごちゃごちゃしていますが、&amp;rdquo;BALANCED&amp;rdquo;を表す黄緑色が多く、大多数のユーザーはバランスよく料理をしていることが分かります。中には&lt;a href=&#34;http://cookpad.com/kitchen/1042769&#34;&gt;ko～ko&lt;/a&gt;さんのように、お菓子に関するレシピばかりを投稿している人もいます：&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookgraph/figures_final.002.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;なお、PageRankが最も高いユーザー10人は以下の通りです：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/212659&#34;&gt;勇気凛りん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/47282&#34;&gt;CAFE703&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/42283&#34;&gt;キョク&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/57172&#34;&gt;せつぶんひじき&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/4036&#34;&gt;ラビー&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/67545&#34;&gt;つくしぐみ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/471276&#34;&gt;ゆきらいん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/239563&#34;&gt;Blue-Island&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/252604&#34;&gt;たうんびー&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/230354&#34;&gt;ドキンたん&lt;/a&gt;さん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;勇気凛りんさんは、&lt;a href=&#34;http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/&#34;&gt;つくれぽ数を予測した&lt;/a&gt;ときにも出てきた有名料理ブロガーさんです。また、ラビーさんも面白いです。ユーザーIDが4036と古参で、おそらく2000年以前からCookpadを使っているにも関わらず、他のユーザーのレシピに対してつくれぽを1件も投稿せずに、黙々と自分のレシピとごはん日記を投稿している硬派なユーザーさんです。&lt;/p&gt;
+
+&lt;h4 id=&#34;野菜-vegetable:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;野菜 (VEGETABLE)&lt;/h4&gt;
+
+&lt;p&gt;9,732 nodes / 151,009 edges&lt;/p&gt;
+
+&lt;p&gt;PageRank上位ユーザー：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/251468&#34;&gt;まろんママ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/248641&#34;&gt;ﾊﾆｰ1003&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/42283&#34;&gt;キョク&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/239563&#34;&gt;Blue-Island&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/274122&#34;&gt;たくち&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/255591&#34;&gt;ゆうたま&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/57297&#34;&gt;お茶丸&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/4036&#34;&gt;ラビー&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/2513693&#34;&gt;FarmersK&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/356251&#34;&gt;あっこりんママ&lt;/a&gt;さん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;FarmersKさんはプロフィールに「現在京都の山間部で農業をしてます。農家というのは常に野菜に囲まれているから、たくさんの野菜と接し、どうやって食べたら美味しいのか？どうやって食べたら栄養を無駄なく取り入れられるのかを日々考えています。」と書いており、まさしく野菜のプロといった感じです。&lt;/p&gt;
+
+&lt;h4 id=&#34;お肉のおかず-meat:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;お肉のおかず (MEAT)&lt;/h4&gt;
+
+&lt;p&gt;7,972 nodes / 54,566 edges&lt;/p&gt;
+
+&lt;p&gt;PageRank上位ユーザー：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/9407&#34;&gt;ダナエ姫&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/47582&#34;&gt;おぶうさま&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/42283&#34;&gt;キョク&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/54489&#34;&gt;ochikeron&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/57516&#34;&gt;kuisinbou&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/348437&#34;&gt;えり侍&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/405605&#34;&gt;わんこmama&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/356251&#34;&gt;あっこりんママ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/18445&#34;&gt;☆ＹＵＫＡＲＩ☆&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/22615&#34;&gt;お富さん&lt;/a&gt;さん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;「すごく肉々しい！」といったユーザーは見つかりませんでした。どのユーザーさんも話題入りしたお肉のレシピを投稿した経験があるようで、これがPageRankを引き上げているみたいです。例えばおぶうさまさんは&lt;a href=&#34;http://cookpad.com/recipe/450372&#34;&gt;食べ過ぎ注意☆鶏肉のねぎマヨポン炒め&lt;/a&gt;を投稿しています。&lt;/p&gt;
+
+&lt;p&gt;ここ数年レシピを全然投稿していないユーザーもそれなりの数でPageRank上位に来ているので、最近レシピを投稿しているかを考慮したほうがよさそうですね。&lt;/p&gt;
+
+&lt;h4 id=&#34;魚介のおかず-seafood:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;魚介のおかず (SEAFOOD)&lt;/h4&gt;
+
+&lt;p&gt;6,969 nodes / 47,433 edges&lt;/p&gt;
+
+&lt;p&gt;PageRank上位ユーザー：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/63267&#34;&gt;myukitty&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/248457&#34;&gt;とろです&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/57297&#34;&gt;お茶丸&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/21306&#34;&gt;ぽーすけ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/262101&#34;&gt;バナナざくろ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/274122&#34;&gt;たくち&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/239563&#34;&gt;Blue-Island&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/42283&#34;&gt;キョク&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/205158&#34;&gt;にわとりかあさん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/57172&#34;&gt;せつぶんひじき&lt;/a&gt;さん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;にわとりかあさんさんは「魚、貝」というレシピカテゴリを作成していますが、魚介のおかずを専門にしているとはちょっと言いがたいです。お肉のおかずと同様、魚介のおかずに特化したユーザーは見つかりませんでした。&lt;/p&gt;
+
+&lt;h4 id=&#34;お菓子-dessert:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;お菓子 (DESSERT)&lt;/h4&gt;
+
+&lt;p&gt;11,083 nodes / 114,496 edges&lt;/p&gt;
+
+&lt;p&gt;PageRank上位ユーザー：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/47282&#34;&gt;CAFE703&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/212659&#34;&gt;勇気凛りん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/28802&#34;&gt;かなやん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/57172&#34;&gt;せつぶんひじき&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/55894&#34;&gt;やもとしょう&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/66927&#34;&gt;よっしぃ。&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/67545&#34;&gt;つくしぐみ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/321467&#34;&gt;まれ子&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/471276&#34;&gt;ゆきらいん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/20864&#34;&gt;SUSY&lt;/a&gt;さん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;お菓子に特化しているユーザーさんはやはり結構いますね。なお、前述のko～koさんはPageRankの値では12位でした。&lt;/p&gt;
+
+&lt;h4 id=&#34;パン-bread:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;パン (BREAD)&lt;/h4&gt;
+
+&lt;p&gt;8,045 nodes / 55,788 edges&lt;/p&gt;
+
+&lt;p&gt;PageRank上位ユーザー：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/46467&#34;&gt;Bluebird&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/212659&#34;&gt;勇気凛りん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/230354&#34;&gt;ドキンたん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/247070&#34;&gt;けゆあ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/471276&#34;&gt;ゆきらいん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/50332&#34;&gt;xhiroex&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/278429&#34;&gt;ゆめりの&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/60177&#34;&gt;ちゃこ＠北海道&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/388375&#34;&gt;湘南マーガレット&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/508272&#34;&gt;韓流マイブーム&lt;/a&gt;さん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;ドキンたんさんはホームベーカリーを使ったレシピを大量に投稿しています。ゆきらいんさんはお菓子でも上位にいました。お菓子とパンは親和性が高いですね。&lt;/p&gt;
+
+&lt;h4 id=&#34;お弁当-bento:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;お弁当 (BENTO)&lt;/h4&gt;
+
+&lt;p&gt;4,413 nodes / 22,308 edges&lt;/p&gt;
+
+&lt;p&gt;PageRank上位ユーザー：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/1889858&#34;&gt;レアレアチーズ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/4036&#34;&gt;ラビー&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/1004782&#34;&gt;pegupepepe&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/283898&#34;&gt;モカパパ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/793202&#34;&gt;komomoもも&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/565499&#34;&gt;くみちょん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/748964&#34;&gt;umemodoki&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/612172&#34;&gt;yamita&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/1045889&#34;&gt;矢切のねぎちゃん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/271833&#34;&gt;annnnn&lt;/a&gt;さん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;モカパパさんのごはん日記はお弁当の写真ばかりです。&lt;/p&gt;
+
+&lt;h4 id=&#34;おもてなし料理-party:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;おもてなし料理 (PARTY)&lt;/h4&gt;
+
+&lt;p&gt;7,695 nodes / 49,377 edges&lt;/p&gt;
+
+&lt;p&gt;PageRank上位ユーザー：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/4036&#34;&gt;ラビー&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/212659&#34;&gt;勇気凛りん&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/57172&#34;&gt;せつぶんひじき&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/252604&#34;&gt;たうんびー&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/249209&#34;&gt;mai-mai&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/28489&#34;&gt;みき姫&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/43290&#34;&gt;くまのみ&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/10206&#34;&gt;しゅう☆みり&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/19480&#34;&gt;ニーナ４１&lt;/a&gt;さん&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/239563&#34;&gt;Blue-Island&lt;/a&gt;さん&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;まとめ:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;お肉、野菜、お魚は日常的に食べるものなので、それらに特化したユーザーを見つけるのは結構難しいです。（アメリカのレシピサイトでは肉に特化したユーザーがそれなりにいそうですが。）デザートやパンはやはり特別な扱いをされているからか、それらに特化した使い方をするユーザーを見つけることができました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/sets/72157635416865749/&#34;&gt;flickr&lt;/a&gt;に全てのネットワーク図をアップロードしたので、自分はグラフの中でどこに位置しているのかを確認したいCookpadのヘビーユーザーの方、よろしかったらどうぞ：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/9694913770/in/set-72157635416865749&#34;&gt;全ての分野&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/9691663951/in/set-72157635416865749&#34;&gt;野菜のおかず&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/9694903404/in/set-72157635416865749&#34;&gt;お肉のおかず&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/9694898730/in/set-72157635416865749&#34;&gt;魚介のおかず&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/9694906422/in/set-72157635416865749&#34;&gt;お菓子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/9691677919/in/set-72157635416865749&#34;&gt;パン&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/9691679205/in/set-72157635416865749&#34;&gt;お弁当&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/photos/naokiorii/9691667923/in/set-72157635416865749&#34;&gt;おもてなし料理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;「私はお肉ユーザーじゃなくてお魚ユーザーだ」「ここが間違っている」などのフィードバックがありましたら、下のコメント欄もしくは&lt;a href=&#34;https://twitter.com/mrorii&#34;&gt;@mrorii&lt;/a&gt;までにご連絡頂けるとありがたいです。&lt;/p&gt;
+
+&lt;p&gt;今回の記事は&lt;a href=&#34;http://lumberjaph.net/graph/2010/03/25/github-explorer.html&#34;&gt;http://lumberjaph.net/graph/2010/03/25/github-explorer.html&lt;/a&gt;を参考にしています。&lt;/p&gt;
+
+&lt;h3 id=&#34;おまけ:3e6deff1f01756a943e77e0b5c191c8f&#34;&gt;おまけ&lt;/h3&gt;
+
+&lt;p&gt;そういえばLinkedinに&lt;a href=&#34;http://www.linkedin.com/skills/&#34;&gt;Skills &amp;amp; Expertise&lt;/a&gt;（要ログイン）という機能があったことを思い出しました。各スキル（Objective-C、Ruby on Rails、Gitなど技術系のスキルもあれば、Business Development、Media Planning、Online Operations、などのビジネス系のスキルもあります）に関連する企業や地域、またそのスキルに精通しているLinkedinユーザーの一覧を見ることが出来ます。&lt;/p&gt;
+
+&lt;p&gt;例えば、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linkedin.com/skills/skill/Linux&#34;&gt;Linux&lt;/a&gt;ではLinus TorvaldsとJon Hall&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linkedin.com/skills/skill/Python&#34;&gt;Python&lt;/a&gt;ではAlex MartelliとDoug Hellman&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linkedin.com/skills/skill/Ruby&#34;&gt;Ruby&lt;/a&gt;ではYehuda KatzとChad Fowler&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linkedin.com/skills/skill/C%2B%2B&#34;&gt;C++&lt;/a&gt;ではBjarne Stroustrup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linkedin.com/skills/skill/Hadoop&#34;&gt;Hadoop&lt;/a&gt;ではDoug CuttingとTom White&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linkedin.com/skills/skill/Machine_Learning&#34;&gt;Machine Learning&lt;/a&gt;ではDaphne KollerとAndrew McCallum&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linkedin.com/skills/skill/Natural_Language_Processing&#34;&gt;Natural Language Processing&lt;/a&gt;ではChristopher ManningとPhilipp Koehn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;などがエキスパートとして上位に表示されます。残念ながら、&lt;a href=&#34;http://www.linkedin.com/skills/skill/Compilers&#34;&gt;Compilers&lt;/a&gt;ではJeff Deanが出てきません…&lt;/p&gt;
+
+&lt;p&gt;Linkedinでインターンをしたことがある友人に、この機能はどういう仕組で計算してるの？と訊いたら「多分endorsementをエッジにしたPageRankじゃないの」という返事がきたので、今回の記事と同様のことをやっているのではないでしょうか。&lt;/p&gt;
+
+&lt;p&gt;ただ、上位に来る（べき）人たちはendorseされにくい傾向があると思うので、そこらへんをどうやって解決すればいいのか気になります。例えば、Guido Van Rossumに対して「あなたはPythonの才能がありますね」といってendorseするのも、お前何様のつもりだよということになりかねないので…。現に、Guidoは&lt;a href=&#34;http://www.linkedin.com/pub/guido-van-rossum/0/756/4a0&#34;&gt;Linkedinのアカウントを持っています&lt;/a&gt;が、&lt;a href=&#34;http://www.linkedin.com/skills/skill/Python&#34;&gt;Pythonのスキルページ&lt;/a&gt;のエキスパートの一覧には表示されていません。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cookpadのレシピを機械翻訳する</title>
+      <link>http://mrorii.github.io/blog/2013/08/26/machine-translation-for-cookpad/</link>
+      <pubDate>Mon, 26 Aug 2013 00:00:00 -0800</pubDate>
+      
+      <guid>http://mrorii.github.io/blog/2013/08/26/machine-translation-for-cookpad/</guid>
+      <description>
+
+&lt;p&gt;前回の&lt;a href=&#34;http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/&#34;&gt;つくれぽ数の予測&lt;/a&gt;に引き続き、今回もCookpadネタです。&lt;/p&gt;
+
+&lt;p&gt;皆さんご存知の通り、英語版Cookpad（&lt;a href=&#34;https://en.cookpad.com&#34;&gt;https://en.cookpad.com&lt;/a&gt;）が8月5日にリリースされました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/gastroglot/cookpad-en.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;今のところ、英語圏のユーザがレシピを投稿するのではなく、どうやら日本語版サイトのレシピを翻訳しているみたいです：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;日本食の家庭料理のレシピ数では世界一を誇るクックパッドのレシピのなかから、海外の家庭でも手軽に作りやすい人気レシピを英語に翻訳していきます。（中略）オープン当初は約1,500品の掲載レシピ数からスタートし、早期に数万品まで増やしていく予定です
+&lt;a href=&#34;http://info.cookpad.com/press/2013/0805/&#34;&gt;(クックパッド英語版『COOKPAD』をリリース)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;そのため、Cookpadの日本語のレシピと英語のレシピは1対1の関係にあります。例えば&lt;a href=&#34;http://cookpad.com/recipe/1495625&#34;&gt;「たまにはね♪塩鯖のトマト煮(^m^*)」&lt;/a&gt;を英語に翻訳したものは&lt;a href=&#34;https://en.cookpad.com/recipe/1495625&#34;&gt;「Salted Mackerel, Simmered With Tomatoes For a Change (^m^*)」&lt;/a&gt;で見ることができます。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E6%A9%9F%E6%A2%B0%E7%BF%BB%E8%A8%B3&#34;&gt;機械翻訳&lt;/a&gt;の研究をしており、なおかつ料理をするのも大好きな友人のVictorがこの日英レシピデータに興味を持ったらしく、こんなやりとりをTwitterでしました（なお、Victorが言及しているリンクはCookpadが求人をかけていたRecipe Translatorの募集要項ページです。現在は募集終了したらしく、リンク切れになっています）：&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet tw-align-center&#34; lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/vchahun&#34;&gt;@vchahun&lt;/a&gt; hmm, this might be actually possible ☺ There&amp;#39;s already parallel corpora (e.g. &lt;a href=&#34;https://t.co/Pm9E86T8KK&#34;&gt;https://t.co/Pm9E86T8KK&lt;/a&gt; &lt;a href=&#34;http://t.co/hwHtv6TSO0&#34;&gt;http://t.co/hwHtv6TSO0&lt;/a&gt;)&lt;/p&gt;&amp;mdash; Naoki ORII (@mrorii) &lt;a href=&#34;https://twitter.com/mrorii/status/367116176117075973&#34;&gt;August 13, 2013&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;それではCookpadのデータを使って機械翻訳システムを作り、日本語のレシピを英語に翻訳してみましょう&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ed7dbd53afff001723190859596aec0c:caution&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:ed7dbd53afff001723190859596aec0c:caution&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;データ:ed7dbd53afff001723190859596aec0c&#34;&gt;データ&lt;/h3&gt;
+
+&lt;p&gt;2013年8月14日に英語版Cookpadから1,952件のレシピをクロールしました。同日に日本語版Cookpadから、それらに対応する1,952件の日本語レシピをクロールしています。レシピの80%を訓練データ、10%を開発データ、10%を評価データに分けました。&lt;/p&gt;
+
+&lt;p&gt;なお、今回翻訳するのはCookpadのレシピに含まれる以下の要素です：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;タイトル&lt;/li&gt;
+&lt;li&gt;紹介文&lt;/li&gt;
+&lt;li&gt;材料（材料名と量）&lt;/li&gt;
+&lt;li&gt;手順&lt;/li&gt;
+&lt;li&gt;コツ・ポイント&lt;/li&gt;
+&lt;li&gt;レシピの生い立ち&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;手法:ed7dbd53afff001723190859596aec0c&#34;&gt;手法&lt;/h3&gt;
+
+&lt;p&gt;機械翻訳と一口に言っても、いくつかのアプローチがあります。1990年台から主流なのは統計的機械翻訳で、これは&lt;a href=&#34;http://translate.google.com/&#34;&gt;Google翻訳&lt;/a&gt;やMicrosoftの&lt;a href=&#34;http://www.bing.com/translator&#34;&gt;Bing Translator&lt;/a&gt;でも使われています。統計的機械翻訳では対訳コーパスとよばれる、例えば日本語と英語など異なる言語の文と文が対訳の形でまとめられたデータからモデルを学習します。&lt;/p&gt;
+
+&lt;p&gt;下の図に、統計的機械翻訳の仕組みをおおまかに示します：&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/gastroglot/translate.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;一般的に、統計的機械翻訳システムは翻訳モデル、言語モデル、デコーダの３つから成り立ちます。
+今回の場合、翻訳モデルを学習するには日本語のレシピとそれに対応する英語のレシピの集まり（対訳コーパス）を使います。言語モデルを学習するには英語レシピの集まりのみを使います（i.e. 日本語レシピは必要ありません）。&lt;/p&gt;
+
+&lt;p&gt;翻訳モデルは、大雑把に言えば日本語と英語の対応関係を規定します。例えば、日本語レシピデータのうち500行に「ゴボウ」という言葉が含まれており、対応する英語レシピの500行のうち498行に&amp;rdquo;burdock&amp;rdquo;と書かれていたら、英語を全く知らなくても『「ゴボウ」は&amp;rdquo;burdock&amp;rdquo;に対応するんだな』と予想がつきます。このように、翻訳モデルの学習では対応する文から対応する単語／句の組を計算します。&lt;/p&gt;
+
+&lt;p&gt;言語モデルは「英文がどれだけ流暢か」を計算するために使われます。例えば、&amp;rdquo;heat the oil in a frying pan&amp;rdquo;は自然な英文ですが、&amp;rdquo;heat an oil in a frying pan&amp;rdquo;はあまり流暢ではなく、&amp;rdquo;heat an oils in a frying pan&amp;rdquo;はかなりひどい英文と言えます。「ある文がどれくらい流暢か」というのを具体的な数値として求めるには、その文（に含まれる単語の組み合わせ）が訓練データにどれくらいの頻度で含まれているかを数えることによって計算することが出来ます。具体例を挙げるとすれば、Googleが有するweb文書の集まりを訓練データに見立てれば、&lt;a href=&#34;https://www.google.com/search?q=%22heat+the+oil+in+a+frying+pan%22&#34;&gt;&amp;ldquo;heat the oil in a frying pan&amp;rdquo;&lt;/a&gt;と検索すると約1,090,000件、&lt;a href=&#34;https://www.google.com/search?q=%22heat+an+oil+in+a+frying+pan%22&#34;&gt;&amp;ldquo;heat an oil in a frying pan&amp;rdquo;&lt;/a&gt;で3件、&lt;a href=&#34;https://www.google.com/search?q=%22heat+an+oils+in+a+frying+pan%22&#34;&gt;&amp;ldquo;heat an oils in a frying pan&amp;rdquo;&lt;/a&gt;で0件ヒットするのでそれらの数値を「流暢さ」として使えそうなことが分かります。&lt;/p&gt;
+
+&lt;p&gt;翻訳したい日本語文を入力すると、機械翻訳システムは翻訳モデルと言語モデルを使って膨大な数の訳文を生成し、デコーダがその中からもっとも良さそうな英文を選び、それを出力します。&lt;/p&gt;
+
+&lt;h4 id=&#34;実装:ed7dbd53afff001723190859596aec0c&#34;&gt;実装&lt;/h4&gt;
+
+&lt;p&gt;今回はオープンソースの統計的機械翻訳システムを使いました。有名どころは以下の３つです：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Moses (&lt;a href=&#34;http://www.statmt.org/moses/&#34;&gt;http://www.statmt.org/moses/&lt;/a&gt;)　University of EdinburghのPhilipp Koehn主体のプロジェクト。３つの中では最も歴史が古く、成熟している。機能が豊富。&lt;a href=&#34;http://www.statmt.org/moses/manual/manual.pdf&#34;&gt;ユーザマニュアル（pdf）&lt;/a&gt;も300ページを超える大作。C++で書かれている。&lt;/li&gt;
+&lt;li&gt;Joshua (&lt;a href=&#34;http://joshua-decoder.org/&#34;&gt;http://joshua-decoder.org/&lt;/a&gt;)　JHU/UPennのChris Callison-Burch主体のプロジェクト。Javaで書かれている。&lt;/li&gt;
+&lt;li&gt;cdec (&lt;a href=&#34;http://cdec-decoder.org/&#34;&gt;http://cdec-decoder.org/&lt;/a&gt;, &lt;a href=&#34;http://www.cdec-decoder.org/&#34;&gt;http://www.cdec-decoder.org/&lt;/a&gt;)　CMUのChris Dyer主体のプロジェクト。この３つのプロジェクトのうち最も後発で、最新の手法が含まれているが必要最小限の機能のみ実装されている印象。他の２つに比べると高速・メモリ使用量が低いらしい。C++で書かれている。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;前述したVictorはcdecの主要contributorの１人なので、よしみで今回はcdecを使いました。&lt;/p&gt;
+
+&lt;p&gt;上の図では対訳コーパスがレシピ単位で対応付けられているように見えますが、実際には文レベルで対応付けをするのが一般的です。日英版Cookpadにおいて、レシピのタイトルや材料はすでに文レベルで対応付けされているのですが、レシピの紹介文、手順、コツ・ポイント、生い立ちは自由形式で入力するので段落単位で対応付けされています。これらを文レベルで対応付けするために、&lt;a href=&#34;http://mokk.bme.hu/resources/hunalign/&#34;&gt;hunalign&lt;/a&gt;というsentence alignerを用いてます。&lt;/p&gt;
+
+&lt;h4 id=&#34;デコーダについて:ed7dbd53afff001723190859596aec0c&#34;&gt;デコーダについて&lt;/h4&gt;
+
+&lt;p&gt;ちょっと脱線します。機械翻訳システムではデコーダが最も良い英文を選ぶと書きましたが、もともとdecodeという単語には「解読、復号をする」という意味があります。翻訳と暗号解読がなぜ関係あるのかという疑問が当然湧きますが、機械翻訳の先駆者であるWarren Weaverは次のような文を書いています：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;One naturally wonders if the problem of translation could conceivably be treated as a problem in cryptography. When I look at an article in Russian, I say: &amp;lsquo;This is really written in English, but it has been coded in some strange symbols. I will now proceed to decode.&amp;rsquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;また、自然言語処理の大御所であるKevin Knightが機械翻訳の手法を用いて秘密結社の暗号文を解読した、というダ・ヴィンチ・コードもびっくりの逸話もあります(cf. &lt;a href=&#34;http://ameblo.jp/malikun01/entry-11060614160.html&#34;&gt;http://ameblo.jp/malikun01/entry-11060614160.html&lt;/a&gt; &lt;a href=&#34;http://www.wired.com/dangerroom/2012/11/ff-the-manuscript/&#34;&gt;http://www.wired.com/dangerroom/2012/11/ff-the-manuscript/&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&#34;結果:ed7dbd53afff001723190859596aec0c&#34;&gt;結果&lt;/h3&gt;
+
+&lt;p&gt;一般的に、対訳コーパスの量が多ければ多いほど翻訳システムの性能が上がります。実用的な統計的機械翻訳システムを作るには100万文程度の対訳コーパスが必要らしいのですが、今回は（訓練データの約1,600件のレシピに含まれる）5.4万文と非常に少量です。そのため、全く使えない代物になることを危惧していたのですが、意外とまとも（？）な翻訳結果が得られました。翻訳システムを評価するために一般的によく使われる指標であるBLEU値は0.196と、日本語→英語翻訳としては可もなく不可もなくといったところです。&lt;/p&gt;
+
+&lt;p&gt;具体的な翻訳結果を見ていきましょう。調理手順が比較的簡単な&lt;a href=&#34;http://cookpad.com/recipe/1244898&#34;&gt;✿さつま揚げの磯辺焼き✿&lt;/a&gt;（英語版は&lt;a href=&#34;https://en.cookpad.com/recipe/1244898&#34;&gt;Isobe-yaki Fried Satuma-age Fish Cakes with Nori Seaweed&lt;/a&gt;）の原文と翻訳した結果を次に示します：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#--------------------------
+# 原文
+#--------------------------
+
+# タイトル
+✿さつま揚げの磯辺焼き✿
+
+# 紹介文
+甘辛く味付けしたさつま揚げを海苔で巻きました。
+お弁当のおかずやおつまみにもピッタリな簡単な一品です♪
+
+# 材料
+さつま揚げ　2枚
+☆醤油　小さじ1
+☆みりん　小さじ1
+海苔　1/3枚
+
+# 手順
+さつま揚げは食べやすい大きさに切り、フライパンで（油なしで）両面を焼く。
+火を弱めて☆を加え、さつま揚げの両面に調味料を絡ませながら焼く。
+粗熱が取れたら適当な大きさに切った海苔で巻く。
+お弁当に入れるとこんな感じです。
+
+# コツ・ポイント
+特にありません。
+
+# このレシピの生い立ち
+お弁当のおかずにぴったりな簡単な一品を考えました。
+さつま揚げはお弁当箱に詰めやすく、冷めても美味しいのでよく使っています。
+
+#--------------------------
+# 翻訳結果
+#--------------------------
+
+# タイトル
+✿ Fish cake - coated with ✿
+
+# 紹介文
+Sweet-salty cakes to the rolls with nori seaweed.
+Perfect side dish for lunch box or appetizer an easy dish.
+
+# 材料
+fish cake      2
+☆ soy sauce    1 teaspoon
+☆ mirin        1 teaspoon
+nori seaweed   1 / 3
+
+# 手順
+Cut the fish cake into easy to eat pieces, in a frying pan (without oil). Fry both sides.
+Turn down the heat.
+Add the cakes on both sides of the flavoring ingredients to the pan.
+It has cooled down a bit up into bite size pieces. Wrap with nori seaweed.
+In a bento it looks like this.
+
+# コツ・ポイント
+None in particular.
+
+# このレシピの生い立ち
+It&#39;s great for bentos, easy and came up with this dish.
+Stuff the cakes in a bento box easy and delicious even when cold, so use well.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;稚拙な部分も少々ありますが、英文のみから要点をなんとなく把握することができます。材料の翻訳はほぼ完璧で、手順は少し手を加えれば意味が通じるでしょう。&lt;/p&gt;
+
+&lt;p&gt;比較のために、Google翻訳とBing Translatorの出力も見てみます：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#--------------------------
+# Google翻訳 (2013/08/26時点)
+#--------------------------
+
+# タイトル
+✿ ✿ Isobe grilled fish cake of
+
+# 紹介文
+It was wound with glue a fish cake that was seasoned Amakaraku.
+Simple ♪ is one article which is good to snack or side dish of the lunch
+
+# 材料
+Fish cake      Two
+☆ soy sauce    1 tsp
+☆ Mirin        1 tsp
+Laver          1/3 sheet
+
+# 手順
+Cut into bite-size, fish cake and bake both sides (without oil) in a frying pan.
+In addition to the ☆ weaken the fire, and bake while entangle the seasoning on both sides of the fish cake. Add the cakes on both sides of the flavoring ingredients to the pan.
+Is wound with glue that was cut to a suitable size When you take the rough heat
+It is such a feeling when I put a lunch
+
+# コツ・ポイント
+It is not especially.
+
+# このレシピの生い立ち
+I thought a good simple dish side dish of the lunch.
+I often use fish cake is delicious and easy packed in lunch boxes, even if cold.
+
+#--------------------------
+# Bing Translator (2013/08/26時点)
+#--------------------------
+
+# タイトル
+✿ grilling of the deep-fried ✿
+
+# 紹介文
+Earthdom deep-fried fish cake rolled with Nori seaweed.
+Is a simple dish perfect for the lunch box side dishes or appetizers.
+
+# 材料
+Fried fish cake    2 Piece
+☆ soy sauce        1 Teaspoon
+☆ Mirin            1 Teaspoon
+Nori seaweed       1 / 3
+
+# 手順
+In a frying pan (oil at no), cut into bite-sized fried fish cake Cook on both sides.
+Slowly ☆ addition, entwined seasoning on both sides of fried fish cake bake.
+Roll seaweed paper cut to size refrigerate.
+This is put in the Bento.
+
+# コツ・ポイント
+Not particularly.
+
+# このレシピの生い立ち
+I thought simple dish a perfect side dish for lunch.
+So delicious deep-fried easy packed lunch, cold, it also often use.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;贔屓目に見ているかもしれませんが、Google翻訳やBing Translatorよりも今回作った翻訳システムのほうがほんのちょっとだけ、より自然な翻訳のような気がします。
+レシピのタイトルの「さつま揚げの磯辺焼き」が&amp;rdquo;coated with&amp;rdquo;、&amp;rdquo;fish cake of&amp;rdquo;、&amp;rdquo;of the deep-fried&amp;rdquo;のように全ての翻訳システムでincomplete sentenceに翻訳される理由がよく分かりませんが興味深い現象です。&lt;/p&gt;
+
+&lt;p&gt;次に、翻訳が特にうまくいった例も紹介します：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#--------------------------
+# 日本語原文
+#--------------------------
+
+2010/10/20話題入り感謝♫
+ナスを斜め7mm幅に切る 。    
+ボールに入れ塩を振りかけて軽く揉みこみ暫く置く 。
+その間にタレを作ります 。
+〇を全て混ぜ合わせておく 。
+フライパンを熱しごま油を入れる 。
+ナスの水気を軽くふき取り並べて両面を中火で焼く。
+両面に焼き色がついたら、タレを加え煮詰める。
+タレが少し残るくらいで火を止める。
+丼ぶりに、白ご飯を入れ、ナスを並べて盛り付け、小ネギとのりを散らして出来上がり~♪
+
+#--------------------------
+# 翻訳結果
+#--------------------------
+
+Thank you for making this a top recipe on 2010/10/20.
+Slice the eggplant 7mm thick pieces.
+Massage lightly in a bowl and sprinkle with salt and leave.
+In the meantime, make the sauce.
+Mix the 〇 ingredients together.
+Heat the sesame oil in a frying pan.
+Lightly drain the eggplant, and cook on both sides over medium heat.
+When browned on both sides, add the sauce.
+Turn off the heat a little with the sauce.
+In a bowl, add the white rice and arrange the eggplant and plate, scatter with chopped green onion and nori seaweed and it&#39;s done.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;ldquo;Slice the eggplant 7mm thick pieces&amp;rdquo;は&amp;rdquo;Slice the eggplant diagonally into 7mm thick pieces&amp;rdquo;のほうがより自然です。また、「ナスの水気を軽く拭き取り…」は&amp;rdquo;lightly drain the eggplant&amp;rdquo;と翻訳されましたが、&amp;rdquo;lightly dry off the eggplant (with a napkin/towel)&amp;ldquo;のほうが個人的にはしっくりします&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ed7dbd53afff001723190859596aec0c:drain&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:ed7dbd53afff001723190859596aec0c:drain&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;。最後に、「タレが少し残るくらいで火を止める」は&amp;rdquo;turn off the heat a little with the sauce&amp;rdquo;と翻訳されてますが、これは&amp;rdquo;turn off the heat so that a little amount of sauce remains&amp;rdquo;が妥当でしょう。しかし、これら以外の文はほぼ完璧といっていいほどの翻訳です。&lt;/p&gt;
+
+&lt;p&gt;また参考までに、Google翻訳とBing Translatorの出力も見てみましょう：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#--------------------------
+# Google翻訳 (2013/08/26時点)
+#--------------------------
+
+October 20, 2010 topic enters thank ♫
+I cut to 7 mm width diagonally eggplant.    
+Put for a while crowded rub lightly sprinkled with salt and put in a bowl.
+I make a sauce in the meantime.
+I keep mixing all Yes.
+Add the sesame oil Heat the frying pan.
+Bake over medium heat on both sides side by side lightly wipe off the moisture of the eggplant.
+When browned on both sides with, boil down was added to the sauce.
+I stop the fire in about a little sauce remains.
+To bowl the first time, it ~ ♪ Put the white rice, Ready to Eat side-by-side eggplant, and voila Sprinkle the glue and small green onion
+
+#--------------------------
+# Bing Translator (2013/08/26時点)
+#--------------------------
+
+2010 / 10 / 20 Buzz with gratitude ♫
+Eggplant cut width 7 mm diagonal.
+Bowl sprinkle salt lightly 揉みこみ and put for a while.
+In the meantime make sauce.
+○ all mix.
+Heat the skillet add sesame oil.
+Sprinkle Eggplant drain side Cook on both sides over medium heat.
+Pour in on both sides and sauce in addition boil down.
+Sauce will long remain a little to stop the fire.
+Put the rice in a bowl, serve Eggplant side by side, sprinkle the onions with paste and voila ~!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;日本語は&lt;a href=&#34;http://en.wikipedia.org/wiki/Pro-drop_language&#34;&gt;pro-drop language&lt;/a&gt;なので、日本語→英語のように日本語をsource languageとした機械翻訳ではその取り扱いが難しそうなイメージがあります。現に、今回のケースでは&amp;rdquo;I cut to 7 mm&amp;rdquo;, &amp;ldquo;I make a sauce&amp;rdquo;, &amp;ldquo;I keep mixing&amp;rdquo;, &amp;ldquo;I stop the fire&amp;rdquo;などGoogle翻訳では&amp;rdquo;I&amp;rdquo;を挿入していますが、レシピの手順としてこれは不自然です。一方、Bing Translatorは&amp;rdquo;I&amp;rdquo;を挿入していません。&lt;/p&gt;
+
+&lt;p&gt;原文の「のりを散らして」がGoogle翻訳では&amp;rdquo;sprinkle the glue&amp;rdquo;、Bing Translatorでは&amp;rdquo;sprinkle … with paste&amp;rdquo;と翻訳されていますが、これは恐らく&amp;rdquo;sprinkle the glue powder&amp;rdquo;や&amp;rdquo;sprinkle … with paste&amp;rdquo;というフレーズがGoogleとBingが使っているコーパスに数多く含まれていたためだと考えられます。&lt;/p&gt;
+
+&lt;p&gt;Google翻訳とBing Translatorは汎用な翻訳システムであるのに対し、今回作成したシステムでは訓練データと評価データを同一のドメインから取得しているため、翻訳の質がより高いように感じます。&lt;/p&gt;
+
+&lt;h3 id=&#34;まとめ:ed7dbd53afff001723190859596aec0c&#34;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;対訳コーパスが少量であったにも関わらず、レシピの材料と調理手順に関しては言い回しが限られているため、それなりの質の翻訳が得られました。それに対し、レシピのタイトル、紹介文、コツ・ポイント、生い立ちに関してはより自由な書き方ができるため、あまり芳しくない結果となりました。&lt;/p&gt;
+
+&lt;p&gt;今回得られた翻訳システムは実用レベルとまではいきませんが、翻訳家を支援するツールだと割り切って使う分には問題ないと思います。「『ゴボウ』は英語で何て言うんだっけ」「この言い回しは英語で何て言うんだっけ」など、翻訳家でも訳が思い浮かばないケースが多々あると思います。辞書を引く代わりに、あらかじめ機械翻訳で得られた訳文を表示しておけば翻訳にかかる時間やコストを削減できるのではないでしょうか。&lt;/p&gt;
+
+&lt;p&gt;また、今回は&lt;a href=&#34;http://www.cdec-decoder.org/guide/tutorial.html&#34;&gt;cdecの初心者向けチュートリアル&lt;/a&gt;を忠実に実行しただけにも関わらずこのように悪くはない結果になったので、もう少しカスタマイズを頑張ればもっとまともな翻訳が得られると思います。&lt;/p&gt;
+
+&lt;p&gt;なお、今回のソースコードは&lt;a href=&#34;https://github.com/mrorii/gastroglot&#34;&gt;https://github.com/mrorii/gastroglot&lt;/a&gt;に置いておきました。&lt;/p&gt;
+
+&lt;p&gt;統計的機械翻訳に興味を持たれた方は、日本語で読める資料として&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ntt.co.jp/journal/0706/files/jn200706023.pdf&#34;&gt;http://www.ntt.co.jp/journal/0706/files/jn200706023.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.phontron.com/slides/neubig-alagin-20130117.pdf&#34;&gt;http://www.phontron.com/slides/neubig-alagin-20130117.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/pfi/smt-survey&#34;&gt;http://www.slideshare.net/pfi/smt-survey&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;を推薦します。また、（英語ですが）教科書はPhilipp Koehnの本が定番です：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/0521874157/ref=as_li_qf_sp_asin_il?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=0521874157&amp;linkCode=as2&amp;tag=mrorii-22&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=0521874157&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=JP&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=mrorii-22&#34; &gt;&lt;/a&gt;&lt;img src=&#34;http://ir-jp.amazon-adsystem.com/e/ir?t=mrorii-22&amp;l=as2&amp;o=9&amp;a=0521874157&#34; width=&#34;1&#34; height=&#34;1&#34; border=&#34;0&#34; alt=&#34;&#34; style=&#34;border:none !important; margin:0px !important;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;（機械翻訳というよりは暗号学の内容ですが）一般大衆向けの読み物としてはサイモン・シン(著)、青木薫 (翻訳)の「暗号解読」が大変面白いです：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/410215972X/ref=as_li_qf_sp_asin_il?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=410215972X&amp;linkCode=as2&amp;tag=mrorii-22&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=410215972X&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=JP&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=mrorii-22&#34; &gt;&lt;/a&gt;&lt;img src=&#34;http://ir-jp.amazon-adsystem.com/e/ir?t=mrorii-22&amp;l=as2&amp;o=9&amp;a=410215972X&#34; width=&#34;1&#34; height=&#34;1&#34; border=&#34;0&#34; alt=&#34;&#34; style=&#34;border:none !important; margin:0px !important;&#34; /&gt;
+&lt;a href=&#34;http://www.amazon.co.jp/gp/product/4102159738/ref=as_li_qf_sp_asin_il?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4102159738&amp;linkCode=as2&amp;tag=mrorii-22&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=4102159738&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=JP&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=mrorii-22&#34; &gt;&lt;/a&gt;&lt;img src=&#34;http://ir-jp.amazon-adsystem.com/e/ir?t=mrorii-22&amp;l=as2&amp;o=9&amp;a=4102159738&#34; width=&#34;1&#34; height=&#34;1&#34; border=&#34;0&#34; alt=&#34;&#34; style=&#34;border:none !important; margin:0px !important;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;暗号が解読されたために処刑されたスコットランド女王、第二次世界大戦中のナチス・ドイツが用いた暗号機のエニグマを解読した連合軍の研究者達、またアメリカ原住民のナヴァホ族のコードトーカーによってたちまち苦戦を強いられた日本軍など、暗号解読にまつわる様々な歴史上の人間ドラマが詰まっていて、科学技術系のノンフィクションの珠玉の作品の１つです。&lt;/p&gt;
+
+&lt;p&gt;この記事をきっかけに、日本でも機械翻訳を採用するWeb企業が増えたらなと思います&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ed7dbd53afff001723190859596aec0c:microsoft&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:ed7dbd53afff001723190859596aec0c:microsoft&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。Cookpadとか。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:ed7dbd53afff001723190859596aec0c:caution&#34;&gt;なお、上のtweetでは「２人でタッグを組んでやろうぜ！」と書かれていますが、結局（機械翻訳が初心者の）自分１人でほとんどやったので誤りなどありましたら教えて下さい。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ed7dbd53afff001723190859596aec0c:caution&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ed7dbd53afff001723190859596aec0c:drain&#34;&gt;&amp;ldquo;drain&amp;rdquo;は布巾ではなくザルを使うイメージがあります。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ed7dbd53afff001723190859596aec0c:drain&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ed7dbd53afff001723190859596aec0c:microsoft&#34;&gt;（外資系企業ですが）Microsoftではオンラインマニュアルをi18n対応するための前処理段階として機械翻訳を使っているみたいです（&lt;a href=&#34;http://d.hatena.ne.jp/mamoruk/20100112/p2&#34;&gt;http://d.hatena.ne.jp/mamoruk/20100112/p2&lt;/a&gt;のコメント欄を参照）
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ed7dbd53afff001723190859596aec0c:microsoft&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cookpadのつくれぽ数を予測する</title>
+      <link>http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/</link>
+      <pubDate>Fri, 02 Aug 2013 00:00:00 -0800</pubDate>
+      
+      <guid>http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/</guid>
+      <description>
+
+&lt;p&gt;「食と機械学習」のコラボレーションをできないかと最近常々考えています。例えば、「地球上に存在する全ての料理本を何らかのアルゴリズムに入力し、人間にとって『美味しい』レシピとはどういう特徴を持つかを学習し、今まで人類が食べたことのないような斬新なレシピを自動生成する」ことが出来たとしたら素晴らしいとは思いませんか？&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookpad/tart.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;レシピの自動生成はさすがに難しそうなので、今回は&lt;strong&gt;人気になるレシピに共通する特徴は何か&lt;/strong&gt;という問いに答えることを目標とします。具体的には、&lt;a href=&#34;http://cookpad.com/&#34;&gt;Cookpad&lt;/a&gt;のレシピが与えられたとして、そのつくれぽ数を予測する問題に挑戦してみます。レシピが人気になるか否かの要因としては、どういう材料を使用するか、レシピがどれだけ健康的か、またどれだけ手軽に調理できるかなど様々な要因が考えられますが、今回特に興味があるのはレシピの名前や紹介文などの文章の言葉遣いがそのレシピの人気度にどのような影響を及ぼすかです。Cookpadのまとめサイトらを眺めてみると、&lt;a href=&#34;http://cookpad.com/recipe/450372&#34;&gt;食べ過ぎ注意☆鶏肉のねぎマヨポン炒め&lt;/a&gt;や&lt;a href=&#34;http://cookpad.com/recipe/903352&#34;&gt;極ウマ♡海老のトマトクリームライス&lt;/a&gt;など、レシピ名を一瞥しただけで腹が減ってきそうなものがありますが、これらのレシピに共通する特徴は何でしょうか。&lt;/p&gt;
+
+&lt;h3 id=&#34;データ:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;データ&lt;/h3&gt;
+
+&lt;p&gt;2013年8月1日から3日にかけてCookpadから72,330件のレシピをクロールしました。これらのレシピは、&lt;a href=&#34;http://cookpad.com/category/list&#34;&gt;Cookpadのレシピカテゴリ&lt;/a&gt;の「きょうの料理」以下に当たる全15個のサブカテゴリ、また「お菓子」以下に当たる18個のサブカテゴリに含まれるものです&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:detailedcategories&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:detailedcategories&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+
+&lt;p&gt;これらのレシピのつくれぽ数の分布を図で見ると以下のような典型的なべき乗分布になります:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookpad/tsukurepo_counts.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;およそ2万件のレシピは1つもつくれぽが投稿されていません。ちなみに、このデータに含まれるレシピのうち最も多くのつくれぽがついているものは&lt;a href=&#34;http://cookpad.com/recipe/375604&#34;&gt;こちら&lt;/a&gt;です。このレシピを投稿したユーザの凄いところは12,000件以上のつくれぽに対し、紋切り型のお礼ではなく一つ一つ丁寧に返事を書いているところです。例えば2番目と3番目に多くのつくれぽがついている&lt;a href=&#34;http://cookpad.com/recipe/399656&#34;&gt;こちら&lt;/a&gt;と&lt;a href=&#34;http://cookpad.com/recipe/291192&#34;&gt;こちら&lt;/a&gt;のレシピでは毎回同じ返信をしています。&lt;/p&gt;
+
+&lt;h3 id=&#34;問題の定式化:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;問題の定式化&lt;/h3&gt;
+
+&lt;p&gt;つくれぽ数に閾値を定め、ある一定数以上のつくれぽがついたレシピを正クラス、それ未満のものを負クラスとすれば、二値分類問題に帰着できます。&lt;/p&gt;
+
+&lt;h3 id=&#34;手法:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;手法&lt;/h3&gt;
+
+&lt;p&gt;一般化線形モデル（ロジスティック回帰）を使用し、モデルをコンパクトにするためにL1ノルム正則化を適用します。&lt;/p&gt;
+
+&lt;h4 id=&#34;素性:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;素性&lt;/h4&gt;
+
+&lt;p&gt;分類するための特徴・素性として以下のものを使用しました。
+大きく分けて「メタデータに関する素性」と「テキストに関する素性」の２つに分けられます。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;メタデータに関する素性：
+
+&lt;ul&gt;
+&lt;li&gt;完成写真の有無&lt;/li&gt;
+&lt;li&gt;手順写真の有無&lt;/li&gt;
+&lt;li&gt;投稿したユーザ&lt;/li&gt;
+&lt;li&gt;材料&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;レシピが含まれるカテゴリ&lt;/del&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:categ&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:categ&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;テキストに関する素性：
+
+&lt;ul&gt;
+&lt;li&gt;レシピのタイトル&lt;/li&gt;
+&lt;li&gt;レシピの紹介文&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;レシピのコツ・ポイント&lt;/del&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:advice&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:advice&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;レシピの生い立ち&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これらの素性をCookpadのレシピページ上で示したものが次の図です：&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookpad/recipe.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;材料は、「醤油」一つを例にとっても&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;○砂糖、&lt;strong&gt;醤油&lt;/strong&gt;、みりん&lt;/li&gt;
+&lt;li&gt;◎旨味調味料、&lt;strong&gt;醤油&lt;/strong&gt;又は麺つゆ&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;醤油&lt;/strong&gt;(薄口がベスト)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;醤油&lt;/strong&gt;ｏｒだし醤油ｏｒめんつゆ&lt;/li&gt;
+&lt;li&gt;①あれば&lt;strong&gt;醤油&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;市販の&lt;strong&gt;醤油&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;☆&lt;strong&gt;醤油&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;など表記に揺らぎがあるため、特殊記号を削除、括弧やその中に含まれる文字列を削除、任意性を表す「あれば」や「お好みで」を削除、読点や「又は」で文字列を分割、仮名を平仮名に統一など必要最低限の前処理をしています。&lt;/p&gt;
+
+&lt;p&gt;テキストに関しては分かち書きをした後、unigram・bigram・trigramを素性として使います。&lt;/p&gt;
+
+&lt;p&gt;素性値はメタデータ・テキストのどちらにも関わらず、二値ベクトルとして扱っています。訓練データの0.2%未満、もしくは99.8%以上のレシピに出現する素性はpruneしてあります。&lt;/p&gt;
+
+&lt;h3 id=&#34;評価実験:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;評価実験&lt;/h3&gt;
+
+&lt;p&gt;レシピを投稿してからつくれぽが掲載されるまである程度の時間がかかると思われるため、投稿してから3ヶ月未満のレシピはデータから除外します。上記の72,330件のレシピのうち、投稿されてから3ヶ月以上経過していた70,724件の70%を訓練データ、20%を開発データ、10%を評価データに分けました。開発データで正則化パラメータを選びます。&lt;/p&gt;
+
+&lt;p&gt;クラス分けのために使われるつくれぽ数の閾値は1、5、10、20件に設定します。
+閾値によってはクラスのサンプル数が不均衡になるため、訓練・開発・評価データをstratifiedにしました。また同様の理由で、評価指標としては分類正解率ではなくF値を用います。&lt;/p&gt;
+
+&lt;h4 id=&#34;実験結果:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;実験結果&lt;/h4&gt;
+
+&lt;p&gt;評価データのF値は以下のようになりました：&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookpad/chart.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;上2段は正クラスと負クラスのサンプル数を示しています。
+下2段の上段・下段はそれぞれ、メタデータに関する素性のみを用いたときのF値と、メタデータ＋テキストの両方に関する素性を用いた時のF値を示します。&lt;/p&gt;
+
+&lt;p&gt;テキストに関する素性を使うことにより、メタデータのみを使った場合よりもF値が10%ほど向上することが確認できます。&lt;/p&gt;
+
+&lt;h4 id=&#34;素性の重みを見てみる:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;素性の重みを見てみる&lt;/h4&gt;
+
+&lt;p&gt;学習によって得られた素性の重みが大きければ大きいほど、該当する単語が文章に含まれていたり該当する材料が含まれていたりすると、レシピにつくれぽが投稿されやすいということを表します&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:l1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:l1&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;。逆に、重みが負であるほど、そのレシピにつくれぽが投稿されにくいことを表します。&lt;/p&gt;
+
+&lt;p&gt;以下の結果は全て閾値を5、素性にはメタデータ＋テキストの両方を使用したものです。
+素性のカテゴリごとに見ていきます。&lt;/p&gt;
+
+&lt;h5 id=&#34;投稿したユーザ:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;投稿したユーザ&lt;/h5&gt;
+
+&lt;p&gt;学習によって得られた素性の重みを調べてみます。重みが正のもの（の一部）はこちら：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;0.4210  meta:author:212659
+0.4051  meta:author:4036
+0.3566  meta:author:28982
+0.3245  meta:author:2513693
+0.2072  meta:author:252604
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;左の数字は素性の重み、右の数字はCookpadのユーザIDを表します。該当するユーザページはこちら：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/212659&#34;&gt;http://cookpad.com/kitchen/212659&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/4036&#34;&gt;http://cookpad.com/kitchen/4036&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/28982&#34;&gt;http://cookpad.com/kitchen/28982&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/2513693&#34;&gt;http://cookpad.com/kitchen/2513693&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cookpad.com/kitchen/252604&#34;&gt;http://cookpad.com/kitchen/252604&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;確かにどのユーザのレシピも色鮮やかで、すきっ腹のときに眺めるのは苦行です。&lt;/p&gt;
+
+&lt;h5 id=&#34;レシピのタイトル:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;レシピのタイトル&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;0.4372  text:title:1:✿
+0.3139  text:title:1:♡
+0.2410  text:title:1:キャベツ
+0.2305  text:title:1:ツナ
+0.1953  text:title:1:マヨ
+0.1929  text:title:1:❤
+0.1928  text:title:1:簡単
+0.1849  text:title:1:だけ
+0.1819  text:title:1:絶品
+0.1809  text:title:1:♪
+0.1649  text:title:1:濃厚
+0.1568  text:title:3:【 農家 の
+0.1562  text:title:1:∮
+0.1553  text:title:1:♥
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;いかにも女子力が高そうな✿♡❤♪などの記号が目立ちます。&lt;/p&gt;
+
+&lt;h5 id=&#34;レシピの紹介文:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;レシピの紹介文&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;0.6908  text:desc:1:✿
+0.6223  text:desc:1:♡
+0.4982  text:desc:1:♫
+0.4714  text:desc:1:♬
+0.4434  text:desc:1:❤
+0.2325  text:desc:1:☆
+0.2223  text:desc:1:シンプル
+0.2216  text:desc:1:甘辛
+0.2091  text:desc:1:♫♬
+0.1904  text:desc:2:です ✿
+0.1839  text:desc:1:濃厚
+0.1732  text:desc:1:～♪
+0.1725  text:desc:1:可愛い
+0.1663  text:desc:1:サクサク
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;レシピのタイトルと同様、記号が数多く並びます&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:stopword&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:stopword&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+
+&lt;h5 id=&#34;材料:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;材料&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;0.2793  meta:ingr:まよねーず
+0.2176  meta:ingr:砂糖
+0.2157  meta:ingr:鶏がらすーぷの素
+0.2120  meta:ingr:ういんなー
+0.1623  meta:ingr:胡麻油
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;油、砂糖、塩分など脳内麻薬物質が出る組み合わせを含む材料を使うとつくれぽが掲載されやすくなるのは理にかなっています。なお、前処理で材料に含まれる仮名を平仮名に統一しているため、「マヨネーズ」や「ウインナー」を「まよねーず」や「ういんなー」などと表記しています。&lt;/p&gt;
+
+&lt;p&gt;逆に負の重みの材料も見てみましょう：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-0.2925  meta:ingr:しいたけ
+-0.2735  meta:ingr:しょうが
+-0.2732  meta:ingr:えりんぎ
+-0.2186  meta:ingr:ぱぷりか
+-0.2123  meta:ingr:せろり
+-0.1919  meta:ingr:まっしゅるーむ
+-0.1895  meta:ingr:椎茸
+-0.1768  meta:ingr:まいたけ
+-0.1665  meta:ingr:塩麹
+-0.1589  meta:ingr:みょうが
+-0.1547  meta:ingr:干ししいたけ
+-0.1496  meta:ingr:ごーや
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;好き嫌いが分かれそうな野菜だらけです。昨年ブレイクした塩麹ですが、意外と&lt;a href=&#34;http://komachi.yomiuri.co.jp/t/2012/0108/473766.htm&#34;&gt;苦手な人もいる&lt;/a&gt;みたいです。&lt;/p&gt;
+
+&lt;h4 id=&#34;ケーススタディー:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;ケーススタディー&lt;/h4&gt;
+
+&lt;p&gt;ここまではマクロな視点で、Cookpadの（ほぼ）全てのカテゴリに含まれるレシピに対してモデルを適用してきました。しかし、これでは「サバの味噌煮と鮭のエスカベッシュのどちらが人気か」という&lt;strong&gt;料理&lt;/strong&gt;同士の比較になりかねません。しかし今回の本来の目的は、人気になる&lt;strong&gt;レシピ&lt;/strong&gt;に共通する特徴を把握することです&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:recipe&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:recipe&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;。
+特に、レシピの名前や紹介文などの言葉遣いが人気度にどういう影響を及ぼすかを調べたいのですが、データに雑多な料理が含まれていると「カレー」や「パウンドケーキ」などの料理名が強く出てしまい、語句に関する情報が埋もれてしまう可能性があります。&lt;/p&gt;
+
+&lt;p&gt;また、これは上記の実験をした後から分かったことなのですが、Cookpadに投稿されたレシピは必ずしもカテゴリに割り振られるわけではなく、カテゴリ入りするにはユーザによって推薦されるかカテゴリマスターによってキュレートされる必要があります。このように、カテゴリ入りしたレシピにはあらかじめバイアスがかかっているので、
+そこから得られた結果を鵜呑みにするのも考えものです。&lt;/p&gt;
+
+&lt;p&gt;以上の２点から、複数の料理を同時に考慮するのではなく、ある特定の料理に絞ってからモデルを適用するのも検討すべきでしょう。Cookpadのレシピ検索では、カテゴリ入りしたかしてないかに関わらずクエリに関連する全てのレシピがヒットするようなのでこれを使います。&lt;/p&gt;
+
+&lt;p&gt;なお、これ以降の実験ではL1正則化を使用したらモデルがスパースになりすぎたのでL2正則化を使いました。つくれぽの閾値は1に設定してあります。&lt;/p&gt;
+
+&lt;h5 id=&#34;肉じゃが:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;肉じゃが&lt;/h5&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookpad/nikujaga.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cookpad.com/search/%E8%82%89%E3%81%98%E3%82%83%E3%81%8C&#34;&gt;肉じゃが&lt;/a&gt;で検索するとヒットする5,615件のレシピのうち、投稿されてから3ヶ月以上経過している5,349件のレシピを使います。&lt;/p&gt;
+
+&lt;p&gt;学習によって得られた素性の重みを調べてみます。重みが正のもの（の一部）はこちら：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;0.1819  text:desc:1:♪
+0.1513  text:title:1:リメイク
+0.1502  text:title:1:簡単
+0.1473  text:desc:1:美味しい
+0.1361  text:title:1:★
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;逆に重みが負になったものを見てみましょう：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-0.0651  text:title:1:レンジ
+-0.0649  text:desc:1:残り物
+-0.0480  text:desc:1:余っ
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;「残り物」と書いたらつくれぽが投稿されにくいのに、「リメイク」と言い換えるとつくれぽが投稿されやすくなるのは当然といえばそうですが、なかなか面白いです。在庫処分をクリアランスセールと言い換えると高級感が出るのに似ています。&lt;/p&gt;
+
+&lt;p&gt;また、レシピ名に「レンジ」を含めるのも（少なくとも肉じゃがでは）薦められないようです。恐らくこれは&lt;a href=&#34;https://www.quora.com/Chefs/What-do-professional-chefs-think-about-the-use-of-microwaves-to-cook-food?share=1&#34;&gt;「ちゃんとした料理は電子レンジなんかで作るものじゃない」&lt;/a&gt;という先入観があるからでしょう。逆にプリンなどのデザートの場合は、電子レンジを使うと簡単に作れるからか、&lt;a href=&#34;http://cookpad.com/recipe/1351368/&#34;&gt;このレシピ&lt;/a&gt;のようにすごい数のつくれぽが掲載されているものもあります。&lt;/p&gt;
+
+&lt;h5 id=&#34;味噌汁:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;味噌汁&lt;/h5&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookpad/miso.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cookpad.com/search/%E5%91%B3%E5%99%8C%E6%B1%81&#34;&gt;味噌汁&lt;/a&gt;で検索するとヒットする7,344件のレシピのうち、投稿されてから3ヶ月以上経過している7,008件のレシピを使います。&lt;/p&gt;
+
+&lt;p&gt;学習によって得られた素性の重みが正のものはこちら：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;0.2441  text:desc:1:♡
+0.1654  text:desc:1:♪
+0.1553  text:title:1:✿
+0.1324  text:title:1:☆
+0.1067  text:title:1:♡
+0.0955  text:desc:1:❤
+0.0828  text:desc:1:～♪
+0.0668  text:desc:1:簡単
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;毎度おなじみの女子力が高そうな記号がズラリ。&lt;/p&gt;
+
+&lt;p&gt;逆に重みが負になったものも見てみましょう：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-0.1124  text:desc:1:残り物
+-0.1109  text:title:1:離乳食
+-0.0734  text:title:1:カレー
+-0.0730  meta:ingr:マヨネーズ
+-0.0626  text:desc:1:手抜き
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;この中でもひときわ目を引くのがカレーとマヨネーズ。「味噌汁 カレー」でググってみると、どうやら&lt;a href=&#34;http://cookpad.com/recipe/1233491&#34;&gt;カレーうどんが作れる&lt;/a&gt;らしいです。でも&lt;a href=&#34;http://cookpad.com/recipe/589001&#34;&gt;味噌汁にマヨネーズ&lt;/a&gt;というのはいかにもB級グルメっぽくて試す気が起きません。&lt;/p&gt;
+
+&lt;p&gt;「残り物」と「リメイク」同様、「手抜き」と書くとつくれぽがつかないのに対し「簡単」と書くとつくれぽが投稿されやすくなるみたいです。また、離乳食もニッチなニーズと思いきや、10,000件以上の離乳食レシピがCookpadに投稿されています。&lt;/p&gt;
+
+&lt;h4 id=&#34;グラタン:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;グラタン&lt;/h4&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/cookpad/gratin.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cookpad.com/search/%E3%82%B0%E3%83%A9%E3%82%BF%E3%83%B3&#34;&gt;グラタン&lt;/a&gt;で検索するとヒットする16,012件のレシピのうち、投稿されてから3ヶ月以上経過している15,535件のレシピを使います。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;0.3066  text:desc:1:♡
+0.2429  text:title:1:簡単
+0.2194  text:desc:1:♪
+0.2183  text:desc:1:♬
+0.2113  text:title:1:豆腐
+0.2014  text:desc:1:❤
+0.1654  text:desc:1:簡単
+0.0980  text:desc:2:だけ ！
+0.0960  text:desc:2:簡単 な
+0.0934  text:desc:2:の 簡単
+0.0908  text:desc:2:♪ 簡単
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;グラタンって面倒くさそうなイメージがやはりあるのでしょうか、「簡単」が数多く見られます。また、グラタンに豆腐というのも意外ですが、Cookpadに&lt;a href=&#34;http://cookpad.com/category/424&#34;&gt;豆腐グラタンというカテゴリ&lt;/a&gt;が存在するほど浸透しているみたいです。&lt;/p&gt;
+
+&lt;h3 id=&#34;まとめ:b7a6b9d99d548cef0e34b0d089dfc6c5&#34;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;今回得られた知見としては、つくれぽが欲しければ「女子力が高そうな書き方をする」「負のコノテーションを持つ言葉を美化する」という至極もっともな結果になりました&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:causality&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:causality&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+
+&lt;p&gt;今後の展開としては、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;画像の有無だけでなく、画像の「見た目」を考慮（e.g. 明るさ・コントラスト・色合い）&lt;/li&gt;
+&lt;li&gt;手順に含まれる調理法を考慮（e.g. 昆布でだしを取るのは面倒臭いので敬遠されがち）&lt;/li&gt;
+&lt;li&gt;テキストの前処理をもっとしっかりする（e.g. MeCabに顔文字辞書や料理用語を追加）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;などが考えられます。&lt;/p&gt;
+
+&lt;p&gt;ここまでやっておいてなんですが、ちゃんとまじめにレシピの人気度を予測するにはCookpadからクロールできるデータでは限界があるかもしれません。というのも、&lt;a href=&#34;http://cookpad.typepad.jp/help/2008/06/post-bb42.html&#34;&gt;つくれぽを投稿してもすぐに反映はされず、掲載されるにはレシピの作者が手続きを行う必要がある&lt;/a&gt;ので、つくれぽ数をレシピの人気度の代替として使うのは厳密には正確でない可能性があります。とはいえ、Cookpadは料理に関するデータの宝庫なので今回のような実験を今後も続けていこうかと思います。Cookpadの中の人が読んでいらっしゃったら開発者向けAPIのご検討を是非 :-)&lt;/p&gt;
+
+&lt;p&gt;今回の実験と同様に、文章を元に実世界の現象を予測する問題は数多く研究されています。そのうちのいくつか面白いものを載せておきます：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aclweb.org/anthology-new/D/D12/D12-1124.pdf&#34;&gt;Word Salad: Relating Food Prices and Descriptions&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;レストランの口コミの文章だけからそこのメニューの価格を推定する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aclweb.org/anthology-new/N/N10/N10-1038.pdf&#34;&gt;Movie Reviews and Revenues: An Experiment in Text Regression&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;映画評論家のレビューからその映画の公開週の観客動員数を予測&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aclweb.org/anthology-new/N/N12/N12-1097.pdf&#34;&gt;Textual Predictors of Bill Survival in Congressional Committees&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;米国連邦議会の法案が承認されるか否かをその法案の文章から予測&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aclweb.org/anthology-new/D/D11/D11-1055.pdf&#34;&gt;Predicting a Scientiﬁc Community’s Response to an Article&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;科学論文の被引用数をその論文の文章から予測&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;興味がある人は是非参照してください。また、自然言語処理そのものに興味を持たれた方には、こちらの和書を推薦します:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/4339027510/ref=as_li_qf_sp_asin_il?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4339027510&amp;linkCode=as2&amp;tag=mrorii-22&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=4339027510&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=JP&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=mrorii-22&#34; &gt;&lt;/a&gt;&lt;img src=&#34;http://ir-jp.amazon-adsystem.com/e/ir?t=mrorii-22&amp;l=as2&amp;o=9&amp;a=4339027510&#34; width=&#34;1&#34; height=&#34;1&#34; border=&#34;0&#34; alt=&#34;&#34; style=&#34;border:none !important; margin:0px !important;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;言語処理のための機械学習入門 (自然言語処理シリーズ) [単行本] 高村 大也 (著), 奥村 学 (監修)&lt;/p&gt;
+
+&lt;p&gt;最後に、今回のソースコードは全部 &lt;a href=&#34;https://github.com/mrorii/tsukurepo-predictor&#34;&gt;https://github.com/mrorii/tsukurepo-predictor&lt;/a&gt; に置いておきました❤。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;[Images courtesy of &lt;a href=&#34;http://www.flickr.com/photos/justinwkern/3660714754/&#34;&gt;justinwkern&lt;/a&gt;, &lt;a href=&#34;http://www.flickr.com/photos/ykjc9/3089327692/&#34;&gt;ykjc9&lt;/a&gt;, &lt;a href=&#34;http://www.flickr.com/photos/gpeters/3196519924/&#34;&gt;gpeters&lt;/a&gt;, and &lt;a href=&#34;http://www.flickr.com/photos/pelican/379175770/&#34;&gt;pelican&lt;/a&gt;]&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:b7a6b9d99d548cef0e34b0d089dfc6c5:detailedcategories&#34;&gt;クロールしたサブカテゴリの詳細は&lt;a href=&#34;https://github.com/mrorii/cookbot/blob/3a69a97731ab838bf7f7d78e85f2b030d0b0aba6/cookbot/spiders/cookpad.py#L20-L52&#34;&gt;こちら&lt;/a&gt;にあります。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:detailedcategories&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b7a6b9d99d548cef0e34b0d089dfc6c5:categ&#34;&gt;後述しますが、&lt;a href=&#34;http://cookpad.typepad.jp/help/2008/06/post-4b84.html&#34;&gt;Cookpadに投稿されるレシピは必ずしもカテゴリに割り振られるわけではない&lt;/a&gt;ので、カテゴリを素性として使ってしまうと、「カテゴリ入りしたレシピはつくれぽが多くつく」という当たり前の結果になってしまうので取り除きました。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:categ&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b7a6b9d99d548cef0e34b0d089dfc6c5:advice&#34;&gt;レシピのコツと生い立ちを使うと素性の数が爆発的に増えメモリを大量に消費する上、精度が全く変わらなかったので取り除きました。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:advice&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b7a6b9d99d548cef0e34b0d089dfc6c5:l1&#34;&gt;&lt;a href=&#34;http://blog.unnono.net/2011/03/l10.html&#34;&gt;L1正則化を使うと重みが0につぶれる&lt;/a&gt;ので、必ずしもクラスとの相関性が大きい素性が特定されるわけではないことに注意。例えば2つの素性が相関している場合、両方ともクラスとの相関性が大きいとしてもそのうちの1つは0につぶされる可能性があります。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:l1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b7a6b9d99d548cef0e34b0d089dfc6c5:stopword&#34;&gt;なお、予備実験において「話題」「感謝」などの単語の重みが上位にきていたので、それらはstopwordにしておきました。これは、つくれぽが数多く掲載されるとそのレシピを投稿したユーザが紹介文を以下のように更新することがあるからです：「つくれぽを2000件以上頂きました。ありがとうございます」、「話題入り1000人！感謝☆」、「祝！100人の方に作ってもらいました」。本来であれば、レシピが投稿された時点の紹介文を使いたいのですが、レシピの履歴は公開されていないのでこれらの単語をstopwordにするのが妥当でしょう。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:stopword&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b7a6b9d99d548cef0e34b0d089dfc6c5:recipe&#34;&gt;ある特定の&lt;strong&gt;料理&lt;/strong&gt;を作るためには複数の&lt;strong&gt;レシピ&lt;/strong&gt;が存在します。例えば「カレー」という料理を作るには、「佐藤さんの夏野菜を使ったタイ風カレー」「山田君のオーソドックスなカレー」「村上さんの涙が出るほど超激辛なカレー」など複数のレシピが考えられます。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:recipe&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:b7a6b9d99d548cef0e34b0d089dfc6c5:causality&#34;&gt;2013/08/03 追記：厳密には、「つくれぽが数多くついているレシピはこういう書き方をしているからといって、こういう書き方をするとつくれぽが多くつくわけ」ではありません。因果関係が逆です。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:causality&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Finding jatbar&#39;s Jason and Terry on Yelp</title>
+      <link>http://mrorii.github.io/blog/2013/07/06/finding-jatbars-jason-and-terry-on-yelp/</link>
+      <pubDate>Sat, 06 Jul 2013 00:00:00 -0800</pubDate>
+      
+      <guid>http://mrorii.github.io/blog/2013/07/06/finding-jatbars-jason-and-terry-on-yelp/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://www.jatbar.com/&#34;&gt;jatbar&lt;/a&gt; was a legendary indie restaurant review site for the Bay Area,
+operated by Jason and Terry from 2004 to 2009.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/jatbar/jatbar.png&#34; title=&#34;Screenshot of jatbar (courtesy of the Internet Archive)&#34; alt=&#34;Screenshot of jatbar (courtesy of the Internet Archive)&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Back then, Yelp was still not in full bloom,
+and being a high school student, it was hard for me to find good restaurants in the Bay Area.
+Thus, jatbar was my go-to source for finding good eats.
+It was through jatbar that I was introduced to the carnitas at
+&lt;a href=&#34;http://web.archive.org/web/20100128081429/http://www.jatbar.com/reviews/Mountain_View/Taqueria_La_Bamba.asp&#34;&gt;La Bamba&lt;/a&gt;,
+the falafel at &lt;a href=&#34;http://web.archive.org/web/20100923215950/http://jatbar.com/reviews/San_Jose/Falafel_Drive_In.asp&#34;&gt;Falafel&amp;rsquo;s Drive In&lt;/a&gt;,
+and the pumpkin seed pesto chicken at &lt;a href=&#34;http://web.archive.org/web/20091227184153/http://www.jatbar.com/reviews/San_Jose/Yung_Les_Fusion_(Closed).asp&#34;&gt;Yung Le&amp;rsquo;s Fusion&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, the website was shut down circa 2009.&lt;/p&gt;
+
+&lt;p&gt;I wondered if Jason and Terry have been secretly writing reviews on Yelp since then.
+I decided to check this out, using author identification (also known as authorship attribution).
+We&amp;rsquo;ll use basic machine learning techniques to learn models to distinguish
+whether a review is written by Jason or Terry.&lt;/p&gt;
+
+&lt;p&gt;The entire code for this is available at &lt;a href=&#34;https://github.com/mrorii/findjatbar&#34;&gt;https://github.com/mrorii/findjatbar&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;methods:87d1a42e007c2cf2e6cbecb83841afdd&#34;&gt;Methods&lt;/h3&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the entire workflow of the task:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Retrieve Jason and Terry&amp;rsquo;s reviews for the 1,035 restaurants that are on jatbar. These reviews will be considered as positive examples for training.&lt;/li&gt;
+&lt;li&gt;Retrieve Yelp reviews for the same 1,035 restaurants. We can probably assume that Jason and Terry wouldn&amp;rsquo;t have written reviews on Yelp for the restaurants they have covered on jatbar, so we&amp;rsquo;ll consider these reviews as negative examples for training.&lt;/li&gt;
+&lt;li&gt;Using reviews from steps 1 and 2, learn a model using some binary classifier.&lt;/li&gt;
+&lt;li&gt;Retrieve reviews from Yelp for restaurants that are not included in the 1,035 that are on jatbar, and test to see if the model predicts any of the reviews as written by Jason or Terry.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a schematic showing the workflow:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/jatbar/workflow.png&#34; title=&#34;Schematic of the Workflow&#34; alt=&#34;Schematic of the Workflow&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;For the model, I use a simple Logistic Regression classifier from the excellent
+&lt;a href=&#34;http://scikit-learn.org/&#34;&gt;scikit-learn&lt;/a&gt; library.
+I chose to use the L1 norm, as it drives most of the feature weights to zero,
+making the model more compact and easily interpretable&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:87d1a42e007c2cf2e6cbecb83841afdd:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:87d1a42e007c2cf2e6cbecb83841afdd:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;For features, I use &lt;em&gt;n&lt;/em&gt;-grams of the reviews, considering unigrams, bigrams, and trigrams.
+I only include feature instances that occurred in at least 3 reviews in the training set.&lt;/p&gt;
+
+&lt;h3 id=&#34;results:87d1a42e007c2cf2e6cbecb83841afdd&#34;&gt;Results&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s look at the results.
+We consider 2 tasks:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Classifying whether a review is written by Jason&lt;/li&gt;
+&lt;li&gt;Classifying whether a review is written by Terry&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;classifying-jason-s-reviews:87d1a42e007c2cf2e6cbecb83841afdd&#34;&gt;Classifying Jason&amp;rsquo;s reviews&lt;/h4&gt;
+
+&lt;p&gt;We get excellent classification results for Jason, with an F1 score of 0.966 on the test set.
+This is surprising, considering the simplicity of both the method and features.
+The confusion matrix for the test set looks like the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;              |  Predicted    
+              |  Neg    Pos
+-----------------------------
+ Actual  Neg  |   3977    3  
+         Pos  |      4   87  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Out of the 3980 Yelp reviews, only 3 reviews are incorrectly classified as
+being written by Jason, while 87 of the 91 reviews that were written by Jason were
+correctly classified as being positive.&lt;/p&gt;
+
+&lt;p&gt;Just for reference, here is a plot of the precision-recall curve:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/jatbar/pr-jason.png&#34; width=600 height=450 title=&#34;Precision-recall curve for Jason&#34; alt=&#34;Precision-recall curve for Jason&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s a pretty darn good-looking PR curve.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s now look at the weights of the resulting model.
+The following shows lists of the 30 features that had the largest and smallest weights:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Largest weights                       Smallest weights
+----------------------                ---------------------
+ 1: word review  6.657                 1: however    -2.784
+ 2: terry        6.516                 2: star       -2.572
+ 3: score        4.526                 3: delicious  -2.474
+ 4: overdue      4.500                 4: actually   -2.209
+ 5: spicey       4.236                 5: great      -2.080
+ 6: ingrediants  3.695                 6: the        -1.888
+ 7: descent      3.470                 7: stars      -1.850
+ 8: serves       3.377                 8: two        -1.846
+ 9: damm         3.227                 9: take out   -1.817
+10: rated        3.045                10: a few      -1.749
+11: ive had      2.983                11: soon       -1.706
+12: flakey       2.979                12: really     -1.679
+13: picture      2.974                13: then       -1.672
+14: shrimps      2.970                14: and        -1.533
+15: steep for    2.935                15: as well    -1.529
+16: beef is      2.896                16: pho        -1.491
+17: its my       2.893                17: quality    -1.477
+18: roll and     2.889                18: service    -1.475
+19: dont         2.848                19: yum        -1.417
+20: wasnt        2.844                20: here       -1.416
+21: isnt         2.728                21: party      -1.400
+22: bargain      2.703                22: it is      -1.398
+23: recall       2.674                23: though     -1.374
+24: weak         2.640                24: first      -1.325
+25: jatbar       2.590                25: is not     -1.316
+26: nine         2.552                26: spot       -1.303
+27: and prices   2.549                27: at all     -1.297
+28: rate         2.475                28: decent     -1.277
+29: firm         2.472                29: few        -1.270
+30: visit        2.439                30: perhaps    -1.267
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Other than the obvious keywords such as &amp;ldquo;terry&amp;rdquo; and &amp;ldquo;jatbar&amp;rdquo;,
+we see that Jason cares about prices (&amp;ldquo;steep for&amp;rdquo;, &amp;ldquo;bargain&amp;rdquo;, and &amp;ldquo;and prices&amp;rdquo;).
+As expected, we see terms such as &amp;ldquo;beef is&amp;rdquo; and &amp;ldquo;shrimp&amp;rdquo; having
+large positive weights&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:87d1a42e007c2cf2e6cbecb83841afdd:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:87d1a42e007c2cf2e6cbecb83841afdd:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.
+Also, we see that compared to the average Yelp user, Jason
+uses fewer mundane terms to describe the food, such as &amp;ldquo;delicious&amp;rdquo; and &amp;ldquo;yum&amp;rdquo;.&lt;/p&gt;
+
+&lt;h4 id=&#34;classifying-terry-s-reviews:87d1a42e007c2cf2e6cbecb83841afdd&#34;&gt;Classifying Terry&amp;rsquo;s reviews&lt;/h4&gt;
+
+&lt;p&gt;The F1 score for Terry&amp;rsquo;s reviews was 0.917.
+The confusion matrix for the test set looks like the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;              |  Predicted    
+              |  Neg    Pos
+-----------------------------
+ Actual  Neg  |   3999    3  
+         Pos  |      8   61  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We see that it is a bit more difficult to classify Terry&amp;rsquo;s reviews,
+but the numbers are still good.&lt;/p&gt;
+
+&lt;p&gt;Here is a plot of the precision-recall curve for Terry:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/jatbar/pr-terry.png&#34; width=600 height=450 title=&#34;Precision-recall curve for Terry&#34; alt=&#34;Precision-recall curve for Terry&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The following shows lists of the 30 features that had the largest and smallest weights
+for Terry:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Largest weights                       Smallest weights
+------------------------------        ----------------------
+ 1: grays                6.457         1: it&#39;s        -3.908
+ 2: is coming            6.186         2: love        -3.026
+ 3: jason                5.223         3: ive         -2.391
+ 4: i will make          4.576         4: stars       -2.372
+ 5: nyc                  4.047         5: friend      -2.229
+ 6: the cheese           3.542         6: loved       -2.051
+ 7: fresh tasting        3.379         7: dont        -2.032
+ 8: jatbar               3.371         8: although    -1.882
+ 9: appeal to            3.309         9: yelp        -1.831
+10: offerings            3.256        10: cooked      -1.789
+11: california rolls     2.866        11: the         -1.728
+12: the cheese sandwich  2.853        12: didnt       -1.658
+13: there so             2.826        13: chicken     -1.647
+14: to sample            2.782        14: that&#39;s      -1.589
+15: gave a               2.775        15: night       -1.559
+16: prices were          2.742        16: star        -1.517
+17: vegetables           2.728        17: like it     -1.500
+18: its                  2.687        18: i&#39;m         -1.490
+19: wishlist             2.580        19: staff       -1.487
+20: late but             2.525        20: reasonable  -1.471
+21: arrived quickly      2.465        21: okay        -1.451
+22: among the            2.457        22: parking     -1.408
+23: vegetarian i         2.417        23: heavy       -1.393
+24: sampled              2.371        24: use         -1.377
+25: the vegetarian       2.363        25: come        -1.359
+26: the grill            2.299        26: and         -1.342
+27: refreshing           2.275        27: options     -1.302
+28: prepared to          2.265        28: decor       -1.292
+29: me away              2.252        29: wasnt       -1.283
+30: blow me              2.198        30: great       -1.250
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We see that the words &amp;ldquo;vegetable&amp;rdquo; and &amp;ldquo;vegetarian&amp;rdquo; appear often.
+It turns out that Terry is a semi-vegetarian.
+(His self-introduction on jatbar&amp;rsquo;s
+&lt;a href=&#34;http://web.archive.org/web/20100425054855/http://www.jatbar.com/about.asp&#34;&gt;About page&lt;/a&gt;
+mentions &amp;ldquo;Representing Northern California and vegetarians&amp;rdquo;).
+Similarly, the word &amp;ldquo;cheese&amp;rdquo;  appears often, which is also confirmed on his
+self-introduction (&amp;ldquo;Main staple of diet is the veggie burrito and sliced cheese pizza&amp;rdquo;).
+The word &amp;ldquo;grays&amp;rdquo; refers to &lt;a href=&#34;http://en.wikipedia.org/wiki/Gray&#39;s_Papaya&#34;&gt;Gray&amp;rsquo;s Papaya&lt;/a&gt;,
+which is a hot dog restaurant in West Manhattan, famous for their
+inexpensive, high-quality hot dogs.&lt;/p&gt;
+
+&lt;p&gt;For both models, we see that words like &amp;ldquo;service&amp;rdquo;, &amp;ldquo;decor&amp;rdquo;, &amp;ldquo;quality&amp;rdquo;, and &amp;ldquo;staff&amp;rdquo;
+have large negative weights.
+This means that Jason and Terry, compared to the average Yelp user,
+ doesn&amp;rsquo;t care about the &amp;ldquo;fluff&amp;rdquo; and (probably) cares more about the food itself.&lt;/p&gt;
+
+&lt;h3 id=&#34;so-were-jason-and-terry-on-yelp:87d1a42e007c2cf2e6cbecb83841afdd&#34;&gt;So, were Jason and Terry on Yelp?&lt;/h3&gt;
+
+&lt;p&gt;Finally, let&amp;rsquo;s see if Jason and Terry are actually on Yelp.
+We take our best-performing model on the test set
+and apply it on Yelp reviews for restaurants that are not covered by jatbar.
+If a review is classified as positive, we suspect that it
+may be written by Jason or Terry.&lt;/p&gt;
+
+&lt;p&gt;Ideally, we would want to run the classifier on reviews for all of the
+restaurants in the Bay Area, but that is not realistic considering the
+number of reviews on Yelp.
+Thus, I decided to limit the search space by
+only looking at reviews of restaurants located
+near Santa Clara County
+that are related to &amp;ldquo;Burrito&amp;rdquo;,
+considering how much Jason loves burritos.
+(The full list of cities considered is available
+&lt;a href=&#34;https://github.com/mrorii/findjatbar/blob/master/locations.txt&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Out of the 10,807 reviews that satisfied these conditions,
+our model predicted that 6 of them were written by Jason.
+Let&amp;rsquo;s look at each of them below:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;taqueria nite in the east side of san jose should sound good/authentic/tasty&amp;hellip;.veenie had that huge/tasty nachos&amp;hellip;.i had three tacos with a side of rice/sour creme&amp;hellip;.i requested hard shell but they served it to me on the soft side of thangs&amp;hellip;.even tho we dined in~the only cool part was the drive thru~ive been to alot of moms/pops taquerias in my life time but has never seen one like this with a drive thru&amp;hellip;i jus dont see myself stumbling into this place on a drunken stooper @  2am in the morn&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Jason would never write &amp;ldquo;nite&amp;rdquo;. Next review.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;didnt like the extremly salty chips and u dont even get that many plus they tasted kinda soggyish and stale i didnt like it the burrito wasnt that big it was about average ive had bigger burritos than that plus was close to 9$ for the burrito and chips what a rip off.. cashier wasnt very friendly either it was more like ok heres your burrito here u go by (since i ordered it online) dang burrito didnt even fill me up i coulda gotten a bigger burrito from one of those tacos trucks for alot cheaper and it woulda filled me up&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Jason would never write &amp;ldquo;u&amp;rdquo;. Next review.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;UGH! or should I say YUCK.  Had the cheese Enchaladas and the cheese wasnt even melted. Still in the grated form. The sauce was weird tasting, and had unsual green peppers inside, i dont recall seeing that on the menu when I ordered. I didnt bother to finish it. The refried beans looked brick red, like it could of been used for building an adobe house.  The service was good, just wish the food followed suit. I have been here many, many times before and seems like its starting or already has declined. It wasnt just me, the wife had the flautas, she didnt care for ithem either. Probably wont be going back for quite awhile until I hear form someone else that they are good again.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I can kind of imagine Jason writing this.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Finally an authentic mexican restaurant in the bay area!!! I have search high and low and have finally found one. Its sad to say but I need to avoid most of the yelp reviews of what people consider &amp;ldquo;authentic&amp;rdquo;. Chipotle and Chevys are not authentic and for the most part the yelp recommendations usually taste along those lines. But this place is the real deal.  I ordered a chile relleno and enchilada combo. It didnt taste like the bomb but is a huge step above what the other mexican places around the bay taste like. I also like the cabbage salad (?) that came with it.  It sorta reminded me of the cabbage they serve you when you order papusa. And I didnt even have to ask for some additional tortillas to eat my meal with, they just brought it out. My friend order the pasole and it came in a huge bowl. I almost wished I ate meat so I coulda tried it because it looked so good. His came with a bunch of tostadas and an extra plate full of frest lemons, cabbage, and onions so he could add it to his pasole.  Im sure the decor and look of the place will automatically make people pass this place up. But if you want some real mexican food you should give this place a try.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Jason loves eating meat. This guy is definitely not him.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Ordered a Carne Asada Super Burrito. I thought Carne Asada was grilled steak? This tasted like burnt ground beef or Crunchy burnt meat of some kind. By far THE WORST burrito Ive had in years!  Oh, the Horchata had no taste&amp;hellip;Its supposed to be sweet. This tasted just like how it looked. One last thing, chips. Most places give you some chips with your burrito. Not this place.  Carne Asada Super burrito + Horchata-Chips=$10+ You do the math&amp;hellip;Sorry Taqueria Azteca. No Mas!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I can see Jason writing a sarcastic review like this one.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Let me start off by saying two of my friends have been eating there almost every day! and they love it so much they got it tatted on their arms. if you do go look at the picture by the counter where you order. I go there whenever I am hungry and dont have to work. so maybe 3 times a week. Its easy to get to know Henry he is one of the funniest and friendliest guys you will ever meet. If you have never been  GO!  you will soon be apart of the jalisco family  and if you havent met henry you havent had the true jalisco experience.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This many words, and not a single thing about the food. This is definitely not Jason.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s possible that Jason could have written these 2 of the 6 reviews.
+However, if you do a quick Google search on these 2 reviews,
+you can see pretty easily that the 2 Yelp users who wrote them
+do not match Jason&amp;rsquo;s profile. The results were similar for Terry.&lt;/p&gt;
+
+&lt;p&gt;It looks like Jason and Terry have truly fallen under the radar.
+Let&amp;rsquo;s hope that the real jatbar comes back soon.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;center&#34; src=&#34;http://mrorii.github.io/images/la-bamba.jpg&#34; title=&#34;All Hail Taqueria La Bamba&#34; alt=&#34;All Hail Taqueria La Bamba&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Image courtesy of &lt;a href=&#34;http://www.flickr.com/photos/eekim/416192948/&#34;&gt;Eugene Kim&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:87d1a42e007c2cf2e6cbecb83841afdd:1&#34;&gt;However, we also need to keep in mind that the L1 norm does NOT necessarily identify features that are truly indicative of the label.  For example, if 2 features are highly correlated, one of the corresponding weights will be driven to zero, even if both features are predictive.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:87d1a42e007c2cf2e6cbecb83841afdd:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:87d1a42e007c2cf2e6cbecb83841afdd:2&#34;&gt;Jason loves eating meat (and seafood). For example, jatbar has thrown a &lt;a href=&#34;http://web.archive.org/web/20100126063203/http://www.jatbar.com/shootout/shoot_intro.asp&#34;&gt;Carnitas shootout&lt;/a&gt; in order to decide which taqueria in the Bay Area serves the best carnitas.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:87d1a42e007c2cf2e6cbecb83841afdd:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

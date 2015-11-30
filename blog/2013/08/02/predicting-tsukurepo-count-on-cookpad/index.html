@@ -1,146 +1,84 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Cookpadのつくれぽ数を予測する - Naoki Orii&#8217;s blog</title>
-  <meta name="author" content="Naoki Orii">
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#"><!--<![endif]-->
 
-  
-  <meta name="description" content="「食と機械学習」のコラボレーションをできないかと最近常々考えています。例えば、「地球上に存在する全ての料理本を何らかのアルゴリズムに入力し、人間にとって『美味しい』レシピとはどういう特徴を持つかを学習し、今まで人類が食べたことのないような斬新なレシピを自動生成する」 &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Naoki Orii's blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
-<!--- MathJax Configuration -->
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-42259877-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Naoki Orii&#8217;s blog</a></h1>
-  
-    <h2>Food, Programming, and Language</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
-  
-</ul>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+    <head>
+                <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="author" content="Naoki Orii">
+        <meta name="keywords" content="awesome, definitely">
+	
+        <meta property="og:site_name" content="Naoki Orii&#39;s blog">
+        <meta property="og:title" content="Naoki Orii&#39;s blog">
+        <meta property="og:url" content="http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/">
+        <meta property="og:description" content="Food, Programming, and Language">
     
-      <form action="http://google.com/search" method="get">
-        <fieldset role="search">
-          <input type="hidden" name="sitesearch" value="mrorii.github.io" />
+        <meta property="og:type" content="article" />
+        <meta property="og:article:author" content="Naoki Orii" />
+        <meta property="og:article:published_time" content="2013-08-02T00:00:00-08:00" />
     
-          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-        </fieldset>
-      </form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/about">About</a></li>
-</ul>
+        <meta name="generator" content="Hugo 0.14" />
+        <title>Cookpadのつくれぽ数を予測する &middot; Naoki Orii&#39;s blog </title>
+        <link rel="canonical" href="http://mrorii.github.io" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="">
+        <link rel="stylesheet" type='text/css' href="http://mrorii.github.iocss/main.css"/>
+        <link rel="stylesheet" type='text/css' href="http://mrorii.github.iocss/custom.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300|Montserrat:700' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    </head>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      
-        <h1 class="entry-title">Cookpadのつくれぽ数を予測する</h1>
-      
-    
-    
-      <p class="meta">
+<body>
+<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install Google Chrome</a> to experience this site.</p><![endif]-->
+
+    <header id="site-header">
+        <div class="container">
+            <a href="http://mrorii.github.io" alt="Naoki Orii&#39;s blog"><h1 class="blog-title heading">Naoki Orii&#39;s blog</h1></a>
+            <p class="blog-description">Food, Programming, and Language</p>
+        </div>
+    </header>
+<main class="content" role="main">
+	<div class="container">
+		<article class="post">
+	<header class="post-header">
+        <h3 class="p-post-title">Cookpadのつくれぽ数を予測する</h3>
+    </header>
+
+    <section class="post-content">
         
 
+<p>「食と機械学習」のコラボレーションをできないかと最近常々考えています。例えば、「地球上に存在する全ての料理本を何らかのアルゴリズムに入力し、人間にとって『美味しい』レシピとはどういう特徴を持つかを学習し、今まで人類が食べたことのないような斬新なレシピを自動生成する」ことが出来たとしたら素晴らしいとは思いませんか？</p>
 
-
-
-<time class='entry-date' datetime='2013-08-02T16:49:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>4:49 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>「食と機械学習」のコラボレーションをできないかと最近常々考えています。例えば、「地球上に存在する全ての料理本を何らかのアルゴリズムに入力し、人間にとって『美味しい』レシピとはどういう特徴を持つかを学習し、今まで人類が食べたことのないような斬新なレシピを自動生成する」ことが出来たとしたら素晴らしいとは思いませんか？</p>
-
-<p><img class="center" src="/images/cookpad/tart.jpg"></p>
+<p><img class="center" src="http://mrorii.github.io/images/cookpad/tart.jpg"></p>
 
 <p>レシピの自動生成はさすがに難しそうなので、今回は<strong>人気になるレシピに共通する特徴は何か</strong>という問いに答えることを目標とします。具体的には、<a href="http://cookpad.com/">Cookpad</a>のレシピが与えられたとして、そのつくれぽ数を予測する問題に挑戦してみます。レシピが人気になるか否かの要因としては、どういう材料を使用するか、レシピがどれだけ健康的か、またどれだけ手軽に調理できるかなど様々な要因が考えられますが、今回特に興味があるのはレシピの名前や紹介文などの文章の言葉遣いがそのレシピの人気度にどのような影響を及ぼすかです。Cookpadのまとめサイトらを眺めてみると、<a href="http://cookpad.com/recipe/450372">食べ過ぎ注意☆鶏肉のねぎマヨポン炒め</a>や<a href="http://cookpad.com/recipe/903352">極ウマ♡海老のトマトクリームライス</a>など、レシピ名を一瞥しただけで腹が減ってきそうなものがありますが、これらのレシピに共通する特徴は何でしょうか。</p>
 
-<!-- more -->
+<h3 id="データ:b7a6b9d99d548cef0e34b0d089dfc6c5">データ</h3>
 
-
-<h2>データ</h2>
-
-<p>2013年8月1日から3日にかけてCookpadから72,330件のレシピをクロールしました。これらのレシピは、<a href="http://cookpad.com/category/list">Cookpadのレシピカテゴリ</a>の「きょうの料理」以下に当たる全15個のサブカテゴリ、また「お菓子」以下に当たる18個のサブカテゴリに含まれるものです<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。</p>
+<p>2013年8月1日から3日にかけてCookpadから72,330件のレシピをクロールしました。これらのレシピは、<a href="http://cookpad.com/category/list">Cookpadのレシピカテゴリ</a>の「きょうの料理」以下に当たる全15個のサブカテゴリ、また「お菓子」以下に当たる18個のサブカテゴリに含まれるものです<sup class="footnote-ref" id="fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:detailedcategories"><a rel="footnote" href="#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:detailedcategories">1</a></sup>。</p>
 
 <p>これらのレシピのつくれぽ数の分布を図で見ると以下のような典型的なべき乗分布になります:</p>
 
-<p><img class="center" src="/images/cookpad/tsukurepo_counts.png"></p>
+<p><img class="center" src="http://mrorii.github.io/images/cookpad/tsukurepo_counts.png"></p>
 
 <p>およそ2万件のレシピは1つもつくれぽが投稿されていません。ちなみに、このデータに含まれるレシピのうち最も多くのつくれぽがついているものは<a href="http://cookpad.com/recipe/375604">こちら</a>です。このレシピを投稿したユーザの凄いところは12,000件以上のつくれぽに対し、紋切り型のお礼ではなく一つ一つ丁寧に返事を書いているところです。例えば2番目と3番目に多くのつくれぽがついている<a href="http://cookpad.com/recipe/399656">こちら</a>と<a href="http://cookpad.com/recipe/291192">こちら</a>のレシピでは毎回同じ返信をしています。</p>
 
-<h2>問題の定式化</h2>
+<h3 id="問題の定式化:b7a6b9d99d548cef0e34b0d089dfc6c5">問題の定式化</h3>
 
 <p>つくれぽ数に閾値を定め、ある一定数以上のつくれぽがついたレシピを正クラス、それ未満のものを負クラスとすれば、二値分類問題に帰着できます。</p>
 
-<h2>手法</h2>
+<h3 id="手法:b7a6b9d99d548cef0e34b0d089dfc6c5">手法</h3>
 
 <p>一般化線形モデル（ロジスティック回帰）を使用し、モデルをコンパクトにするためにL1ノルム正則化を適用します。</p>
 
-<h3>素性</h3>
+<h4 id="素性:b7a6b9d99d548cef0e34b0d089dfc6c5">素性</h4>
 
 <p>分類するための特徴・素性として以下のものを使用しました。
 大きく分けて「メタデータに関する素性」と「テキストに関する素性」の２つに分けられます。</p>
@@ -153,24 +91,21 @@
 <li>手順写真の有無</li>
 <li>投稿したユーザ</li>
 <li>材料</li>
-<li><del>レシピが含まれるカテゴリ</del><sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup></li>
-</ul>
-</li>
+<li><del>レシピが含まれるカテゴリ</del><sup class="footnote-ref" id="fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:categ"><a rel="footnote" href="#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:categ">2</a></sup></li>
+</ul></li>
 <li>テキストに関する素性：
 
 <ul>
 <li>レシピのタイトル</li>
 <li>レシピの紹介文</li>
-<li><del>レシピのコツ・ポイント</del><sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup></li>
+<li><del>レシピのコツ・ポイント</del><sup class="footnote-ref" id="fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:advice"><a rel="footnote" href="#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:advice">3</a></sup></li>
 <li><del>レシピの生い立ち</del></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-
 
 <p>これらの素性をCookpadのレシピページ上で示したものが次の図です：</p>
 
-<p><img class="center" src="/images/cookpad/recipe.png"></p>
+<p><img class="center" src="http://mrorii.github.io/images/cookpad/recipe.png"></p>
 
 <p>材料は、「醤油」一つを例にとっても</p>
 
@@ -184,39 +119,38 @@
 <li>☆<strong>醤油</strong></li>
 </ul>
 
-
 <p>など表記に揺らぎがあるため、特殊記号を削除、括弧やその中に含まれる文字列を削除、任意性を表す「あれば」や「お好みで」を削除、読点や「又は」で文字列を分割、仮名を平仮名に統一など必要最低限の前処理をしています。</p>
 
 <p>テキストに関しては分かち書きをした後、unigram・bigram・trigramを素性として使います。</p>
 
 <p>素性値はメタデータ・テキストのどちらにも関わらず、二値ベクトルとして扱っています。訓練データの0.2%未満、もしくは99.8%以上のレシピに出現する素性はpruneしてあります。</p>
 
-<h2>評価実験</h2>
+<h3 id="評価実験:b7a6b9d99d548cef0e34b0d089dfc6c5">評価実験</h3>
 
 <p>レシピを投稿してからつくれぽが掲載されるまである程度の時間がかかると思われるため、投稿してから3ヶ月未満のレシピはデータから除外します。上記の72,330件のレシピのうち、投稿されてから3ヶ月以上経過していた70,724件の70%を訓練データ、20%を開発データ、10%を評価データに分けました。開発データで正則化パラメータを選びます。</p>
 
 <p>クラス分けのために使われるつくれぽ数の閾値は1、5、10、20件に設定します。
 閾値によってはクラスのサンプル数が不均衡になるため、訓練・開発・評価データをstratifiedにしました。また同様の理由で、評価指標としては分類正解率ではなくF値を用います。</p>
 
-<h3>実験結果</h3>
+<h4 id="実験結果:b7a6b9d99d548cef0e34b0d089dfc6c5">実験結果</h4>
 
 <p>評価データのF値は以下のようになりました：</p>
 
-<p><img class="center" src="/images/cookpad/chart.png"></p>
+<p><img class="center" src="http://mrorii.github.io/images/cookpad/chart.png"></p>
 
 <p>上2段は正クラスと負クラスのサンプル数を示しています。
 下2段の上段・下段はそれぞれ、メタデータに関する素性のみを用いたときのF値と、メタデータ＋テキストの両方に関する素性を用いた時のF値を示します。</p>
 
 <p>テキストに関する素性を使うことにより、メタデータのみを使った場合よりもF値が10%ほど向上することが確認できます。</p>
 
-<h3>素性の重みを見てみる</h3>
+<h4 id="素性の重みを見てみる:b7a6b9d99d548cef0e34b0d089dfc6c5">素性の重みを見てみる</h4>
 
-<p>学習によって得られた素性の重みが大きければ大きいほど、該当する単語が文章に含まれていたり該当する材料が含まれていたりすると、レシピにつくれぽが投稿されやすいということを表します<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup>。逆に、重みが負であるほど、そのレシピにつくれぽが投稿されにくいことを表します。</p>
+<p>学習によって得られた素性の重みが大きければ大きいほど、該当する単語が文章に含まれていたり該当する材料が含まれていたりすると、レシピにつくれぽが投稿されやすいということを表します<sup class="footnote-ref" id="fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:l1"><a rel="footnote" href="#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:l1">4</a></sup>。逆に、重みが負であるほど、そのレシピにつくれぽが投稿されにくいことを表します。</p>
 
 <p>以下の結果は全て閾値を5、素性にはメタデータ＋テキストの両方を使用したものです。
 素性のカテゴリごとに見ていきます。</p>
 
-<h4>投稿したユーザ</h4>
+<h5 id="投稿したユーザ:b7a6b9d99d548cef0e34b0d089dfc6c5">投稿したユーザ</h5>
 
 <p>学習によって得られた素性の重みを調べてみます。重みが正のもの（の一部）はこちら：</p>
 
@@ -237,10 +171,9 @@
 <li><a href="http://cookpad.com/kitchen/252604">http://cookpad.com/kitchen/252604</a></li>
 </ul>
 
-
 <p>確かにどのユーザのレシピも色鮮やかで、すきっ腹のときに眺めるのは苦行です。</p>
 
-<h4>レシピのタイトル</h4>
+<h5 id="レシピのタイトル:b7a6b9d99d548cef0e34b0d089dfc6c5">レシピのタイトル</h5>
 
 <pre><code>0.4372  text:title:1:✿
 0.3139  text:title:1:♡
@@ -260,7 +193,7 @@
 
 <p>いかにも女子力が高そうな✿♡❤♪などの記号が目立ちます。</p>
 
-<h4>レシピの紹介文</h4>
+<h5 id="レシピの紹介文:b7a6b9d99d548cef0e34b0d089dfc6c5">レシピの紹介文</h5>
 
 <pre><code>0.6908  text:desc:1:✿
 0.6223  text:desc:1:♡
@@ -278,9 +211,9 @@
 0.1663  text:desc:1:サクサク
 </code></pre>
 
-<p>レシピのタイトルと同様、記号が数多く並びます<sup id="fnref:5"><a href="#fn:5" rel="footnote">5</a></sup>。</p>
+<p>レシピのタイトルと同様、記号が数多く並びます<sup class="footnote-ref" id="fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:stopword"><a rel="footnote" href="#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:stopword">5</a></sup>。</p>
 
-<h4>材料</h4>
+<h5 id="材料:b7a6b9d99d548cef0e34b0d089dfc6c5">材料</h5>
 
 <pre><code>0.2793  meta:ingr:まよねーず
 0.2176  meta:ingr:砂糖
@@ -309,9 +242,9 @@
 
 <p>好き嫌いが分かれそうな野菜だらけです。昨年ブレイクした塩麹ですが、意外と<a href="http://komachi.yomiuri.co.jp/t/2012/0108/473766.htm">苦手な人もいる</a>みたいです。</p>
 
-<h3>ケーススタディー</h3>
+<h4 id="ケーススタディー:b7a6b9d99d548cef0e34b0d089dfc6c5">ケーススタディー</h4>
 
-<p>ここまではマクロな視点で、Cookpadの（ほぼ）全てのカテゴリに含まれるレシピに対してモデルを適用してきました。しかし、これでは「サバの味噌煮と鮭のエスカベッシュのどちらが人気か」という<strong>料理</strong>同士の比較になりかねません。しかし今回の本来の目的は、人気になる<strong>レシピ</strong>に共通する特徴を把握することです<sup id="fnref:6"><a href="#fn:6" rel="footnote">6</a></sup>。
+<p>ここまではマクロな視点で、Cookpadの（ほぼ）全てのカテゴリに含まれるレシピに対してモデルを適用してきました。しかし、これでは「サバの味噌煮と鮭のエスカベッシュのどちらが人気か」という<strong>料理</strong>同士の比較になりかねません。しかし今回の本来の目的は、人気になる<strong>レシピ</strong>に共通する特徴を把握することです<sup class="footnote-ref" id="fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:recipe"><a rel="footnote" href="#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:recipe">6</a></sup>。
 特に、レシピの名前や紹介文などの言葉遣いが人気度にどういう影響を及ぼすかを調べたいのですが、データに雑多な料理が含まれていると「カレー」や「パウンドケーキ」などの料理名が強く出てしまい、語句に関する情報が埋もれてしまう可能性があります。</p>
 
 <p>また、これは上記の実験をした後から分かったことなのですが、Cookpadに投稿されたレシピは必ずしもカテゴリに割り振られるわけではなく、カテゴリ入りするにはユーザによって推薦されるかカテゴリマスターによってキュレートされる必要があります。このように、カテゴリ入りしたレシピにはあらかじめバイアスがかかっているので、
@@ -321,11 +254,11 @@
 
 <p>なお、これ以降の実験ではL1正則化を使用したらモデルがスパースになりすぎたのでL2正則化を使いました。つくれぽの閾値は1に設定してあります。</p>
 
-<h4>肉じゃが</h4>
+<h5 id="肉じゃが:b7a6b9d99d548cef0e34b0d089dfc6c5">肉じゃが</h5>
 
-<p><img class="center" src="/images/cookpad/nikujaga.jpg"></p>
+<p><img class="center" src="http://mrorii.github.io/images/cookpad/nikujaga.jpg"></p>
 
-<p><a href="http://cookpad.com/search/%E8%82%89%E3%81%98%E3%82%83%E3%81%8C">肉じゃが</a>で検索するとヒットする5,615件のレシピのうち、投稿されてから3ヶ月以上経過している5,349件のレシピを使います。<!-- つくれぽの閾値を1に設定すると2,221件のレシピが正クラス、3,128件が負クラスに分けられました。--></p>
+<p><a href="http://cookpad.com/search/%E8%82%89%E3%81%98%E3%82%83%E3%81%8C">肉じゃが</a>で検索するとヒットする5,615件のレシピのうち、投稿されてから3ヶ月以上経過している5,349件のレシピを使います。</p>
 
 <p>学習によって得られた素性の重みを調べてみます。重みが正のもの（の一部）はこちら：</p>
 
@@ -347,9 +280,9 @@
 
 <p>また、レシピ名に「レンジ」を含めるのも（少なくとも肉じゃがでは）薦められないようです。恐らくこれは<a href="https://www.quora.com/Chefs/What-do-professional-chefs-think-about-the-use-of-microwaves-to-cook-food?share=1">「ちゃんとした料理は電子レンジなんかで作るものじゃない」</a>という先入観があるからでしょう。逆にプリンなどのデザートの場合は、電子レンジを使うと簡単に作れるからか、<a href="http://cookpad.com/recipe/1351368/">このレシピ</a>のようにすごい数のつくれぽが掲載されているものもあります。</p>
 
-<h4>味噌汁</h4>
+<h5 id="味噌汁:b7a6b9d99d548cef0e34b0d089dfc6c5">味噌汁</h5>
 
-<p><img class="center" src="/images/cookpad/miso.jpg"></p>
+<p><img class="center" src="http://mrorii.github.io/images/cookpad/miso.jpg"></p>
 
 <p><a href="http://cookpad.com/search/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁</a>で検索するとヒットする7,344件のレシピのうち、投稿されてから3ヶ月以上経過している7,008件のレシピを使います。</p>
 
@@ -380,9 +313,9 @@
 
 <p>「残り物」と「リメイク」同様、「手抜き」と書くとつくれぽがつかないのに対し「簡単」と書くとつくれぽが投稿されやすくなるみたいです。また、離乳食もニッチなニーズと思いきや、10,000件以上の離乳食レシピがCookpadに投稿されています。</p>
 
-<h3>グラタン</h3>
+<h4 id="グラタン:b7a6b9d99d548cef0e34b0d089dfc6c5">グラタン</h4>
 
-<p><img class="center" src="/images/cookpad/gratin.jpg"></p>
+<p><img class="center" src="http://mrorii.github.io/images/cookpad/gratin.jpg"></p>
 
 <p><a href="http://cookpad.com/search/%E3%82%B0%E3%83%A9%E3%82%BF%E3%83%B3">グラタン</a>で検索するとヒットする16,012件のレシピのうち、投稿されてから3ヶ月以上経過している15,535件のレシピを使います。</p>
 
@@ -401,9 +334,9 @@
 
 <p>グラタンって面倒くさそうなイメージがやはりあるのでしょうか、「簡単」が数多く見られます。また、グラタンに豆腐というのも意外ですが、Cookpadに<a href="http://cookpad.com/category/424">豆腐グラタンというカテゴリ</a>が存在するほど浸透しているみたいです。</p>
 
-<h2>まとめ</h2>
+<h3 id="まとめ:b7a6b9d99d548cef0e34b0d089dfc6c5">まとめ</h3>
 
-<p>今回得られた知見としては、つくれぽが欲しければ「女子力が高そうな書き方をする」「負のコノテーションを持つ言葉を美化する」という至極もっともな結果になりました<sup id="fnref:7"><a href="#fn:7" rel="footnote">7</a></sup>。</p>
+<p>今回得られた知見としては、つくれぽが欲しければ「女子力が高そうな書き方をする」「負のコノテーションを持つ言葉を美化する」という至極もっともな結果になりました<sup class="footnote-ref" id="fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:causality"><a rel="footnote" href="#fn:b7a6b9d99d548cef0e34b0d089dfc6c5:causality">7</a></sup>。</p>
 
 <p>今後の展開としては、</p>
 
@@ -412,7 +345,6 @@
 <li>手順に含まれる調理法を考慮（e.g. 昆布でだしを取るのは面倒臭いので敬遠されがち）</li>
 <li>テキストの前処理をもっとしっかりする（e.g. MeCabに顔文字辞書や料理用語を追加）</li>
 </ul>
-
 
 <p>などが考えられます。</p>
 
@@ -425,28 +357,23 @@
 
 <ul>
 <li>レストランの口コミの文章だけからそこのメニューの価格を推定する</li>
-</ul>
-</li>
+</ul></li>
 <li><a href="http://www.aclweb.org/anthology-new/N/N10/N10-1038.pdf">Movie Reviews and Revenues: An Experiment in Text Regression</a>
 
 <ul>
 <li>映画評論家のレビューからその映画の公開週の観客動員数を予測</li>
-</ul>
-</li>
+</ul></li>
 <li><a href="http://www.aclweb.org/anthology-new/N/N12/N12-1097.pdf">Textual Predictors of Bill Survival in Congressional Committees</a>
 
 <ul>
 <li>米国連邦議会の法案が承認されるか否かをその法案の文章から予測</li>
-</ul>
-</li>
+</ul></li>
 <li><a href="http://www.aclweb.org/anthology-new/D/D11/D11-1055.pdf">Predicting a Scientiﬁc Community’s Response to an Article</a>
 
 <ul>
 <li>科学論文の被引用数をその論文の文章から予測</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-
 
 <p>興味がある人は是非参照してください。また、自然言語処理そのものに興味を持たれた方には、こちらの和書を推薦します:</p>
 
@@ -460,150 +387,142 @@
 
 <p>[Images courtesy of <a href="http://www.flickr.com/photos/justinwkern/3660714754/">justinwkern</a>, <a href="http://www.flickr.com/photos/ykjc9/3089327692/">ykjc9</a>, <a href="http://www.flickr.com/photos/gpeters/3196519924/">gpeters</a>, and <a href="http://www.flickr.com/photos/pelican/379175770/">pelican</a>]</p>
 <div class="footnotes">
-<hr/>
+
+<hr />
+
 <ol>
-<li id="fn:1">
-<p>クロールしたサブカテゴリの詳細は<a href="https://github.com/mrorii/cookbot/blob/3a69a97731ab838bf7f7d78e85f2b030d0b0aba6/cookbot/spiders/cookpad.py#L20-L52">こちら</a>にあります。<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
-<li id="fn:2">
-<p>後述しますが、<a href="http://cookpad.typepad.jp/help/2008/06/post-4b84.html">Cookpadに投稿されるレシピは必ずしもカテゴリに割り振られるわけではない</a>ので、カテゴリを素性として使ってしまうと、「カテゴリ入りしたレシピはつくれぽが多くつく」という当たり前の結果になってしまうので取り除きました。<a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
-<li id="fn:3">
-<p>レシピのコツと生い立ちを使うと素性の数が爆発的に増えメモリを大量に消費する上、精度が全く変わらなかったので取り除きました。<a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
-<li id="fn:4">
-<p><a href="http://blog.unnono.net/2011/03/l10.html">L1正則化を使うと重みが0につぶれる</a>ので、必ずしもクラスとの相関性が大きい素性が特定されるわけではないことに注意。例えば2つの素性が相関している場合、両方ともクラスとの相関性が大きいとしてもそのうちの1つは0につぶされる可能性があります。<a href="#fnref:4" rev="footnote">&#8617;</a></p></li>
-<li id="fn:5">
-<p>なお、予備実験において「話題」「感謝」などの単語の重みが上位にきていたので、それらはstopwordにしておきました。これは、つくれぽが数多く掲載されるとそのレシピを投稿したユーザが紹介文を以下のように更新することがあるからです：「つくれぽを2000件以上頂きました。ありがとうございます」、「話題入り1000人！感謝☆」、「祝！100人の方に作ってもらいました」。本来であれば、レシピが投稿された時点の紹介文を使いたいのですが、レシピの履歴は公開されていないのでこれらの単語をstopwordにするのが妥当でしょう。<a href="#fnref:5" rev="footnote">&#8617;</a></p></li>
-<li id="fn:6">
-<p>ある特定の<strong>料理</strong>を作るためには複数の<strong>レシピ</strong>が存在します。例えば「カレー」という料理を作るには、「佐藤さんの夏野菜を使ったタイ風カレー」「山田君のオーソドックスなカレー」「村上さんの涙が出るほど超激辛なカレー」など複数のレシピが考えられます。<a href="#fnref:6" rev="footnote">&#8617;</a></p></li>
-<li id="fn:7">
-<p>2013/08/03 追記：厳密には、「つくれぽが数多くついているレシピはこういう書き方をしているからといって、こういう書き方をするとつくれぽが多くつくわけ」ではありません。因果関係が逆です。<a href="#fnref:7" rev="footnote">&#8617;</a></p></li>
+<li id="fn:b7a6b9d99d548cef0e34b0d089dfc6c5:detailedcategories">クロールしたサブカテゴリの詳細は<a href="https://github.com/mrorii/cookbot/blob/3a69a97731ab838bf7f7d78e85f2b030d0b0aba6/cookbot/spiders/cookpad.py#L20-L52">こちら</a>にあります。
+ <a class="footnote-return" href="#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:detailedcategories"><sup>[return]</sup></a></li>
+<li id="fn:b7a6b9d99d548cef0e34b0d089dfc6c5:categ">後述しますが、<a href="http://cookpad.typepad.jp/help/2008/06/post-4b84.html">Cookpadに投稿されるレシピは必ずしもカテゴリに割り振られるわけではない</a>ので、カテゴリを素性として使ってしまうと、「カテゴリ入りしたレシピはつくれぽが多くつく」という当たり前の結果になってしまうので取り除きました。
+ <a class="footnote-return" href="#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:categ"><sup>[return]</sup></a></li>
+<li id="fn:b7a6b9d99d548cef0e34b0d089dfc6c5:advice">レシピのコツと生い立ちを使うと素性の数が爆発的に増えメモリを大量に消費する上、精度が全く変わらなかったので取り除きました。
+ <a class="footnote-return" href="#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:advice"><sup>[return]</sup></a></li>
+<li id="fn:b7a6b9d99d548cef0e34b0d089dfc6c5:l1"><a href="http://blog.unnono.net/2011/03/l10.html">L1正則化を使うと重みが0につぶれる</a>ので、必ずしもクラスとの相関性が大きい素性が特定されるわけではないことに注意。例えば2つの素性が相関している場合、両方ともクラスとの相関性が大きいとしてもそのうちの1つは0につぶされる可能性があります。
+ <a class="footnote-return" href="#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:l1"><sup>[return]</sup></a></li>
+<li id="fn:b7a6b9d99d548cef0e34b0d089dfc6c5:stopword">なお、予備実験において「話題」「感謝」などの単語の重みが上位にきていたので、それらはstopwordにしておきました。これは、つくれぽが数多く掲載されるとそのレシピを投稿したユーザが紹介文を以下のように更新することがあるからです：「つくれぽを2000件以上頂きました。ありがとうございます」、「話題入り1000人！感謝☆」、「祝！100人の方に作ってもらいました」。本来であれば、レシピが投稿された時点の紹介文を使いたいのですが、レシピの履歴は公開されていないのでこれらの単語をstopwordにするのが妥当でしょう。
+ <a class="footnote-return" href="#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:stopword"><sup>[return]</sup></a></li>
+<li id="fn:b7a6b9d99d548cef0e34b0d089dfc6c5:recipe">ある特定の<strong>料理</strong>を作るためには複数の<strong>レシピ</strong>が存在します。例えば「カレー」という料理を作るには、「佐藤さんの夏野菜を使ったタイ風カレー」「山田君のオーソドックスなカレー」「村上さんの涙が出るほど超激辛なカレー」など複数のレシピが考えられます。
+ <a class="footnote-return" href="#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:recipe"><sup>[return]</sup></a></li>
+<li id="fn:b7a6b9d99d548cef0e34b0d089dfc6c5:causality">2013/08/03 追記：厳密には、「つくれぽが数多くついているレシピはこういう書き方をしているからといって、こういう書き方をするとつくれぽが多くつくわけ」ではありません。因果関係が逆です。
+ <a class="footnote-return" href="#fnref:b7a6b9d99d548cef0e34b0d089dfc6c5:causality"><sup>[return]</sup></a></li>
 </ol>
 </div>
 
-</div>
+    </section>
 
+    <hr>
 
-  <footer>
-    <p class="meta">
-      
-  
+    <footer class="post-footer">
+        <section class="f-1">
+            
+            <section class="author">
+                <p>Written by Naoki Orii</p>
+            </section>
+            
+            
+            <p class="f-post-time"><time datetime="2013-08-02T00:00:00-08:00">August 2, 2013</time></p>
+        </section>
+                        
+        <section class="f-2">
+            <section class="share">
+                <ul class="social">
 
+                    
+                    <li>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
 
+                        <div class="fb-like" data-href="http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/"
+                             data-width="200"
+                             data-layout="button_count"
+                             data-action="like"
+                             data-show-faces="true"
+                             data-share="false">
+                        </div>
+                    </li>
 
-  <span class="byline author vcard">Authored by <span class="fn">
-  
-    Naoki Orii
-  
-  </span></span>
+                    
+                    <li>
+                        <a class="twitter-share-button"
+                           href="https://twitter.com/intent/tweet?url=http%3a%2f%2fmrorii.github.io%2fblog%2f2013%2f08%2f02%2fpredicting-tsukurepo-count-on-cookpad%2f"
+                           data-counturl="http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/"
+                           data-count="horizontal">
+                            Tweet
+                        </a>
+                        <script>window.twttr = (function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0],
+                            t = window.twttr || {};
+                          if (d.getElementById(id)) return t;
+                          js = d.createElement(s);
+                          js.id = id;
+                          js.src = "https://platform.twitter.com/widgets.js";
+                          fjs.parentNode.insertBefore(js, fjs);
+                         
+                          t._e = [];
+                          t.ready = function(f) {
+                            t._e.push(f);
+                          };
+                         
+                          return t;
+                        }(document, "script", "twitter-wjs"));
+                        </script>
+                    </li>
 
+                    
+                    <li>
+                        <a href="http://b.hatena.ne.jp/entry/http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/" class="hatena-bookmark-button"
+                           data-hatena-bookmark-title="Cookpadのつくれぽ数を予測する" data-hatena-bookmark-layout="simple-balloon"
+                           title="このエントリーをはてなブックマークに追加">
+                            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" 
+                                 width="20" height="20" style="border: none;" />
+                        </a>
+                        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+                    </li>
 
-      
+                    
+                    <li>
+                        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+                        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+                    </li>
 
+                    
+                </ul>
 
+            </section>
 
+            
+        </section>
+        <section class="f-2">
+            <span>
+                <a class="twitter-follow-button"
+                  href="https://twitter.com/mrorii">
+                Follow @mrorii</a>
+            </span>
+        </section>
 
-<time class='entry-date' datetime='2013-08-02T16:49:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>4:49 pm</span></time>
-      
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/" data-via="" data-counturl="http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/" >Tweet</a>
-  
-  
-  <a href="http://b.hatena.ne.jp/entry/http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/"
-    class="hatena-bookmark-button"
-    data-hatena-bookmark-layout="standard"
-    title="このエントリーをはてなブックマークに追加">
-    <img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-      alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-  <script
-    type="text/javascript"
-    src="http://b.st-hatena.com/js/bookmark_button.js"
-    charset="utf-8" async="async"></script>
-  
-    <div class="fb-like" data-layout="button_count" data-send="false" data-width="300" data-show-faces="false"></div>
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/07/06/finding-jatbars-jason-and-terry-on-yelp/" title="Previous Post: Finding jatbar's Jason and Terry on Yelp">&laquo; Finding jatbar&#8217;s Jason and Terry on Yelp</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2013/08/26/machine-translation-for-cookpad/" title="Next Post: Cookpadのレシピを機械翻訳する">Cookpadのレシピを機械翻訳する &raquo;</a>
-      
-    </p>
-  </footer>
+                        
+    </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
+	</div>
+</main>
+    <footer id="site-footer">
+        <div class="container">
+            <a href="http://mrorii.github.ioindex.xml" title="Get the RSS feed"><span class="tooltip"><i class="fa fa-rss"></i></span></a>
+            <section>&copy; <a href="http://mrorii.github.io">Naoki Orii</a> 2015</section>
+            <section>Generated with <a href="http://gohugo.io/">Hugo</a>.</section>
+        </div>
+    </footer>
 
-
-</div>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Naoki Orii -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'naokioriisblog';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/';
-        var disqus_url = 'http://mrorii.github.io/blog/2013/08/02/predicting-tsukurepo-count-on-cookpad/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
+    <script type="text/javascript" src="http://mrorii.github.iojs/fittext.js"></script>
+    <script type="text/javascript">
+      $(".heading").fitText();
+    </script>
 
 
 
